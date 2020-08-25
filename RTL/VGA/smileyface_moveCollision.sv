@@ -42,38 +42,6 @@ initial begin
 end
 
 //////////--------------------------------------------------------------------------------------------------------------=
-//  calculation x Axis speed 
-
-//always_ff@(posedge clk or negedge resetN)
-//begin
-//	if(!resetN)
-//		Xspeed	<= INITIAL_X_SPEED;
-//	else 	begin
-//			
-//			
-//			// colision Calcultaion 
-//			
-////hit bit map has one bit per edge:  hit_colors[3:0] =   {Left, Top, Right, Bottom}	
-////there is one bit per edge, in the corner two bits are set  
-//
-////
-////		if (collision && HitEdgeCode [3] == 1 )   // hit left border of brick  
-////				if (Xspeed < 0) // while moving right
-////						Xspeed <= -Xspeed ; 
-////			
-////			if (collision && HitEdgeCode [1] == 1 )   // hit right border of brick  
-////				if (Xspeed > 0 ) //  while moving left
-////					Xspeed <= -Xspeed ; 
-//			
-//				
-//	end
-//end
-
-
-//////////--------------------------------------------------------------------------------------------------------------=
-//  calculation Y Axis speed using gravity
-
-//////////--------------------------------------------------------------------------------------------------------------=
 // position calculate 
 
 always_ff@(posedge clk or negedge resetN)

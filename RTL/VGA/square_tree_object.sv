@@ -31,11 +31,19 @@ logic insideBracket ;
 logic	signed [10:0] topLeftY;
 int topLeftX_FixedPoint; // local parameters 
 int topLeftY_FixedPoint;
+
+int pixelX_FixedPoint,rightX_FixedPoint;
+
+
 const int FIXED_POINT_MULTIPLIER=64;
 //////////--------------------------------------------------------------------------------------------------------------=
 // Calculate object right  & bottom  boundaries
-assign rightX	= (topLeftX + OBJECT_WIDTH_X);
+
+
+assign rightX	= (topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER + OBJECT_WIDTH_X);
 assign bottomY	= (topLeftY + OBJECT_HEIGHT_Y);
+
+
 assign topLeftY=topLeftY_FixedPoint/FIXED_POINT_MULTIPLIER;
 //////////--------------------------------------------------------------------------------------------------------------=
 always_ff@(posedge clk or negedge resetN)
@@ -48,20 +56,21 @@ begin
 	end
 	else begin 
 		topLeftY_FixedPoint <= topLeftY_FixedPoint;
+		topLeftX_FixedPoint <= topLeftX_FixedPoint;
 		edgeCollide <= 1'b0;
 //		if ( (pixelX  >= topLeftX) &&  (pixelX < rightX) 
 //			&& (pixelY  >= topLeftY) &&  (pixelY < bottomY) ) // test if it is inside the rectangle 
 
 		//this is an example of using blocking sentence inside an always_ff block, 
 		//and not waiting a clock to use the result  
-		insideBracket  = 	 ( (pixelX  >= topLeftX) &&  (pixelX < rightX) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
+		insideBracket  = 	 ( (pixelX  >= topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER) &&  (pixelX < rightX) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
 						   && (pixelY  >= topLeftY) &&  (pixelY < bottomY) )  ; 
 		
 		if (insideBracket ) // test if it is inside the rectangle 
 		begin 
 			RGBout  <= OBJECT_COLOR ;	// colors table 
 			drawingRequest <= 1'b1 ;
-			offsetX	<= (pixelX - topLeftX); //calculate relative offsets from top left corner
+			offsetX	<= (pixelX - topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER); //calculate relative offsets from top left corner
 			offsetY	<= (pixelY - topLeftY);
 		end 
 		
@@ -72,9 +81,10 @@ begin
 			offsetY	<= 0; //no offset
 		end 
 		if(startOfFrame) begin
-			if(topLeftY_FixedPoint>480*64) begin 
+			if(topLeftY_FixedPoint>480*FIXED_POINT_MULTIPLIER) begin 
 				edgeCollide<=1'b1;
-				topLeftY_FixedPoint<=0;
+				topLeftY_FixedPoint <= 0;
+				topLeftX_FixedPoint <= topLeftX*FIXED_POINT_MULTIPLIER;
 			end
 			else
 				topLeftY_FixedPoint<=topLeftY_FixedPoint+Y_Speed;
