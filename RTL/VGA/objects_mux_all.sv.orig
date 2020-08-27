@@ -11,6 +11,18 @@ module	objects_mux_all	(
 		// smiley 
 					input		logic	smileyDrawingRequest, // two set of inputs per unit
 					input		logic	[7:0] smileyRGB, 
+<<<<<<< HEAD
+		// add the box here 
+					input    logic boxDrawingRequest,
+					input    logic [7:0] boxRGB,	
+		// add the number here 
+					input    logic numberDrawingRequest,
+					input    logic [7:0] numRGB,	
+		// add the number here 
+					input    logic bulletDrawingRequest,
+					input    logic [7:0] bulletRGB,	
+=======
+					
 		// towers
 					input logic towersDrawingRequest,
 					input logic [7:0] towersRGB,
@@ -24,9 +36,7 @@ module	objects_mux_all	(
 					input logic [7:0] enemiesHeadUpRGB,
 		
 					
-		// add the number here 
-					input    logic bulletDrawingRequest,
-					input    logic [7:0] bulletRGB,	
+>>>>>>> TowerAndEnemy
 		// background 
 					input		logic	[7:0] backGroundRGB, 
 
@@ -52,10 +62,15 @@ begin
 	end
 	else begin
 		if (smileyDrawingRequest)   tmpRGB <= smileyRGB;  
-	   else if (towersDrawingRequest) tmpRGB <= towersRGB;
+<<<<<<< HEAD
+		else if(numberDrawingRequest) tmpRGB <= numRGB;
+		else if(boxDrawingRequest) tmpRGB <= boxRGB;
+		else if(bulletDrawingRequest) tmpRGB <= bulletRGB;
+=======
+		else if (towersDrawingRequest) tmpRGB <= towersRGB;
 		else if (enemiesDrawingRequest) tmpRGB <= enemiesRGB;
 		else if (enemisHeadsUpDrawingRequest) tmpRGB <= enemiesHeadUpRGB;
-		else if(bulletDrawingRequest) tmpRGB <= bulletRGB;
+>>>>>>> TowerAndEnemy
 		else tmpRGB <= backGroundRGB ; // last priority 
 		end ; 
 	end
