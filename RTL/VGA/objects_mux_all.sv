@@ -11,12 +11,11 @@ module	objects_mux_all	(
 		// smiley 
 					input		logic	smileyDrawingRequest, // two set of inputs per unit
 					input		logic	[7:0] smileyRGB, 
-		// add the box here 
-					input    logic boxDrawingRequest,
-					input    logic [7:0] boxRGB,	
-		// add the box here 
-					input    logic numberDrawingRequest,
-					input    logic [7:0] numRGB,	
+					
+		// towers
+					input logic towersDrawingRequest,
+					input logic [7:0] towersRGB,
+		
 					
 		// background 
 					input		logic	[7:0] backGroundRGB, 
@@ -43,8 +42,7 @@ begin
 	end
 	else begin
 		if (smileyDrawingRequest)   tmpRGB <= smileyRGB;  
-		else if(numberDrawingRequest) tmpRGB <= numRGB;
-		else if(boxDrawingRequest) tmpRGB <= boxRGB;
+		else if (towersDrawingRequest) tmpRGB <= towersRGB;
 		else tmpRGB <= backGroundRGB ; // last priority 
 		end ; 
 	end
