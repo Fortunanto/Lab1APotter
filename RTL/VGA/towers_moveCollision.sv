@@ -18,8 +18,8 @@ module	towers_moveCollision	(
 					output	logic	drawingRequest // indicates pixel inside the bracket				
 );
 
-parameter int OBJECT_WIDTH_X;
-parameter int OBJECT_HEIGHT_Y;
+parameter  int OBJECT_WIDTH_X = 20;
+parameter  int OBJECT_HEIGHT_Y = 20;
 parameter  logic [7:0] OBJECT_COLOR = 8'h5b ; 
 int Y_Speed=100;
 localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// bitmap  representation for a transparent pixel 

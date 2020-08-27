@@ -18,12 +18,12 @@ module	enemies_moveCollision	(
 );
 
 parameter int INITIAL_X=240;
-parameter int INITIAL_Y=320;
+parameter int INITIAL_Y=200;
 
 parameter int OBJECT_WIDTH_X=30;
 parameter int OBJECT_HEIGHT_Y=30;
 
-parameter int X_SPEED=80;
+parameter int X_SPEED=120;
 
 parameter  logic [7:0] OBJECT_COLOR = 8'h5b ; 
 

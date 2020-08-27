@@ -1460,21 +1460,21 @@ agreement for further details.
 		(pt 224 32)
 		(output)
 		(text "offsetX[10..0]" (rect 0 0 68 12)(font "Arial" ))
-		(text "offsetX[10..0]" (rect 146 27 203 39)(font "Arial" ))
+		(text "offsetX[10..0]" (rect 146 27 214 39)(font "Arial" ))
 		(line (pt 224 32)(pt 208 32)(line_width 3))
 	)
 	(port
 		(pt 224 48)
 		(output)
 		(text "offsetY[10..0]" (rect 0 0 70 12)(font "Arial" ))
-		(text "offsetY[10..0]" (rect 144 43 203 55)(font "Arial" ))
+		(text "offsetY[10..0]" (rect 144 43 214 55)(font "Arial" ))
 		(line (pt 224 48)(pt 208 48)(line_width 3))
 	)
 	(port
 		(pt 224 64)
 		(output)
 		(text "drawingRequest" (rect 0 0 77 12)(font "Arial" ))
-		(text "drawingRequest" (rect 138 59 203 71)(font "Arial" ))
+		(text "drawingRequest" (rect 138 59 215 71)(font "Arial" ))
 		(line (pt 224 64)(pt 208 64))
 	)
 	(parameter
@@ -1484,7 +1484,7 @@ agreement for further details.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"INITIAL_Y"
-		"320"
+		"200"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
@@ -1499,7 +1499,7 @@ agreement for further details.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"X_SPEED"
-		"80"
+		"120"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
@@ -1510,7 +1510,7 @@ agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 208 128))
 	)
-	(annotation_block (parameter)(rect -320 1304 -64 1424))
+	(annotation_block (parameter)(rect -320 1304 -65 1437))
 )
 (connector
 	(pt 56 536)
