@@ -21,9 +21,9 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 272 224)
+	(rect 16 16 272 256)
 	(text "objects_mux_all" (rect 5 0 68 12)(font "Arial" ))
-	(text "inst" (rect 8 192 20 204)(font "Arial" ))
+	(text "inst" (rect 8 224 20 236)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -83,9 +83,23 @@ agreement for further details.
 	(port
 		(pt 0 160)
 		(input)
+		(text "bulletDrawingRequest" (rect 0 0 84 12)(font "Arial" ))
+		(text "bulletDrawingRequest" (rect 21 155 105 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 1))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "bulletRGB[7..0]" (rect 0 0 60 12)(font "Arial" ))
+		(text "bulletRGB[7..0]" (rect 21 171 81 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 3))
+	)
+	(port
+		(pt 0 192)
+		(input)
 		(text "backGroundRGB[7..0]" (rect 0 0 89 12)(font "Arial" ))
-		(text "backGroundRGB[7..0]" (rect 21 155 110 167)(font "Arial" ))
-		(line (pt 0 160)(pt 16 160)(line_width 3))
+		(text "backGroundRGB[7..0]" (rect 21 187 110 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 3))
 	)
 	(port
 		(pt 256 32)
@@ -109,6 +123,6 @@ agreement for further details.
 		(line (pt 256 64)(pt 240 64)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 240 192)(line_width 1))
+		(rectangle (rect 16 16 240 224)(line_width 1))
 	)
 )

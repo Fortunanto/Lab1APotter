@@ -1,0 +1,269 @@
+// Copyright (C) 2017  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other 
+// applicable license agreement, including, without limitation, 
+// that your use is for the sole purpose of programming logic 
+// devices manufactured by Intel and sold by Intel or its 
+// authorized distributors.  Please refer to the applicable 
+// agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "08/27/2020 12:57:45"
+                                                                                
+// Verilog Test Bench (with test vectors) for design :                          Shot_MoveCollision
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module Shot_MoveCollision_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg [3:0] HitEdgeCode;
+reg clk;
+reg collision;
+reg moveRight;
+reg [10:0] player_topLeftX;
+reg [10:0] player_topLeftY;
+reg resetN;
+reg [2:0] shotDirection;
+reg startOfFrame;
+reg triggerShotN;
+// wires                                               
+wire [10:0] topLeftX;
+wire [10:0] topLeftY;
+
+// assign statements (if any)                          
+Shot_MoveCollision i1 (
+// port map - connection between master ports and signals/registers   
+	.HitEdgeCode(HitEdgeCode),
+	.clk(clk),
+	.collision(collision),
+	.moveRight(moveRight),
+	.player_topLeftX(player_topLeftX),
+	.player_topLeftY(player_topLeftY),
+	.resetN(resetN),
+	.shotDirection(shotDirection),
+	.startOfFrame(startOfFrame),
+	.topLeftX(topLeftX),
+	.topLeftY(topLeftY),
+	.triggerShotN(triggerShotN)
+);
+initial 
+begin 
+#1000000 $finish;
+end 
+
+// clk
+always
+begin
+	clk = 1'b0;
+	clk = #1000 1'b1;
+	#1000;
+end 
+
+// resetN
+initial
+begin
+	resetN = 1'b0;
+	resetN = #1000 1'b1;
+end 
+// shotDirection[ 2 ]
+initial
+begin
+	shotDirection[2] = 1'b0;
+end 
+// shotDirection[ 1 ]
+initial
+begin
+	shotDirection[1] = 1'b0;
+end 
+// shotDirection[ 0 ]
+initial
+begin
+	shotDirection[0] = 1'b0;
+end 
+// player_topLeftY[ 10 ]
+initial
+begin
+	player_topLeftY[10] = 1'b0;
+end 
+// player_topLeftY[ 9 ]
+initial
+begin
+	player_topLeftY[9] = 1'b0;
+end 
+// player_topLeftY[ 8 ]
+initial
+begin
+	player_topLeftY[8] = 1'b1;
+end 
+// player_topLeftY[ 7 ]
+initial
+begin
+	player_topLeftY[7] = 1'b1;
+end 
+// player_topLeftY[ 6 ]
+initial
+begin
+	player_topLeftY[6] = 1'b1;
+end 
+// player_topLeftY[ 5 ]
+initial
+begin
+	player_topLeftY[5] = 1'b1;
+end 
+// player_topLeftY[ 4 ]
+initial
+begin
+	player_topLeftY[4] = 1'b1;
+end 
+// player_topLeftY[ 3 ]
+initial
+begin
+	player_topLeftY[3] = 1'b0;
+end 
+// player_topLeftY[ 2 ]
+initial
+begin
+	player_topLeftY[2] = 1'b1;
+end 
+// player_topLeftY[ 1 ]
+initial
+begin
+	player_topLeftY[1] = 1'b0;
+end 
+// player_topLeftY[ 0 ]
+initial
+begin
+	player_topLeftY[0] = 1'b0;
+end 
+// player_topLeftX[ 10 ]
+initial
+begin
+	player_topLeftX[10] = 1'b0;
+end 
+// player_topLeftX[ 9 ]
+initial
+begin
+	player_topLeftX[9] = 1'b0;
+end 
+// player_topLeftX[ 8 ]
+initial
+begin
+	player_topLeftX[8] = 1'b1;
+end 
+// player_topLeftX[ 7 ]
+initial
+begin
+	player_topLeftX[7] = 1'b1;
+end 
+// player_topLeftX[ 6 ]
+initial
+begin
+	player_topLeftX[6] = 1'b1;
+end 
+// player_topLeftX[ 5 ]
+initial
+begin
+	player_topLeftX[5] = 1'b1;
+end 
+// player_topLeftX[ 4 ]
+initial
+begin
+	player_topLeftX[4] = 1'b1;
+end 
+// player_topLeftX[ 3 ]
+initial
+begin
+	player_topLeftX[3] = 1'b0;
+end 
+// player_topLeftX[ 2 ]
+initial
+begin
+	player_topLeftX[2] = 1'b1;
+end 
+// player_topLeftX[ 1 ]
+initial
+begin
+	player_topLeftX[1] = 1'b0;
+end 
+// player_topLeftX[ 0 ]
+initial
+begin
+	player_topLeftX[0] = 1'b0;
+end 
+// HitEdgeCode[ 3 ]
+initial
+begin
+	HitEdgeCode[3] = 1'b0;
+end 
+// HitEdgeCode[ 2 ]
+initial
+begin
+	HitEdgeCode[2] = 1'b0;
+end 
+// HitEdgeCode[ 1 ]
+initial
+begin
+	HitEdgeCode[1] = 1'b0;
+end 
+// HitEdgeCode[ 0 ]
+initial
+begin
+	HitEdgeCode[0] = 1'b0;
+end 
+
+// collision
+initial
+begin
+	collision = 1'b0;
+	collision = #56000 1'b1;
+	collision = #4000 1'b0;
+end 
+
+// startOfFrame
+initial
+begin
+	startOfFrame = 1'b0;
+	startOfFrame = #5000 1'b1;
+	startOfFrame = #1000 1'b0;
+	startOfFrame = #6000 1'b1;
+	startOfFrame = #3000 1'b0;
+	startOfFrame = #3000 1'b1;
+	startOfFrame = #3000 1'b0;
+	startOfFrame = #7000 1'b1;
+	startOfFrame = #3000 1'b0;
+	startOfFrame = #3000 1'b1;
+	startOfFrame = #3000 1'b0;
+	startOfFrame = #7000 1'b1;
+	startOfFrame = #3000 1'b0;
+	startOfFrame = #9000 1'b1;
+end 
+
+// triggerShotN
+initial
+begin
+	triggerShotN = 1'b1;
+	triggerShotN = #2000 1'b0;
+	triggerShotN = #6000 1'b1;
+	triggerShotN = #47000 1'b0;
+	triggerShotN = #4000 1'b1;
+	triggerShotN = #45000 1'b0;
+	triggerShotN = #4000 1'b1;
+	triggerShotN = #44000 1'b0;
+	triggerShotN = #4000 1'b1;
+end 
+endmodule
+

@@ -14,10 +14,12 @@ module	objects_mux_all	(
 		// add the box here 
 					input    logic boxDrawingRequest,
 					input    logic [7:0] boxRGB,	
-		// add the box here 
+		// add the number here 
 					input    logic numberDrawingRequest,
 					input    logic [7:0] numRGB,	
-					
+		// add the number here 
+					input    logic bulletDrawingRequest,
+					input    logic [7:0] bulletRGB,	
 		// background 
 					input		logic	[7:0] backGroundRGB, 
 
@@ -45,6 +47,7 @@ begin
 		if (smileyDrawingRequest)   tmpRGB <= smileyRGB;  
 		else if(numberDrawingRequest) tmpRGB <= numRGB;
 		else if(boxDrawingRequest) tmpRGB <= boxRGB;
+		else if(bulletDrawingRequest) tmpRGB <= bulletRGB;
 		else tmpRGB <= backGroundRGB ; // last priority 
 		end ; 
 	end
