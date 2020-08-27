@@ -5,30 +5,41 @@
 // (c) Technion IIT, Department of Electrical Engineering 2019 
 
 
-module	towers_moveCollision	(	
+module	enemies_moveCollision	(	
 					input		logic	clk,
 					input		logic	resetN,
 					input    logic startOfFrame,
 					input 	logic	[10:0] pixelX,// current VGA pixel 
 					input 	logic	[10:0] pixelY,
-					input 	logic signed	[10:0] topLeftX, //position on the screen 
+					
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
-					output 	logic	[10:0] offsetY,
-					output   logic edgeCollide,
+					output 	logic	[10:0] offsetY,					
 					output	logic	drawingRequest // indicates pixel inside the bracket				
 );
 
-parameter int OBJECT_WIDTH_X;
-parameter int OBJECT_HEIGHT_Y;
+parameter int INITIAL_X=240;
+parameter int INITIAL_Y=320;
+
+parameter int OBJECT_WIDTH_X=30;
+parameter int OBJECT_HEIGHT_Y=30;
+
+parameter int X_SPEED=80;
+
 parameter  logic [7:0] OBJECT_COLOR = 8'h5b ; 
-int Y_Speed=100;
+
 localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// bitmap  representation for a transparent pixel 
  
 int rightX ; //coordinates of the sides  
 int bottomY ;
-logic insideBracket ; 
+
+int direction = 1;
+
+logic insideBracket ;
+ 
+logic signed [10:0] topLeftX;
 logic	signed [10:0] topLeftY;
-int topLeftX_FixedPoint; // local parameters 
+
+int topLeftX_FixedPoint;
 int topLeftY_FixedPoint;
 
 int pixelX_FixedPoint,rightX_FixedPoint;
@@ -43,48 +54,50 @@ assign rightX	= (topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER + OBJECT_WIDTH_X);
 assign bottomY	= (topLeftY + OBJECT_HEIGHT_Y);
 
 
+assign topLeftX=topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER;
 assign topLeftY=topLeftY_FixedPoint/FIXED_POINT_MULTIPLIER;
+
 //////////--------------------------------------------------------------------------------------------------------------=
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin
-		edgeCollide <= 1'b0;
 		drawingRequest	<=	1'b0;
-		
+		topLeftX_FixedPoint <= INITIAL_X*FIXED_POINT_MULTIPLIER;
+		topLeftY_FixedPoint <= INITIAL_Y*FIXED_POINT_MULTIPLIER;		
 	end
 	else begin 
 		topLeftY_FixedPoint <= topLeftY_FixedPoint;
 		topLeftX_FixedPoint <= topLeftX_FixedPoint;
-		edgeCollide <= 1'b0;
-//		if ( (pixelX  >= topLeftX) &&  (pixelX < rightX) 
-//			&& (pixelY  >= topLeftY) &&  (pixelY < bottomY) ) // test if it is inside the rectangle 
+	
 
 		//this is an example of using blocking sentence inside an always_ff block, 
 		//and not waiting a clock to use the result  
-		insideBracket  = 	 ( (pixelX  >= topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER) &&  (pixelX < rightX) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
+		insideBracket  = 	 ( (pixelX  >= topLeftX) &&  (pixelX < rightX) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
 						   && (pixelY  >= topLeftY) &&  (pixelY < bottomY) )  ; 
 		
-		if (insideBracket ) // test if it is inside the rectangle 
-		begin 
+		if (insideBracket) begin 
 			drawingRequest <= 1'b1 ;
-			offsetX	<= (pixelX - topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER); //calculate relative offsets from top left corner
+			offsetX	<= (pixelX - topLeftX); //calculate relative offsets from top left corner
 			offsetY	<= (pixelY - topLeftY);
-		end 
-		
+		end 		
 		else begin  
 			drawingRequest <= 1'b0 ;// transparent color 
 			offsetX	<= 0; //no offset
 			offsetY	<= 0; //no offset
 		end 
+		
 		if(startOfFrame) begin
-			if(topLeftY_FixedPoint>480*FIXED_POINT_MULTIPLIER) begin 
-				edgeCollide<=1'b1;
-				topLeftY_FixedPoint <= 0;
-				topLeftX_FixedPoint <= topLeftX*FIXED_POINT_MULTIPLIER;
+			if(topLeftX_FixedPoint<0) begin 
+				direction = 1; // move right
 			end
-			else
-				topLeftY_FixedPoint<=topLeftY_FixedPoint+Y_Speed;
-		end
+			else if (topLeftX_FixedPoint > (640-OBJECT_WIDTH_X)*FIXED_POINT_MULTIPLIER) begin
+				direction = -1; // move left
+			end
+			
+			topLeftX_FixedPoint <= topLeftX_FixedPoint + direction*X_SPEED;			
+		end	
+		
+		
 	end
 end 
 endmodule 
