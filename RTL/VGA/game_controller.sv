@@ -10,16 +10,22 @@ module	game_controller	(
 			input	logic	drawing_request_Ball,
 			input	logic	drawing_request_1,
 			input logic drawing_request_box,
-			
+			input logic drawing_request_shot,
+
 			output logic collision, // active in case of collision between two objects
+			output logic ShotBoxCollision,
 			output logic SingleHitPulse // critical code, generating A single pulse in a frame 
 );
 
 logic box_smiley_collision,box_edge_collision, edge_smiley_collision;
+
 assign box_smiley_collision = (drawing_request_Ball && drawing_request_box) ; 
 assign box_edge_collision = (drawing_request_box&&  drawing_request_1);
 assign edge_smiley_collision = (drawing_request_Ball && drawing_request_1);
 assign collision = (edge_smiley_collision || box_smiley_collision);
+
+assign ShotBoxCollision = (drawing_request_shot && drawing_request_box);
+
 logic flag ; // a semaphore to set the output only once per frame / regardless of the number of collisions 
 
 always_ff@(posedge clk or negedge resetN)

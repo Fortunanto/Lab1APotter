@@ -7,6 +7,7 @@ module	Shot_MoveCollision	(
 					input	logic	triggerShot,  
 					input	logic [2:0] shotDirection, 
 					input logic collision,  //collision if smiley hits an object
+					input logic shotBoxCollision,  //collision if smiley hits an object
 					input	logic	[3:0] HitEdgeCode, //one bit per edge 
 					
 					input     logic signed  [10:0]   player_topLeftX,
@@ -35,6 +36,12 @@ begin
 		topLeftY_FixedPoint <= 50_000;
 	end
 	else begin
+		if(shotBoxCollision) begin
+			Xspeed <= 0;
+			Yspeed <= 0;
+			topLeftX_FixedPoint <= 50_000;
+			topLeftY_FixedPoint <= 50_000;
+		end
 		if(triggerShot && !triggerShot_d) begin
 			topLeftX_FixedPoint <= player_topLeftX*FIXED_POINT_MULTIPLIER;
 			topLeftY_FixedPoint <= player_topLeftY*FIXED_POINT_MULTIPLIER;
