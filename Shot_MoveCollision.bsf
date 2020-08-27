@@ -62,15 +62,15 @@ agreement for further details.
 	(port
 		(pt 0 112)
 		(input)
-		(text "collision" (rect 0 0 28 12)(font "Arial" ))
-		(text "collision" (rect 21 107 49 119)(font "Arial" ))
+		(text "shotBoxCollision" (rect 0 0 62 12)(font "Arial" ))
+		(text "shotBoxCollision" (rect 21 107 83 119)(font "Arial" ))
 		(line (pt 0 112)(pt 16 112)(line_width 1))
 	)
 	(port
 		(pt 0 128)
 		(input)
-		(text "shotBoxCollision" (rect 0 0 62 12)(font "Arial" ))
-		(text "shotBoxCollision" (rect 21 123 83 135)(font "Arial" ))
+		(text "shotEnemyCollision" (rect 0 0 77 12)(font "Arial" ))
+		(text "shotEnemyCollision" (rect 21 123 98 135)(font "Arial" ))
 		(line (pt 0 128)(pt 16 128)(line_width 1))
 	)
 	(port

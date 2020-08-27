@@ -14,14 +14,15 @@ module	game_controller	(
 			input logic drawing_request_shot,
 
 			output logic ShotBoxCollision,
-			output logic TowerEnemyHUCollision
+			output logic TowerEnemyHUCollision,
+			output logic ShotEnemyCollision
 );
 
 logic box_smiley_collision,box_edge_collision, edge_smiley_collision;
 
 assign ShotBoxCollision = (drawing_request_shot && drawing_request_tower);
 assign TowerEnemyHUCollision = (drawing_request_enemy_HU && drawing_request_tower);
-
+assign ShotEnemyCollision = (drawing_request_shot && drawing_request_enemy);
 
 //always_ff@(posedge clk or negedge resetN)
 //begin

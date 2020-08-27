@@ -6,8 +6,8 @@ module	Shot_MoveCollision	(
 					input	logic	startOfFrame,  // short pulse every start of frame 30Hz 
 					input	logic	triggerShot,  
 					input	logic [2:0] shotDirection, 
-					input logic collision,  //collision if smiley hits an object
 					input logic shotBoxCollision,  //collision if smiley hits an object
+					input logic shotEnemyCollision,
 					input	logic	[3:0] HitEdgeCode, //one bit per edge 
 					
 					input     logic signed  [10:0]   player_topLeftX,
@@ -19,6 +19,9 @@ module	Shot_MoveCollision	(
 );
 
 logic triggerShot_d /* synthesis keep = 1 */;
+logic collision;
+
+assign collision = shotBoxCollision || shotEnemyCollision;
 
 parameter int SPEED = 100;
 
@@ -36,7 +39,7 @@ begin
 		topLeftY_FixedPoint <= 50_000;
 	end
 	else begin
-		if(shotBoxCollision) begin
+		if(collision) begin
 			Xspeed <= 0;
 			Yspeed <= 0;
 			topLeftX_FixedPoint <= 50_000;
