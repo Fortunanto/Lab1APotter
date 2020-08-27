@@ -62,23 +62,37 @@ agreement for further details.
 	(port
 		(pt 224 32)
 		(output)
-		(text "offsetX[10..0]" (rect 0 0 53 12)(font "Arial" ))
-		(text "offsetX[10..0]" (rect 150 27 203 39)(font "Arial" ))
+		(text "topLeftX[10..0]" (rect 0 0 57 12)(font "Arial" ))
+		(text "topLeftX[10..0]" (rect 146 27 203 39)(font "Arial" ))
 		(line (pt 224 32)(pt 208 32)(line_width 3))
 	)
 	(port
 		(pt 224 48)
 		(output)
-		(text "offsetY[10..0]" (rect 0 0 54 12)(font "Arial" ))
-		(text "offsetY[10..0]" (rect 149 43 203 55)(font "Arial" ))
+		(text "topLeftY[10..0]" (rect 0 0 59 12)(font "Arial" ))
+		(text "topLeftY[10..0]" (rect 144 43 203 55)(font "Arial" ))
 		(line (pt 224 48)(pt 208 48)(line_width 3))
 	)
 	(port
 		(pt 224 64)
 		(output)
+		(text "offsetX[10..0]" (rect 0 0 53 12)(font "Arial" ))
+		(text "offsetX[10..0]" (rect 150 59 203 71)(font "Arial" ))
+		(line (pt 224 64)(pt 208 64)(line_width 3))
+	)
+	(port
+		(pt 224 80)
+		(output)
+		(text "offsetY[10..0]" (rect 0 0 54 12)(font "Arial" ))
+		(text "offsetY[10..0]" (rect 149 75 203 87)(font "Arial" ))
+		(line (pt 224 80)(pt 208 80)(line_width 3))
+	)
+	(port
+		(pt 224 96)
+		(output)
 		(text "drawingRequest" (rect 0 0 63 12)(font "Arial" ))
-		(text "drawingRequest" (rect 140 59 203 71)(font "Arial" ))
-		(line (pt 224 64)(pt 208 64)(line_width 1))
+		(text "drawingRequest" (rect 140 91 203 103)(font "Arial" ))
+		(line (pt 224 96)(pt 208 96)(line_width 1))
 	)
 	(parameter
 		"INITIAL_X"
@@ -87,7 +101,7 @@ agreement for further details.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"INITIAL_Y"
-		"320"
+		"200"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
@@ -102,7 +116,7 @@ agreement for further details.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"X_SPEED"
-		"80"
+		"120"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter

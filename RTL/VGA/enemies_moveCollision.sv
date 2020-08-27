@@ -12,6 +12,9 @@ module	enemies_moveCollision	(
 					input 	logic	[10:0] pixelX,// current VGA pixel 
 					input 	logic	[10:0] pixelY,
 					
+					output logic  [10:0] topLeftX,
+					output logic  [10:0] topLeftY,
+					
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
 					output 	logic	[10:0] offsetY,					
 					output	logic	drawingRequest // indicates pixel inside the bracket				
@@ -35,9 +38,6 @@ int bottomY ;
 int direction = 1;
 
 logic insideBracket ;
- 
-logic signed [10:0] topLeftX;
-logic	signed [10:0] topLeftY;
 
 int topLeftX_FixedPoint;
 int topLeftY_FixedPoint;

@@ -19,6 +19,10 @@ module	objects_mux_all	(
 		// enemies
 					input logic enemiesDrawingRequest,
 					input logic [7:0] enemiesRGB,
+					
+		// enemiesHeadsUp
+					input logic enemisHeadsUpDrawingRequest,
+					input logic [7:0] enemiesHeadUpRGB,
 		
 					
 		// background 
@@ -48,6 +52,7 @@ begin
 		if (smileyDrawingRequest)   tmpRGB <= smileyRGB;  
 		else if (towersDrawingRequest) tmpRGB <= towersRGB;
 		else if (enemiesDrawingRequest) tmpRGB <= enemiesRGB;
+		else if (enemisHeadsUpDrawingRequest) tmpRGB <= enemiesHeadUpRGB;
 		else tmpRGB <= backGroundRGB ; // last priority 
 		end ; 
 	end
