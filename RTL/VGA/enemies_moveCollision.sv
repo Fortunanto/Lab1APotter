@@ -12,12 +12,15 @@ module	enemies_moveCollision	(
 					input 	logic	[10:0] pixelX,// current VGA pixel 
 					input 	logic	[10:0] pixelY,
 					
+					input logic changeDirection,
+					
 					output logic  [10:0] topLeftX,
 					output logic  [10:0] topLeftY,
 					
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
 					output 	logic	[10:0] offsetY,					
 					output	logic	drawingRequest // indicates pixel inside the bracket				
+										
 );
 
 parameter int INITIAL_X=240;
@@ -35,7 +38,11 @@ localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// bitmap  representation f
 int rightX ; //coordinates of the sides  
 int bottomY ;
 
+
 int direction = 1;
+
+const int directionChangeWait = 100;
+int directionChangeTimer=0;
 
 logic insideBracket ;
 
@@ -86,15 +93,21 @@ begin
 			offsetY	<= 0; //no offset
 		end 
 		
+		if (changeDirection==1 && directionChangeTimer==0) begin
+				direction<=-1*direction;;
+				directionChangeTimer <= directionChangeWait;
+		end
+		
 		if(startOfFrame) begin
 			if(topLeftX_FixedPoint<0) begin 
-				direction = 1; // move right
+				direction <= 1; // move right
 			end
 			else if (topLeftX_FixedPoint > (640-OBJECT_WIDTH_X)*FIXED_POINT_MULTIPLIER) begin
-				direction = -1; // move left
-			end
+				direction <= -1; // move left
+			end			
 			
-			topLeftX_FixedPoint <= topLeftX_FixedPoint + direction*X_SPEED;			
+			topLeftX_FixedPoint <= topLeftX_FixedPoint + direction*X_SPEED;
+			if (directionChangeTimer > 0) directionChangeTimer<=directionChangeTimer-1;
 		end	
 		
 		

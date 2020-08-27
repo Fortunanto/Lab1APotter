@@ -26,6 +26,9 @@ parameter  logic [7:0] OBJECT_COLOR = 8'h5b; // for debug
 localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// bitmap  representation for a transparent pixel 
  
  
+const int OFFSET_X=5;
+
+ 
 int topLeftX;
 int topLeftY;
 int rightX ; //coordinates of the sides  
@@ -44,10 +47,10 @@ const int FIXED_POINT_MULTIPLIER=64;
 always_comb
 RGBout = OBJECT_COLOR;
 
-assign topLeftX = topLeftXinput;
+assign topLeftX = topLeftXinput - OFFSET_X;
 assign topLeftY = topLeftYinput - OBJECT_HEIGHT_Y;
 
-assign rightX	= (topLeftX + OBJECT_WIDTH_X);
+assign rightX	= (topLeftX + OBJECT_WIDTH_X + 2*OFFSET_X);
 assign bottomY	= (topLeftY + OBJECT_HEIGHT_Y);
 
 //////////--------------------------------------------------------------------------------------------------------------=
