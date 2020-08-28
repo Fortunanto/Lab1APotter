@@ -48,7 +48,7 @@ always_comb
 RGBout = OBJECT_COLOR;
 
 assign topLeftX = topLeftXinput - OFFSET_X;
-assign topLeftY = topLeftYinput - OBJECT_HEIGHT_Y;
+assign topLeftY = topLeftYinput - OBJECT_HEIGHT_Y + 30;
 
 assign rightX	= (topLeftX + OBJECT_WIDTH_X + 2*OFFSET_X);
 assign bottomY	= (topLeftY + OBJECT_HEIGHT_Y);
