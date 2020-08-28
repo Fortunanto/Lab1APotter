@@ -12,7 +12,7 @@ module	Shot_MoveCollision	(
 					
 					input     logic signed  [10:0]   player_topLeftX,
 					input     logic signed  [10:0]   player_topLeftY,
-					
+					output    logic enable,
 					output	 logic signed 	[10:0]	topLeftX,// output the top left corner 
 					output	 logic signed	[10:0]	topLeftY
 					
@@ -37,20 +37,25 @@ begin
 		Yspeed <= 0;
 		topLeftX_FixedPoint <= 50_000;
 		topLeftY_FixedPoint <= 50_000;
+		enable <= 1;
 	end
 	else begin
+		enable <= enable;
 		if(collision) begin
 			Xspeed <= 0;
 			Yspeed <= 0;
 			topLeftX_FixedPoint <= 50_000;
 			topLeftY_FixedPoint <= 50_000;
+			enable <= 1;
 		end
-		if(triggerShot && !triggerShot_d) begin
+		if(triggerShot && enable) begin
 			topLeftX_FixedPoint <= player_topLeftX*FIXED_POINT_MULTIPLIER;
 			topLeftY_FixedPoint <= player_topLeftY*FIXED_POINT_MULTIPLIER;
 			Yspeed <= SPEED;
+			enable <= 0;
+			
 		end
-		else
+		else	
 			if(startOfFrame) begin
 				topLeftY_FixedPoint <= topLeftY_FixedPoint - Yspeed;
 				if(topLeftY_FixedPoint -Yspeed <100) begin
@@ -58,9 +63,10 @@ begin
 					Yspeed <= 0;
 					topLeftX_FixedPoint <= 50_000;
 					topLeftY_FixedPoint <= 50_000;
-				end
+					enable <=1;
+				end			
 			end
-		triggerShot_d <= triggerShot;
+			
 	end
 end
 

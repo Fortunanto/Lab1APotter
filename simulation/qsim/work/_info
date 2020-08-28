@@ -16,19 +16,19 @@ IdYL?RL2z6_Ed]ZWH35Ia`0
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
 w1598522267
-8Lab1Demo.vo
-FLab1Demo.vo
-L0 32
-Z3 OV;L;10.5b;63
+Z3 8Lab1Demo.vo
+Z4 FLab1Demo.vo
+Z5 L0 32
+Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1598522268.000000
-!s107 Lab1Demo.vo|
-!s90 -work|work|Lab1Demo.vo|
+Z7 !s108 1598522268.000000
+Z8 !s107 Lab1Demo.vo|
+Z9 !s90 -work|work|Lab1Demo.vo|
 !i113 1
-Z5 o-work work
-Z6 tCvgOpt 0
+Z10 o-work work
+Z11 tCvgOpt 0
 n@shot_@move@collision
 vShot_MoveCollision_vlg_vec_tst
 R1
@@ -40,15 +40,59 @@ R0
 w1598522265
 8Waveform.vwf.vt
 FWaveform.vwf.vt
-L0 30
-R3
+Z12 L0 30
+R6
 r1
 !s85 0
 31
-R4
+R7
 !s107 Waveform.vwf.vt|
 !s90 -work|work|Waveform.vwf.vt|
 !i113 1
+R10
+R11
+n@shot_@move@collision_vlg_vec_tst
+vshot_StockManager
+Z13 !s110 1598612876
+!i10b 1
+!s100 5M3icWQHEJj9<73Z;cVg<1
+IlJEN_<1N0ALOza0g3n_PZ2
+R2
+R0
+w1598612875
+R3
+R4
 R5
 R6
-n@shot_@move@collision_vlg_vec_tst
+r1
+!s85 0
+31
+Z14 !s108 1598612876.000000
+R8
+R9
+!i113 1
+R10
+R11
+nshot_@stock@manager
+vshot_StockManager_vlg_vec_tst
+R13
+!i10b 1
+!s100 Pg3M:<BGOFNl__PPU5KU`1
+IFQz1=EcJ5L?elBJkATUmg3
+R2
+R0
+w1598612873
+8Waveform1.vwf.vt
+FWaveform1.vwf.vt
+R12
+R6
+r1
+!s85 0
+31
+R14
+!s107 Waveform1.vwf.vt|
+!s90 -work|work|Waveform1.vwf.vt|
+!i113 1
+R10
+R11
+nshot_@stock@manager_vlg_vec_tst

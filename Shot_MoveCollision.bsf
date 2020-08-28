@@ -97,16 +97,23 @@ agreement for further details.
 	(port
 		(pt 248 32)
 		(output)
-		(text "topLeftX[10..0]" (rect 0 0 57 12)(font "Arial" ))
-		(text "topLeftX[10..0]" (rect 170 27 227 39)(font "Arial" ))
-		(line (pt 248 32)(pt 232 32)(line_width 3))
+		(text "enable" (rect 0 0 24 12)(font "Arial" ))
+		(text "enable" (rect 203 27 227 39)(font "Arial" ))
+		(line (pt 248 32)(pt 232 32)(line_width 1))
 	)
 	(port
 		(pt 248 48)
 		(output)
-		(text "topLeftY[10..0]" (rect 0 0 59 12)(font "Arial" ))
-		(text "topLeftY[10..0]" (rect 168 43 227 55)(font "Arial" ))
+		(text "topLeftX[10..0]" (rect 0 0 57 12)(font "Arial" ))
+		(text "topLeftX[10..0]" (rect 170 43 227 55)(font "Arial" ))
 		(line (pt 248 48)(pt 232 48)(line_width 3))
+	)
+	(port
+		(pt 248 64)
+		(output)
+		(text "topLeftY[10..0]" (rect 0 0 59 12)(font "Arial" ))
+		(text "topLeftY[10..0]" (rect 168 59 227 71)(font "Arial" ))
+		(line (pt 248 64)(pt 232 64)(line_width 3))
 	)
 	(parameter
 		"SPEED"

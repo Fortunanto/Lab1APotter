@@ -13,7 +13,7 @@ module	enemies_moveCollision	(
 					input 	logic	[10:0] pixelY,
 					
 					input logic changeDirection,
-					input logic shotCollision,
+					input logic[2:0] shotCollision,
 					
 					output logic  [10:0] topLeftX,
 					output logic  [10:0] topLeftY,
@@ -23,7 +23,7 @@ module	enemies_moveCollision	(
 					output	logic	drawingRequest // indicates pixel inside the bracket				
 										
 );
-
+logic collide;
 parameter int INITIAL_X=240;
 parameter int INITIAL_Y=200;
 
@@ -56,7 +56,7 @@ int xSpeed_Cur;
 const int FIXED_POINT_MULTIPLIER=64;
 //////////--------------------------------------------------------------------------------------------------------------=
 // Calculate object right  & bottom  boundaries
-
+assign collide = shotCollision!=0;
 
 assign rightX	= (topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER + OBJECT_WIDTH_X);
 assign bottomY	= (topLeftY + OBJECT_HEIGHT_Y);
@@ -100,7 +100,7 @@ begin
 				directionChangeTimer <= directionChangeWait;
 		end
 		
-		if (shotCollision) begin
+		if (collide) begin
 				topLeftY_FixedPoint <= 50_000;
 				topLeftX_FixedPoint <= 50_000;
 				xSpeed_Cur <= 0;

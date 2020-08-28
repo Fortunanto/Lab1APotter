@@ -76,16 +76,16 @@ agreement for further details.
 	(port
 		(pt 0 144)
 		(input)
-		(text "drawing_request_shot" (rect 0 0 87 12)(font "Arial" ))
-		(text "drawing_request_shot" (rect 21 139 108 151)(font "Arial" ))
-		(line (pt 0 144)(pt 16 144)(line_width 1))
+		(text "drawing_request_shot[2..0]" (rect 0 0 107 12)(font "Arial" ))
+		(text "drawing_request_shot[2..0]" (rect 21 139 128 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 3))
 	)
 	(port
 		(pt 320 32)
 		(output)
-		(text "ShotBoxCollision" (rect 0 0 63 12)(font "Arial" ))
-		(text "ShotBoxCollision" (rect 236 27 299 39)(font "Arial" ))
-		(line (pt 320 32)(pt 304 32)(line_width 1))
+		(text "ShotBoxCollision[2..0]" (rect 0 0 83 12)(font "Arial" ))
+		(text "ShotBoxCollision[2..0]" (rect 216 27 299 39)(font "Arial" ))
+		(line (pt 320 32)(pt 304 32)(line_width 3))
 	)
 	(port
 		(pt 320 48)
@@ -97,9 +97,9 @@ agreement for further details.
 	(port
 		(pt 320 64)
 		(output)
-		(text "ShotEnemyCollision" (rect 0 0 79 12)(font "Arial" ))
-		(text "ShotEnemyCollision" (rect 220 59 299 71)(font "Arial" ))
-		(line (pt 320 64)(pt 304 64)(line_width 1))
+		(text "ShotEnemyCollision[2..0]" (rect 0 0 99 12)(font "Arial" ))
+		(text "ShotEnemyCollision[2..0]" (rect 200 59 299 71)(font "Arial" ))
+		(line (pt 320 64)(pt 304 64)(line_width 3))
 	)
 	(drawing
 		(rectangle (rect 16 16 304 160)(line_width 1))

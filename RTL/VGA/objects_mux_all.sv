@@ -25,7 +25,7 @@ module	objects_mux_all	(
 		
 					
 		// add the number here 
-					input    logic bulletDrawingRequest,
+					input    logic [2:0] bulletDrawingRequest,
 					input    logic [7:0] bulletRGB,	
 		// background 
 					input		logic	[7:0] backGroundRGB, 
@@ -55,7 +55,7 @@ begin
 	   else if (towersDrawingRequest) tmpRGB <= towersRGB;
 		else if (enemiesDrawingRequest) tmpRGB <= enemiesRGB;
 		else if (enemisHeadsUpDrawingRequest) tmpRGB <= enemiesHeadUpRGB;
-		else if(bulletDrawingRequest) tmpRGB <= bulletRGB;
+		else if(bulletDrawingRequest!=0) tmpRGB <= bulletRGB;
 		else tmpRGB <= backGroundRGB ; // last priority 
 		end ; 
 	end
