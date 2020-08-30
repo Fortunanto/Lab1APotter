@@ -281,8 +281,6 @@ set_global_assignment -name BDF_FILE RTL/VGA/TOP_VGA_DEMO_WITH_MSS_ALL.bdf
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/inverseSmileyBitMap.sv
 set_global_assignment -name QIP_FILE square_pos.qip
 set_global_assignment -name QIP_FILE square_loc.qip
-set_global_assignment -name SIGNALTAP_FILE output_files/stp2.stp
-set_global_assignment -name SIGNALTAP_FILE stp2.stp
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/square_tree_object.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/player_moveCollision.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Shot_MoveCollision.sv
@@ -293,7 +291,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE RTL/Shots/shots_array.sv
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name SIGNALTAP_FILE output_files/stp1.stp
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to "shot_StockManager:inst22|RGB_OUT[0]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to "shot_StockManager:inst22|RGB_OUT[1]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to "shot_StockManager:inst22|RGB_OUT[2]" -section_id auto_signaltap_0

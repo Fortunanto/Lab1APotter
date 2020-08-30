@@ -83,16 +83,9 @@ agreement for further details.
 	(port
 		(pt 224 64)
 		(output)
-		(text "edgeCollide" (rect 0 0 43 12)(font "Arial" ))
-		(text "edgeCollide" (rect 160 59 203 71)(font "Arial" ))
-		(line (pt 224 64)(pt 208 64)(line_width 1))
-	)
-	(port
-		(pt 224 80)
-		(output)
 		(text "drawingRequest" (rect 0 0 63 12)(font "Arial" ))
-		(text "drawingRequest" (rect 140 75 203 87)(font "Arial" ))
-		(line (pt 224 80)(pt 208 80)(line_width 1))
+		(text "drawingRequest" (rect 140 59 203 71)(font "Arial" ))
+		(line (pt 224 64)(pt 208 64)(line_width 1))
 	)
 	(parameter
 		"OBJECT_WIDTH_X"
@@ -109,6 +102,16 @@ agreement for further details.
 		"01011011"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"MAX_TOWERS_AMOUNT"
+		"10"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"TOWERS_WAIT"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
 		(rectangle (rect 16 16 208 128)(line_width 1))
 	)
