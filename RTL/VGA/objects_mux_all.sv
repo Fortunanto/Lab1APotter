@@ -22,7 +22,7 @@ module	objects_mux_all	(
 					
 		// enemiesHeadsUp
 					input logic enemisHeadsUpDrawingRequest,
-					input logic [7:0] enemiesHeadUpRGB,
+//					input logic [7:0] enemies.HeadUpRGB,
 		
 					
 		// add the number here 
@@ -60,7 +60,7 @@ begin
 		else if (smileyDrawingRequest)   tmpRGB <= smileyRGB;  
 	   else if (towersDrawingRequest) tmpRGB <= towersRGB;
 		else if (enemiesDrawingRequest) tmpRGB <= enemiesRGB;
-		else if (enemisHeadsUpDrawingRequest) tmpRGB <= enemiesHeadUpRGB;
+		else if (enemisHeadsUpDrawingRequest) tmpRGB <= 8'b00101111;
 		else if(bulletDrawingRequest!=0) tmpRGB <= bulletRGB;
 		else tmpRGB <= backGroundRGB ; // last priority 
 		end ; 

@@ -13,8 +13,8 @@ module enemy_StockManager(
 					input 	logic	[10:0] pixelY,
 					
 					input logic changeDir,
-					//input logic[2:0] shotCollision,
-										
+					input logic[2:0] shotCollision,
+					input logic pause,
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
 					output 	logic	[10:0] offsetY,	
 					
@@ -33,7 +33,7 @@ parameter int HEADS_UP_HEIGHT = 80;
 parameter int HEADS_DOWN_HEIGHT = 80;
 parameter int ENEMY_INITIAL_SPEED = 120;
 
-logic [AMOUNT_OF_ENEMIES-1:0] shotCollisionMap=0;
+//logic [AMOUNT_OF_ENEMIES-1:0] shotCollisionMap=0;
 
 logic [AMOUNT_OF_ENEMIES-1:0][10:0] enemiesTLX;
 logic [AMOUNT_OF_ENEMIES-1:0][10:0] enemiesTLY;
@@ -60,7 +60,8 @@ logic [AMOUNT_OF_ENEMIES-1:0][2:0] test=0;
 			.pixelX(pixelX),
 			.pixelY(pixelY),
 			.changeDirection((changeDir && (drawingRequestorId==i))),
-			//.shotCollision(shotCollisionMap),
+			.shotCollision(shotCollision!=0 && (drawingRequestorId==i)),
+			.pause(pause),
 			.topLeftX(enemiesTLX[i]),
 			.topLeftY(enemiesTLY[i]),
 			.offsetX(enemiesOffsetX[i]),
