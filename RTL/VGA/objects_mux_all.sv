@@ -8,6 +8,7 @@ module	objects_mux_all	(
 //		--------	Clock Input	 	
 					input		logic	clk,
 					input		logic	resetN,
+
 		// smiley 
 					input		logic	smileyDrawingRequest, // two set of inputs per unit
 					input		logic	[7:0] smileyRGB, 
@@ -29,6 +30,10 @@ module	objects_mux_all	(
 					input    logic [7:0] bulletRGB,	
 		// background 
 					input		logic	[7:0] backGroundRGB, 
+		// death
+					input		logic	deathForeground_dr, 
+					input    logic [7:0] deathForegroundRGB,	
+
 
 					output	logic	[7:0] redOut, // full 24 bits color output
 					output	logic	[7:0] greenOut, 
@@ -51,7 +56,8 @@ begin
 			tmpRGB	<= 8'b0;
 	end
 	else begin
-		if (smileyDrawingRequest)   tmpRGB <= smileyRGB;  
+		if (deathForeground_dr) tmpRGB <= deathForegroundRGB;
+		else if (smileyDrawingRequest)   tmpRGB <= smileyRGB;  
 	   else if (towersDrawingRequest) tmpRGB <= towersRGB;
 		else if (enemiesDrawingRequest) tmpRGB <= enemiesRGB;
 		else if (enemisHeadsUpDrawingRequest) tmpRGB <= enemiesHeadUpRGB;

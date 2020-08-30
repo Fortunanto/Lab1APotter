@@ -12,6 +12,7 @@ module	Shot_MoveCollision	(
 					
 					input     logic signed  [10:0]   player_topLeftX,
 					input     logic signed  [10:0]   player_topLeftY,
+					input 	 logic pause,
 					output    logic enable,
 					output	 logic signed 	[10:0]	topLeftX,// output the top left corner 
 					output	 logic signed	[10:0]	topLeftY
@@ -66,7 +67,7 @@ begin
 					enable <=1;
 				end			
 			end
-			
+		if(pause) topLeftY_FixedPoint <= topLeftY_FixedPoint;
 	end
 end
 

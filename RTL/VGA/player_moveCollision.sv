@@ -14,7 +14,7 @@ module	player_moveCollision	(
 
 					input logic collision,  //collision if smiley hits an object
 					input	logic	[3:0] HitEdgeCode, //one bit per edge 
-					
+					input logic pause,
 					output	 logic signed 	[10:0]	topLeftX,// output the top left corner 
 					output	 logic signed	[10:0]	topLeftY
 					
@@ -34,12 +34,8 @@ const int	FIXED_POINT_MULTIPLIER	=	64;
 const int	x_FRAME_SIZE	=	639 * FIXED_POINT_MULTIPLIER; // note it must be 2^n 
 
 
-int Xspeed, topLeftX_FixedPoint; // local parameters 
-int Yspeed, topLeftY_FixedPoint;
-
-initial begin 
- Xspeed=INITIAL_X_SPEED;
-end
+int Xspeed=INITIAL_X_SPEED, topLeftX_FixedPoint; // local parameters 
+int  topLeftY_FixedPoint;
 
 //////////--------------------------------------------------------------------------------------------------------------=
 // position calculate 
@@ -52,7 +48,6 @@ begin
 		topLeftY_FixedPoint	<= INITIAL_Y * FIXED_POINT_MULTIPLIER;
 	end
 	else begin
-		
 		if (startOfFrame == 1'b1) begin // perform  position integral only 30 times per second 
 			if (moveLeft==1'b0 && moveRight==1'b0)  
 				topLeftX_FixedPoint  <= topLeftX_FixedPoint;
@@ -67,6 +62,7 @@ begin
 				else
 					topLeftX_FixedPoint  <= topLeftX_FixedPoint + Xspeed; 
 			end
+		if(pause) topLeftX_FixedPoint  <= topLeftX_FixedPoint;
 	end
 end
 

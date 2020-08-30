@@ -101,6 +101,13 @@ agreement for further details.
 		(text "ShotEnemyCollision[2..0]" (rect 200 59 299 71)(font "Arial" ))
 		(line (pt 320 64)(pt 304 64)(line_width 3))
 	)
+	(port
+		(pt 320 80)
+		(output)
+		(text "towerPlayerCollision" (rect 0 0 77 12)(font "Arial" ))
+		(text "towerPlayerCollision" (rect 222 75 299 87)(font "Arial" ))
+		(line (pt 320 80)(pt 304 80)(line_width 1))
+	)
 	(drawing
 		(rectangle (rect 16 16 304 160)(line_width 1))
 	)

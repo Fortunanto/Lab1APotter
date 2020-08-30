@@ -99,7 +99,7 @@ agreement for further details.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"INITIAL_X_SPEED"
-		"0"
+		"10"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing

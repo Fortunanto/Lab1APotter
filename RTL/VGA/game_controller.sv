@@ -15,7 +15,8 @@ module	game_controller	(
 
 			output logic[2:0] ShotBoxCollision,
 			output logic TowerEnemyHUCollision,
-			output logic[2:0] ShotEnemyCollision
+			output logic[2:0] ShotEnemyCollision,
+			output logic towerPlayerCollision
 );
 
 logic box_smiley_collision,box_edge_collision, edge_smiley_collision;
@@ -23,7 +24,7 @@ logic box_smiley_collision,box_edge_collision, edge_smiley_collision;
 assign ShotBoxCollision = (drawing_request_shot!=0 && drawing_request_tower)? drawing_request_shot:0;
 assign TowerEnemyHUCollision = (drawing_request_enemy_HU && drawing_request_tower);
 assign ShotEnemyCollision = (drawing_request_shot!=0 && drawing_request_enemy)? drawing_request_shot:0;
-
+assign towerPlayerCollision = (drawing_request_Ball && drawing_request_tower);
 //always_ff@(posedge clk or negedge resetN)
 //begin
 //	if(!resetN)
