@@ -10,14 +10,14 @@ module EnemyBitMap	(
 					input		logic	resetN,
 					input 	logic	[10:0] offsetX,// offset from top left  position 
 					input 	logic	[10:0] offsetY,
-					input		logic	InsideRectangle, //input that the pixel is within a bracket 
-										
+					input		logic	InsideRectangle, //input that the pixel is within a bracket 									
+								
 					output	logic				drawingRequest, //output that the pixel should be dispalyed 
 					output	logic	[7:0]		RGBout
 );
-// generating a smily bitmap 
 
-parameter  logic	[7:0] digit_color = 8'hc4 ; //set the color of the digit 
+
+logic [1:0][7:0] colors = 16'b11001010_00110101;
 
 // TODO: put here bitmap of tower
 
@@ -28,9 +28,10 @@ begin
 	end
 	else begin
 			drawingRequest <= InsideRectangle;	//get value from bitmap  
+			
 	end 
 end
 
-assign RGBout = digit_color ; // this is a fixed color 
+assign RGBout = colors[0] ; // this is a fixed color 
 
 endmodule

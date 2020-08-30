@@ -13,7 +13,7 @@ module	enemies_moveCollision	(
 					input 	logic	[10:0] pixelY,
 					
 					input logic changeDirection,
-					input logic[2:0] shotCollision,
+					//input logic[2:0] shotCollision,
 					
 					output logic  [10:0] topLeftX,
 					output logic  [10:0] topLeftY,
@@ -56,7 +56,7 @@ int xSpeed_Cur;
 const int FIXED_POINT_MULTIPLIER=64;
 //////////--------------------------------------------------------------------------------------------------------------=
 // Calculate object right  & bottom  boundaries
-assign collide = shotCollision!=0;
+//assign collide = shotCollision!=0;
 
 assign rightX	= (topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER + OBJECT_WIDTH_X);
 assign bottomY	= (topLeftY + OBJECT_HEIGHT_Y);
@@ -100,23 +100,23 @@ begin
 				directionChangeTimer <= directionChangeWait;
 		end
 		
-		if (collide) begin
-				topLeftY_FixedPoint <= 50_000;
-				topLeftX_FixedPoint <= 50_000;
-				xSpeed_Cur <= 0;
-		end
-		else
-			if(startOfFrame) begin
-				if(topLeftX_FixedPoint<0) begin 
-					direction <= 1; // move right
-				end
-				else if (topLeftX_FixedPoint > (640-OBJECT_WIDTH_X)*FIXED_POINT_MULTIPLIER) begin
-					direction <= -1; // move left
-				end			
-				
-				topLeftX_FixedPoint <= topLeftX_FixedPoint + direction*xSpeed_Cur;
-				if (directionChangeTimer > 0) directionChangeTimer<=directionChangeTimer-1;
-			end	
+//		if (collide) begin
+//				topLeftY_FixedPoint <= 50_000;
+//				topLeftX_FixedPoint <= 50_000;
+//				xSpeed_Cur <= 0;
+//		end
+//		else
+		if(startOfFrame) begin
+			if(topLeftX_FixedPoint<0) begin 
+				direction <= 1; // move right
+			end
+			else if (topLeftX_FixedPoint > (640-OBJECT_WIDTH_X)*FIXED_POINT_MULTIPLIER) begin
+				direction <= -1; // move left
+			end			
+			
+			topLeftX_FixedPoint <= topLeftX_FixedPoint + direction*xSpeed_Cur;
+			if (directionChangeTimer > 0) directionChangeTimer<=directionChangeTimer-1;
+		end	
 		
 		
 	end
