@@ -17,8 +17,7 @@ module EnemyBitMap	(
 );
 // generating a smily bitmap 
 
-parameter  logic	[7:0] digit_color = 8'hc4 ; //set the color of the digit 
-
+logic [1:0][7:0] colors = 16'b11001010_00110101;
 // TODO: put here bitmap of tower
 
 always_ff@(posedge clk or negedge resetN)
@@ -31,6 +30,6 @@ begin
 	end 
 end
 
-assign RGBout = digit_color ; // this is a fixed color 
+assign RGBout = colors[0] ; // this is a fixed color 
 
 endmodule
