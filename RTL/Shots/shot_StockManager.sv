@@ -9,6 +9,7 @@ module shot_StockManager (
 	input  logic   [10:0] player_tpY,
 	input  logic	[10:0] pixelX,// current VGA pixel 
 	input  logic	[10:0] pixelY,
+	input  logic          pause,
 	output logic   [2:0] drawingRequests,
 	output logic   [10:0] offsetX,
 	output logic   [10:0] offsetY,
@@ -36,9 +37,9 @@ int delay;
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin 
-		triggerOut[0]<=1;
-		triggerOut[1]<=1;
-		triggerOut[2]<=1;
+		triggerOut[0]<=0;
+		triggerOut[1]<=0;
+		triggerOut[2]<=0;
 		nonAvailable <= 0;
 		delay<=TIMING_DELAY;
 	end
@@ -50,9 +51,9 @@ begin
 		if(trigger) begin
 			if(delay==0) begin
 				case(enable) 
-					3'b001,3'b011,3'b101,3'b111  : triggerOut[0] 	  <= 1;
-					3'b010,3'b110  : 					 triggerOut[1] 	  <= 1;
-					3'b100  : 							 triggerOut[2]     <= 1;
+					3'b001,3'b011,3'b101,3'b111  : triggerOut[0]<= 1;
+					3'b010,3'b110  : 					 triggerOut[1]<= 1;
+					3'b100  : 							 triggerOut[2]<= 1;
 					default : 							 nonAvailable <= 1;
 				endcase 
 				delay<=TIMING_DELAY;
@@ -77,7 +78,8 @@ end
 										  .player_topLeftY(player_tpY),
 										  .enable(enable[itr]),
 										  .topLeftX(tpX_bullet[itr]),
-										  .topLeftY(tpY_bullet[itr]));
+										  .topLeftY(tpY_bullet[itr]),
+										  .pause(pause));
 										  
 		 square_object #(.OBJECT_WIDTH_X(BULLET_WIDTH_X), .OBJECT_HEIGHT_Y(BULLET_HEIGHT_Y), .OBJECT_COLOR(BULLET_COLOR)) sq(.clk(clk),.resetN(resetN),
 								.pixelX(pixelX),.pixelY(pixelY),

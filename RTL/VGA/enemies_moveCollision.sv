@@ -14,7 +14,7 @@ module	enemies_moveCollision	(
 					
 					input logic changeDirection,
 					input logic[2:0] shotCollision,
-					
+					input logic pause,
 					output logic  [10:0] topLeftX,
 					output logic  [10:0] topLeftY,
 					
@@ -75,6 +75,7 @@ begin
 		xSpeed_Cur <= X_SPEED;
 	end
 	else begin 
+	
 		topLeftY_FixedPoint <= topLeftY_FixedPoint;
 		topLeftX_FixedPoint <= topLeftX_FixedPoint;
 	
@@ -105,6 +106,7 @@ begin
 				topLeftX_FixedPoint <= 50_000;
 				xSpeed_Cur <= 0;
 		end
+		
 		else
 			if(startOfFrame) begin
 				if(topLeftX_FixedPoint<0) begin 
@@ -117,7 +119,8 @@ begin
 				topLeftX_FixedPoint <= topLeftX_FixedPoint + direction*xSpeed_Cur;
 				if (directionChangeTimer > 0) directionChangeTimer<=directionChangeTimer-1;
 			end	
-		
+		if (pause) topLeftX_FixedPoint <= topLeftX_FixedPoint;
+
 		
 	end
 end 

@@ -21,9 +21,9 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 240 160)
+	(rect 16 16 240 192)
 	(text "towers_moveCollision" (rect 5 0 91 12)(font "Arial" ))
-	(text "inst" (rect 8 128 20 140)(font "Arial" ))
+	(text "inst" (rect 8 160 20 172)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -67,6 +67,13 @@ agreement for further details.
 		(line (pt 0 112)(pt 16 112)(line_width 3))
 	)
 	(port
+		(pt 0 128)
+		(input)
+		(text "pause" (rect 0 0 23 12)(font "Arial" ))
+		(text "pause" (rect 21 123 44 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 1))
+	)
+	(port
 		(pt 224 32)
 		(output)
 		(text "offsetX[10..0]" (rect 0 0 53 12)(font "Arial" ))
@@ -87,6 +94,11 @@ agreement for further details.
 		(text "drawingRequest" (rect 140 59 203 71)(font "Arial" ))
 		(line (pt 224 64)(pt 208 64)(line_width 1))
 	)
+	(parameter
+		"FALL_SPEED"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"OBJECT_WIDTH_X"
 		"20"
@@ -113,7 +125,7 @@ agreement for further details.
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 208 128)(line_width 1))
+		(rectangle (rect 16 16 208 160)(line_width 1))
 	)
 	(annotation_block (parameter)(rect 240 -64 340 16))
 )

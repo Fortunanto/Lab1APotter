@@ -12,14 +12,14 @@ module	towers_moveCollision	(
 					input 	logic	[10:0] pixelX,// current VGA pixel 
 					input 	logic	[10:0] pixelY,
 					input 	logic signed	[10:0] spawnX, //position on the screen 
-				
+					input    logic pause,
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
 					output 	logic	[10:0] offsetY,					
 					
 					//output   logic edgeCollide,
 					output	logic	drawingRequest // indicates pixel inside the bracket				
 );
-
+parameter int FALL_SPEED=100;
 parameter  int OBJECT_WIDTH_X = 20;
 parameter  int OBJECT_HEIGHT_Y = 20;
 parameter  logic [7:0] OBJECT_COLOR = 8'h5b;
@@ -34,7 +34,7 @@ int towerTimer=TOWERS_WAIT;
 logic [31:0][31:0] towersTLX_FIXED_POINT=0;
 logic [31:0][31:0] towersTLY_FIXED_POINT=0;
  
-int Y_Speed=100;
+int Y_Speed=FALL_SPEED;
 localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// bitmap  representation for a transparent pixel 
  
 int topLeftX;
@@ -67,7 +67,8 @@ begin
 	
 		towerTimer<=towerTimer;
 		currTowersAmount<=currTowersAmount;
-	
+		if (pause) Y_Speed=0;
+		else Y_Speed=FALL_SPEED;
 		if (startOfFrame) begin
 			if (towerTimer>0) begin
 				towerTimer<=towerTimer-1;	
