@@ -47,8 +47,6 @@ logic [AMOUNT_OF_ENEMIES-1:0] headsUpDrawReqMap;
 
 logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 
-logic [AMOUNT_OF_ENEMIES-1:0][2:0] test=0;
-
  genvar i;
  generate
 	for (i=0;i<AMOUNT_OF_ENEMIES;i=i+1) begin: gen_loop
@@ -68,9 +66,7 @@ logic [AMOUNT_OF_ENEMIES-1:0][2:0] test=0;
 			.offsetY(enemiesOffsetY[i]),
 			.drawingRequest(enemiesDrawReqMap[i])
 		);
-		
-		assign test[i] = 1;
-		
+				
 		enemiesHeadsUp_moveCollision #(.OBJECT_WIDTH_X(ENEMY_WIDTH+10), .OBJECT_HEIGHT_Y(HEADS_UP_HEIGHT), .OBJECT_COLOR(8'h5b))
 		headsUp(
 			.clk(clk),
