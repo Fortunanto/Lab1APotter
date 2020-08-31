@@ -3,6 +3,7 @@ module shot_StockManager (
 	input  logic resetN,
 	input  logic[2:0] shotEnemyCollision,
 	input  logic[2:0] shotTowerCollision,
+	input	logic [2:0] shotDirection, 
 	input  logic trigger,
 	input  logic startOfFrame,
 	input  logic   [10:0] player_tpX,
@@ -14,6 +15,7 @@ module shot_StockManager (
 	output logic   [10:0] offsetX,
 	output logic   [10:0] offsetY,
 	output logic   [7:0] RGB_OUT,
+	output logic [2:0] draw_shot_dir,
 	output logic nonAvailable
 	
 );
@@ -22,7 +24,9 @@ const int TIMING_DELAY=15;
 parameter  int BULLET_WIDTH_X = 100;
 parameter  int BULLET_HEIGHT_Y = 100;
 parameter  logic [7:0] BULLET_COLOR = 8'h5b ; 
-parameter  int BULLET_SPEED = 100;
+parameter int BULLET_NO_ANGLE_SPEED = 100;
+parameter int BULLET_LATERAL_SPEED = 30;
+parameter int BULLET_ANGLED_FORWARD_SPEED = 70;
 
 logic [2:0] triggerOut;
 logic [2:0][10:0] tpX_bullet;
@@ -31,7 +35,7 @@ logic [2:0] enable;
 logic [2:0][10:0] offsetsX;
 logic [2:0][10:0] offsetsY;
 logic [2:0][10:0] rgbs_out;
-
+logic [2:0][2:0] draw_shot_dir_bus;
 int delay;
 
 always_ff@(posedge clk or negedge resetN)
@@ -69,17 +73,21 @@ end
   generate
     for (itr = 0 ; itr <= 2; itr = itr+1)
     begin : gen_loop
-        Shot_MoveCollision #(.SPEED(BULLET_SPEED)) shot(.clk(clk),.resetN(resetN),
+        Shot_MoveCollision #(.NO_ANGLE_SPEED(BULLET_NO_ANGLE_SPEED),
+									  .LATERAL_SPEED(BULLET_LATERAL_SPEED),
+									  .ANGLED_FORWARD_SPEED(BULLET_ANGLED_FORWARD_SPEED)) shot(.clk(clk),.resetN(resetN),
 										  .startOfFrame(startOfFrame),
 										  .triggerShot(triggerOut[itr]),
 										  .shotEnemyCollision(shotEnemyCollision[itr]),
 										  .shotBoxCollision(shotTowerCollision[itr]),
+										  .shotDirection(shotDirection),
 										  .player_topLeftX(player_tpX),
 										  .player_topLeftY(player_tpY),
 										  .enable(enable[itr]),
 										  .topLeftX(tpX_bullet[itr]),
 										  .topLeftY(tpY_bullet[itr]),
-										  .pause(pause));
+										  .pause(pause),
+										  .draw_shot_dir(draw_shot_dir_bus[itr]));
 										  
 		 square_object #(.OBJECT_WIDTH_X(BULLET_WIDTH_X), .OBJECT_HEIGHT_Y(BULLET_HEIGHT_Y), .OBJECT_COLOR(BULLET_COLOR)) sq(.clk(clk),.resetN(resetN),
 								.pixelX(pixelX),.pixelY(pixelY),
@@ -99,21 +107,25 @@ end
 					offsetX = offsetsX[0];
 					offsetY = offsetsY[0];
 					RGB_OUT = rgbs_out[0];
+					draw_shot_dir = draw_shot_dir_bus[0];
 				 end 
 		3'b10:begin 
 					offsetX = offsetsX[1];
 					offsetY = offsetsY[1];
 					RGB_OUT = rgbs_out[1];
+					draw_shot_dir = draw_shot_dir_bus[1];
 				 end 
 		3'b100:begin 
 					offsetX = offsetsX[2];
 					offsetY = offsetsY[2];
 					RGB_OUT = rgbs_out[2];
+					draw_shot_dir = draw_shot_dir_bus[2];
 
 				 end 
 		default:begin offsetX = offsetsX[0];
 					offsetY = offsetsY[0];
 					RGB_OUT = rgbs_out[0];
+					draw_shot_dir = draw_shot_dir_bus[0];
 					end
 	  endcase 
  end 
