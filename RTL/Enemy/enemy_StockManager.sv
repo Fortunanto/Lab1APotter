@@ -30,7 +30,7 @@ parameter int AMOUNT_OF_ENEMIES = 2;
 parameter int ENEMY_WIDTH = 20;
 parameter int ENEMY_HEIGHT = 20;
 parameter int HEADS_UP_HEIGHT = 80;
-parameter int HEADS_DOWN_HEIGHT = 80;
+//parameter int HEADS_DOWN_HEIGHT = 80;
 parameter int ENEMY_INITIAL_SPEED = 120;
 
 //logic [AMOUNT_OF_ENEMIES-1:0] shotCollisionMap=0;
@@ -67,7 +67,7 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 			.drawingRequest(enemiesDrawReqMap[i])
 		);
 				
-		enemiesHeadsUp_moveCollision #(.OBJECT_WIDTH_X(ENEMY_WIDTH+10), .OBJECT_HEIGHT_Y(HEADS_UP_HEIGHT), .OBJECT_COLOR(8'h5b))
+		enemiesHeadsUp_moveCollision #(.OBJECT_WIDTH_X(ENEMY_WIDTH), .OBJECT_HEIGHT_Y(ENEMY_HEIGHT), .HEADS_UP_HEIGHT(HEADS_UP_HEIGHT), .OBJECT_COLOR(8'h5b))
 		headsUp(
 			.clk(clk),
 			.resetN(resetN),

@@ -15,22 +15,62 @@ module TowerBitMap	(
 					output	logic				drawingRequest, //output that the pixel should be dispalyed 
 					output	logic	[7:0]		RGBout
 );
-// generating a smily bitmap 
 
-parameter  logic	[7:0] digit_color = 8'hff ; //set the color of the digit 
+localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;
+
+localparam  int OBJECT_HEIGHT_Y = 29;
+localparam  int OBJECT_WIDTH_X = 14;
+ 
+logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
+{8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h05, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h05, 8'h05, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h05, 8'h6E, 8'h4E, 8'h05, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'hB6, 8'hFF, 8'h05, 8'h73, 8'h4E, 8'h72, 8'h05, 8'h9A, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'hDF, 8'h05, 8'h73, 8'h97, 8'h6E, 8'h4E, 8'h05, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hBB, 8'hFF, 8'h05, 8'h73, 8'h4E, 8'h4E, 8'h4E, 8'h97, 8'h97, 8'h72, 8'hDB, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h05, 8'h73, 8'h97, 8'h97, 8'h4E, 8'h97, 8'h97, 8'h05, 8'h4E, 8'hB7, 8'hFF },
+{8'hFF, 8'h05, 8'h05, 8'h73, 8'h97, 8'h97, 8'h4E, 8'h4E, 8'h97, 8'h05, 8'h05, 8'h4E, 8'hFF, 8'hFF },
+{8'h05, 8'h72, 8'h73, 8'h97, 8'h97, 8'h4E, 8'h4E, 8'h4E, 8'h97, 8'h05, 8'h05, 8'h4E, 8'h05, 8'h05 },
+{8'hFF, 8'h05, 8'h97, 8'h4E, 8'h4E, 8'h4E, 8'h4E, 8'h4E, 8'h4E, 8'h4E, 8'h4E, 8'h97, 8'h97, 8'h05 },
+{8'hFF, 8'hFF, 8'h05, 8'h05, 8'h72, 8'h6E, 8'h4E, 8'h4E, 8'h4E, 8'h4E, 8'h97, 8'h05, 8'h05, 8'hFB },
+{8'hFF, 8'hFF, 8'h45, 8'h69, 8'h05, 8'h72, 8'h6E, 8'h72, 8'h97, 8'h05, 8'h05, 8'h45, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h49, 8'h05, 8'h05, 8'h05, 8'h25, 8'h49, 8'h49, 8'h45, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h6D, 8'h6D, 8'h6D, 8'h6D, 8'h6D, 8'hB6, 8'h6D, 8'h45, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h45, 8'h6D, 8'h6D, 8'hB6, 8'hB6, 8'h45, 8'h6D, 8'h45, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h45, 8'h45, 8'h45, 8'h45, 8'h6D, 8'h45, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h6D, 8'h6D, 8'h6D, 8'h6D, 8'h6D, 8'h45, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h45, 8'h69, 8'h45, 8'h6D, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h45, 8'h6D, 8'h45, 8'h6D, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h6D, 8'h8D, 8'h69, 8'h92, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h8D, 8'h92, 8'h92, 8'h92, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h45, 8'hB2, 8'h45, 8'h6D, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h45, 8'hB2, 8'h45, 8'h6D, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h6D, 8'h6D, 8'hB2, 8'h6D, 8'h6D, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h92, 8'hB6, 8'hB6, 8'hB2, 8'h91, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'hB2, 8'hD6, 8'h89, 8'h89, 8'hB2, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'hB1, 8'hD1, 8'h89, 8'h89, 8'hB2, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h89, 8'hCD, 8'h89, 8'h89, 8'h91, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
+{8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h89, 8'h89, 8'h89, 8'h89, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF }
+};
+
+
+
 
 // TODO: put here bitmap of tower
 
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin
-		drawingRequest <=	1'b0;
+		RGBout <=8'h00;
 	end
 	else begin
-			drawingRequest <= InsideRectangle;	//get value from bitmap  
+			if (InsideRectangle) begin
+				RGBout <= object_colors[(offsetY-9)>>2][(offsetX-11)>>2];
+			end
+			else RGBout <= TRANSPARENT_ENCODING;
 	end 
 end
 
-assign RGBout = digit_color ; // this is a fixed color 
+assign drawingRequest = (RGBout != TRANSPARENT_ENCODING ) ? 1'b1 : 1'b0 ;
 
 endmodule

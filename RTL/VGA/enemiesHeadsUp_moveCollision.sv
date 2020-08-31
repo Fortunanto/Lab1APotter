@@ -20,11 +20,12 @@ module	enemiesHeadsUp_moveCollision	(
 					output	logic	drawingRequest // indicates pixel inside the bracket				
 );
 
-parameter  int OBJECT_WIDTH_X = 20;
-parameter  int OBJECT_HEIGHT_Y = 20;
+parameter  int OBJECT_WIDTH_X = 20; // width of followed object
+parameter  int OBJECT_HEIGHT_Y = 20; // height of followed object
 parameter  logic [7:0] OBJECT_COLOR = 8'h5b; // for debug
 localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// bitmap  representation for a transparent pixel 
  
+parameter int HEADS_UP_HEIGHT = 80;
  
 const int OFFSET_X=5;
 
@@ -48,10 +49,10 @@ always_comb
 RGBout = OBJECT_COLOR;
 
 assign topLeftX = topLeftXinput - OFFSET_X;
-assign topLeftY = topLeftYinput - OBJECT_HEIGHT_Y + 30;
+assign topLeftY = topLeftYinput - HEADS_UP_HEIGHT;
 
-assign rightX	= (topLeftX + OBJECT_WIDTH_X + 2*OFFSET_X);
-assign bottomY	= (topLeftY + OBJECT_HEIGHT_Y);
+assign rightX	= (topLeftXinput + OBJECT_WIDTH_X + OFFSET_X);
+assign bottomY	= (topLeftYinput + OBJECT_HEIGHT_Y);
 
 //////////--------------------------------------------------------------------------------------------------------------=
 always_ff@(posedge clk or negedge resetN)

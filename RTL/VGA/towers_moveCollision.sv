@@ -20,8 +20,8 @@ module	towers_moveCollision	(
 					output	logic	drawingRequest // indicates pixel inside the bracket				
 );
 parameter int FALL_SPEED=100;
-parameter  int OBJECT_WIDTH_X = 20;
-parameter  int OBJECT_HEIGHT_Y = 20;
+parameter  int OBJECT_WIDTH_X = 28;
+parameter  int OBJECT_HEIGHT_Y = 58;
 parameter  logic [7:0] OBJECT_COLOR = 8'h5b;
 
 parameter int MAX_TOWERS_AMOUNT=10;
