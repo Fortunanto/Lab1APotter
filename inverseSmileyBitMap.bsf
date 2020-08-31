@@ -60,6 +60,13 @@ agreement for further details.
 		(line (pt 0 96)(pt 16 96)(line_width 1))
 	)
 	(port
+		(pt 0 112)
+		(input)
+		(text "startOfFrame" (rect 0 0 55 12)(font "Arial" ))
+		(text "startOfFrame" (rect 21 107 76 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 1))
+	)
+	(port
 		(pt 240 32)
 		(output)
 		(text "drawingRequest" (rect 0 0 63 12)(font "Arial" ))
@@ -80,7 +87,13 @@ agreement for further details.
 		(text "HitEdgeCode[3..0]" (rect 146 59 219 71)(font "Arial" ))
 		(line (pt 240 64)(pt 224 64)(line_width 3))
 	)
+	(parameter
+		"FLIP_TIME"
+		"5"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
 		(rectangle (rect 16 16 224 128)(line_width 1))
 	)
+	(annotation_block (parameter)(rect 256 -64 356 16))
 )
