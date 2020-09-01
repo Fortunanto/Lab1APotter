@@ -9,12 +9,14 @@ module	game_controller	(
 			input	logic	startOfFrame,  // short pulse every start of frame 30Hz 
 			input	logic	drawing_request_Ball,
 			input logic drawing_request_enemy_HU,
+			input logic drawing_request_enemy_HD,
 			input logic drawing_request_enemy,
 			input logic drawing_request_tower,
 			input logic [2:0] drawing_request_shot,
 
 			output logic[2:0] ShotBoxCollision,
 			output logic TowerEnemyHUCollision,
+			output logic ShotHeadsDownCollision,
 			output logic[2:0] ShotEnemyCollision,
 			output logic towerPlayerCollision
 );
@@ -25,6 +27,7 @@ assign ShotBoxCollision = (drawing_request_shot!=0 && drawing_request_tower)? dr
 assign TowerEnemyHUCollision = (drawing_request_enemy_HU && drawing_request_tower);
 assign ShotEnemyCollision = (drawing_request_shot!=0 && drawing_request_enemy)? drawing_request_shot:0;
 assign towerPlayerCollision = (drawing_request_Ball && drawing_request_tower);
+assign ShotHeadsDownCollision = (drawing_request_shot!=0 && drawing_request_enemy_HD)? drawing_request_shot:0;
 //always_ff@(posedge clk or negedge resetN)
 //begin
 //	if(!resetN)

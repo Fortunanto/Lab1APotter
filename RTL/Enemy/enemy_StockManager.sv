@@ -13,12 +13,14 @@ module enemy_StockManager(
 					input 	logic	[10:0] pixelY,
 					
 					input logic changeDir,
+					input logic dodgeBullet,
 					input logic[2:0] shotCollision,
 					input logic pause,
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
 					output 	logic	[10:0] offsetY,	
 					
 					output logic headsUpDrawReq,
+					output logic headsDownDrawReq,
 					output logic enemyDrawReq,
 						
 					output logic[3:0] drawingRequestorId
@@ -30,8 +32,9 @@ parameter int AMOUNT_OF_ENEMIES = 2;
 parameter int ENEMY_WIDTH = 20;
 parameter int ENEMY_HEIGHT = 20;
 parameter int HEADS_UP_HEIGHT = 80;
-//parameter int HEADS_DOWN_HEIGHT = 80;
+parameter int HEADS_DOWN_HEIGHT = 80;
 parameter int ENEMY_INITIAL_SPEED = 120;
+parameter int HEADS_SIDE_MARGIN = 8;
 
 //logic [AMOUNT_OF_ENEMIES-1:0] shotCollisionMap=0;
 
@@ -43,6 +46,7 @@ logic [AMOUNT_OF_ENEMIES-1:0][10:0] enemiesOffsetY;
 
 logic [AMOUNT_OF_ENEMIES-1:0] enemiesDrawReqMap;
 logic [AMOUNT_OF_ENEMIES-1:0] headsUpDrawReqMap;
+logic [AMOUNT_OF_ENEMIES-1:0] headsDownDrawReqMap;
 
 
 logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
@@ -58,6 +62,7 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 			.pixelX(pixelX),
 			.pixelY(pixelY),
 			.changeDirection((changeDir && (drawingRequestorId==i))),
+			.dodgeBullet((dodgeBullet && (drawingRequestorId==i))),
 			.shotCollision(shotCollision!=0 && (drawingRequestorId==i)),
 			.pause(pause),
 			.topLeftX(enemiesTLX[i]),
@@ -67,11 +72,16 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 			.drawingRequest(enemiesDrawReqMap[i])
 		);
 				
-		enemiesHeadsUp_moveCollision #(.OBJECT_WIDTH_X(ENEMY_WIDTH), .OBJECT_HEIGHT_Y(ENEMY_HEIGHT), .HEADS_UP_HEIGHT(HEADS_UP_HEIGHT), .OBJECT_COLOR(8'h5b))
-		headsUp(
+		object_collider#(
+		.OBJECT_WIDTH_X(ENEMY_WIDTH),
+		.OBJECT_HEIGHT_Y(ENEMY_HEIGHT),
+		.MARGIN_TOP(HEADS_UP_HEIGHT),
+		.MARGIN_BOT(0),
+		.MARGIN_LEFT(HEADS_SIDE_MARGIN),
+		.MARGIN_RIGHT(HEADS_SIDE_MARGIN)
+		) headsup(
 			.clk(clk),
 			.resetN(resetN),
-			.startOfFrame(startOfFrame),
 			.pixelX(pixelX),
 			.pixelY(pixelY),
 			.topLeftXinput(enemiesTLX[i]),
@@ -79,6 +89,37 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 			.RGBout(RGBs[i]),
 			.drawingRequest(headsUpDrawReqMap[i])		
 		);
+		
+		object_collider#(
+		.OBJECT_WIDTH_X(ENEMY_WIDTH),
+		.OBJECT_HEIGHT_Y(ENEMY_HEIGHT),
+		.MARGIN_TOP(0),
+		.MARGIN_BOT(HEADS_DOWN_HEIGHT),
+		.MARGIN_LEFT(HEADS_SIDE_MARGIN),
+		.MARGIN_RIGHT(HEADS_SIDE_MARGIN)
+		) headsdown(
+			.clk(clk),
+			.resetN(resetN),
+			.pixelX(pixelX),
+			.pixelY(pixelY),
+			.topLeftXinput(enemiesTLX[i]),
+			.topLeftYinput(enemiesTLY[i]),
+			.RGBout(RGBs[i]),
+			.drawingRequest(headsDownDrawReqMap[i])		
+		);
+				
+//		enemiesHeadsUp_moveCollision #(.OBJECT_WIDTH_X(ENEMY_WIDTH), .OBJECT_HEIGHT_Y(ENEMY_HEIGHT), .HEADS_UP_HEIGHT(HEADS_UP_HEIGHT), .OBJECT_COLOR(8'h5b))
+//		headsUp(
+//			.clk(clk),
+//			.resetN(resetN),
+//			.startOfFrame(startOfFrame),
+//			.pixelX(pixelX),
+//			.pixelY(pixelY),
+//			.topLeftXinput(enemiesTLX[i]),
+//			.topLeftYinput(enemiesTLY[i]),
+//			.RGBout(RGBs[i]),
+//			.drawingRequest(headsUpDrawReqMap[i])		
+//		);
 	end
 endgenerate
 
@@ -87,15 +128,23 @@ always_comb begin
 
 	enemyDrawReq = 0;
 	headsUpDrawReq = 0;
+	headsDownDrawReq = 0;
 	offsetX =0;
 	offsetY=0;
 	drawingRequestorId = 0;
 
+	
+	for (int headsDownIndex=0;headsDownIndex<AMOUNT_OF_ENEMIES;headsDownIndex++) begin
+		if (headsDownDrawReqMap[headsDownIndex]) begin
+			headsDownDrawReq = 1;	
+			drawingRequestorId = headsDownIndex;
+		end
+	end
+	
 	for (int headsUpIndex=0;headsUpIndex<AMOUNT_OF_ENEMIES;headsUpIndex++) begin
 		if (headsUpDrawReqMap[headsUpIndex]) begin
 			headsUpDrawReq = 1;	
 			drawingRequestorId = headsUpIndex;
-			
 		end
 	end
 	

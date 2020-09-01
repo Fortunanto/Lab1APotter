@@ -13,6 +13,7 @@ module	enemies_moveCollision	(
 					input 	logic	[10:0] pixelY,
 					
 					input logic changeDirection,
+					input logic dodgeBullet,
 					input logic[2:0] shotCollision,
 					input logic pause,
 					output logic  [10:0] topLeftX,
@@ -32,6 +33,8 @@ parameter int OBJECT_HEIGHT_Y=30;
 
 parameter int X_SPEED=120;
 
+parameter int dodgeBulletWait = 50;
+
 parameter  logic [7:0] OBJECT_COLOR = 8'h5b ; 
 
 localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// bitmap  representation for a transparent pixel 
@@ -44,6 +47,8 @@ int direction = 1;
 
 const int directionChangeWait = 100;
 int directionChangeTimer=0;
+int dodgeBulletTimer=0;
+
 
 logic insideBracket ;
 
@@ -97,8 +102,13 @@ begin
 		end 
 		
 		if (changeDirection==1 && directionChangeTimer==0) begin
-				direction<=-1*direction;;
+				direction<=-1*direction;
 				directionChangeTimer <= directionChangeWait;
+		end
+		
+		if (dodgeBullet && dodgeBulletTimer==0) begin
+			direction<=-1*direction;
+			dodgeBulletTimer<=dodgeBulletWait;
 		end
 		
 		if (collide) begin
@@ -118,6 +128,7 @@ begin
 				
 				topLeftX_FixedPoint <= topLeftX_FixedPoint + direction*xSpeed_Cur;
 				if (directionChangeTimer > 0) directionChangeTimer<=directionChangeTimer-1;
+				if (dodgeBulletTimer > 0) dodgeBulletTimer<=dodgeBulletTimer-1;
 			end	
 		if (pause) topLeftX_FixedPoint <= topLeftX_FixedPoint;
 
