@@ -69,8 +69,8 @@ begin
 			if (towerIndex<currTowersAmount) begin
 		
 				if(startOfFrame) begin				
-					if(towersTLY_FIXED_POINT[towerIndex]>480*FIXED_POINT_MULTIPLIER) begin 				
-						towersTLY_FIXED_POINT[towerIndex] <= 0;
+					if($signed(towersTLY_FIXED_POINT[towerIndex])>$signed(480*FIXED_POINT_MULTIPLIER)) begin 				
+						towersTLY_FIXED_POINT[towerIndex] <= (OBJECT_HEIGHT_Y)*FIXED_POINT_MULTIPLIER*(-1);
 						towersTLX_FIXED_POINT[towerIndex] <= spawnX*FIXED_POINT_MULTIPLIER;
 					end
 					else
