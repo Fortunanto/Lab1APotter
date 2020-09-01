@@ -32,10 +32,21 @@ int towerTimer=TOWERS_WAIT;
 
 logic [31:0][31:0] towersTLX_FIXED_POINT;
 logic [31:0][31:0] towersTLY_FIXED_POINT;
+
+logic [31:0][31:0] towersTLX;
+logic [31:0][31:0] towersTLY;
  
 int Y_Speed=FALL_SPEED;
 
 const int FIXED_POINT_MULTIPLIER=64;
+
+genvar i;
+generate
+	for (i=0;i<20;i++) begin: assLoop
+		assign towersTLX[i] = towersTLX_FIXED_POINT[i]/FIXED_POINT_MULTIPLIER;
+		assign towersTLY[i] = towersTLY_FIXED_POINT[i]/FIXED_POINT_MULTIPLIER;
+	end
+endgenerate
 
 always_ff@(posedge clk or negedge resetN)
 begin
@@ -69,23 +80,22 @@ begin
 			if (towerIndex<currTowersAmount) begin
 		
 				if(startOfFrame) begin				
-					if($signed(towersTLY_FIXED_POINT[towerIndex])>$signed(480*FIXED_POINT_MULTIPLIER)) begin 				
-						towersTLY_FIXED_POINT[towerIndex] <= (OBJECT_HEIGHT_Y)*FIXED_POINT_MULTIPLIER*(-1);
+					if(towersTLY[towerIndex]>480) begin 				
+						towersTLY_FIXED_POINT[towerIndex] <= 0;
 						towersTLX_FIXED_POINT[towerIndex] <= spawnX*FIXED_POINT_MULTIPLIER;
 					end
 					else
 						towersTLY_FIXED_POINT[towerIndex]<=towersTLY_FIXED_POINT[towerIndex]+Y_Speed;
 				end
 		
-				if ((towersTLX_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER<=pixelX) &&
-					 (towersTLX_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER+OBJECT_WIDTH_X>pixelX) &&
-					 (towersTLY_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER<=pixelY) &&
-					 (towersTLY_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER+OBJECT_HEIGHT_Y>pixelY)) begin
+				if ((towersTLX[towerIndex]<=pixelX) &&
+					 (towersTLX[towerIndex]+OBJECT_WIDTH_X>pixelX) &&
+					 (towersTLY[towerIndex]<=pixelY) &&
+					 (towersTLY[towerIndex]+OBJECT_HEIGHT_Y>pixelY)) begin
 					drawingRequest <= 1'b1 ;
-					offsetX	<= (pixelX - towersTLX_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER);
-					offsetY	<= (pixelY - towersTLY_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER);
-				end	
-			
+					offsetX	<= (pixelX - towersTLX[towerIndex]);
+					offsetY	<= (pixelY - towersTLY[towerIndex]);
+				end				
 			end				
 		end
 	end

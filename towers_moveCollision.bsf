@@ -101,19 +101,14 @@ agreement for further details.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"OBJECT_WIDTH_X"
-		"20"
+		"28"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"OBJECT_HEIGHT_Y"
-		"20"
+		"58"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"OBJECT_COLOR"
-		"01011011"
-		""
-		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
 		"MAX_TOWERS_AMOUNT"
 		"10"
