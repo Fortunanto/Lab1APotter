@@ -16,6 +16,7 @@ module shot_StockManager (
 	output logic   [10:0] offsetY,
 	output logic   [7:0] RGB_OUT,
 	output logic [2:0] draw_shot_dir,
+	output logic shot_fired,
 	output logic nonAvailable
 	
 );
@@ -44,6 +45,7 @@ begin
 		triggerOut[0]<=0;
 		triggerOut[1]<=0;
 		triggerOut[2]<=0;
+		shot_fired   <=0;
 		nonAvailable <= 0;
 		delay<=TIMING_DELAY;
 	end
@@ -54,15 +56,20 @@ begin
 		nonAvailable<= 0;
 		if(trigger) begin
 			if(delay==0) begin
+				shot_fired   <=1;
 				case(enable) 
 					3'b001,3'b011,3'b101,3'b111  : triggerOut[0]<= 1;
 					3'b010,3'b110  : 					 triggerOut[1]<= 1;
 					3'b100  : 							 triggerOut[2]<= 1;
-					default : 							 nonAvailable <= 1;
+					default : begin
+						nonAvailable <= 1;
+						shot_fired   <=0;
+					end
 				endcase 
 				delay<=TIMING_DELAY;
 			end
 		end
+		else shot_fired   <=0;
 		if(startOfFrame && delay>0) delay<=delay-1;
 		
 		

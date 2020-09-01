@@ -146,9 +146,16 @@ agreement for further details.
 	(port
 		(pt 288 112)
 		(output)
-		(text "nonAvailable" (rect 0 0 50 12)(font "Arial" ))
-		(text "nonAvailable" (rect 217 107 267 119)(font "Arial" ))
+		(text "shot_fired" (rect 0 0 40 12)(font "Arial" ))
+		(text "shot_fired" (rect 227 107 267 119)(font "Arial" ))
 		(line (pt 288 112)(pt 272 112)(line_width 1))
+	)
+	(port
+		(pt 288 128)
+		(output)
+		(text "nonAvailable" (rect 0 0 50 12)(font "Arial" ))
+		(text "nonAvailable" (rect 217 123 267 135)(font "Arial" ))
+		(line (pt 288 128)(pt 272 128)(line_width 1))
 	)
 	(parameter
 		"BULLET_WIDTH_X"
