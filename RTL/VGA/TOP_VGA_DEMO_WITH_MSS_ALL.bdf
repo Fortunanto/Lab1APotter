@@ -119,7 +119,7 @@ agreement for further details.
 )
 (pin
 	(input)
-	(rect 80 -456 256 -440)
+	(rect 64 -376 240 -360)
 	(text "INPUT" (rect 133 0 161 10)(font "Arial" (font_size 6)))
 	(text "KEY[3]" (rect 9 0 44 12)(font "Arial" ))
 	(pt 176 8)
@@ -935,31 +935,6 @@ agreement for further details.
 	)
 )
 (symbol
-	(rect 264 -464 312 -432)
-	(text "NOT" (rect 1 0 21 10)(font "Arial" (font_size 6)))
-	(text "inst19" (rect 3 21 32 33)(font "Arial" ))
-	(port
-		(pt 0 16)
-		(input)
-		(text "IN" (rect 2 7 13 19)(font "Courier New" (bold))(invisible))
-		(text "IN" (rect 2 7 13 19)(font "Courier New" (bold))(invisible))
-		(line (pt 0 16)(pt 13 16))
-	)
-	(port
-		(pt 48 16)
-		(output)
-		(text "OUT" (rect 32 7 49 19)(font "Courier New" (bold))(invisible))
-		(text "OUT" (rect 32 7 49 19)(font "Courier New" (bold))(invisible))
-		(line (pt 39 16)(pt 48 16))
-	)
-	(drawing
-		(line (pt 13 25)(pt 13 7))
-		(line (pt 13 7)(pt 31 16))
-		(line (pt 13 25)(pt 31 16))
-		(circle (rect 31 12 39 20))
-	)
-)
-(symbol
 	(rect -2352 232 -2128 376)
 	(text "TowerBitMap" (rect 5 0 66 12)(font "Arial" ))
 	(text "inst25" (rect 8 128 37 140)(font "Arial" ))
@@ -1021,147 +996,6 @@ agreement for further details.
 		(rectangle (rect 16 16 208 128))
 	)
 	(annotation_block (parameter)(rect -2296 48 -2088 88))
-)
-(symbol
-	(rect 528 -528 816 -288)
-	(text "shot_StockManager" (rect 5 0 101 12)(font "Arial" ))
-	(text "inst22" (rect 8 224 37 236)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "clk" (rect 0 0 14 12)(font "Arial" ))
-		(text "clk" (rect 21 27 35 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "resetN" (rect 0 0 33 12)(font "Arial" ))
-		(text "resetN" (rect 21 43 54 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "shotEnemyCollision[2..0]" (rect 0 0 123 12)(font "Arial" ))
-		(text "shotEnemyCollision[2..0]" (rect 21 59 144 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 3))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "shotTowerCollision[2..0]" (rect 0 0 116 12)(font "Arial" ))
-		(text "shotTowerCollision[2..0]" (rect 21 75 137 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80)(line_width 3))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "trigger" (rect 0 0 30 12)(font "Arial" ))
-		(text "trigger" (rect 21 91 51 103)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96))
-	)
-	(port
-		(pt 0 112)
-		(input)
-		(text "startOfFrame" (rect 0 0 67 12)(font "Arial" ))
-		(text "startOfFrame" (rect 21 107 88 119)(font "Arial" ))
-		(line (pt 0 112)(pt 16 112))
-	)
-	(port
-		(pt 0 128)
-		(input)
-		(text "player_tpX[10..0]" (rect 0 0 83 12)(font "Arial" ))
-		(text "player_tpX[10..0]" (rect 21 123 104 135)(font "Arial" ))
-		(line (pt 0 128)(pt 16 128)(line_width 3))
-	)
-	(port
-		(pt 0 144)
-		(input)
-		(text "player_tpY[10..0]" (rect 0 0 86 12)(font "Arial" ))
-		(text "player_tpY[10..0]" (rect 21 139 107 151)(font "Arial" ))
-		(line (pt 0 144)(pt 16 144)(line_width 3))
-	)
-	(port
-		(pt 0 160)
-		(input)
-		(text "pixelX[10..0]" (rect 0 0 60 12)(font "Arial" ))
-		(text "pixelX[10..0]" (rect 21 155 81 167)(font "Arial" ))
-		(line (pt 0 160)(pt 16 160)(line_width 3))
-	)
-	(port
-		(pt 0 176)
-		(input)
-		(text "pixelY[10..0]" (rect 0 0 62 12)(font "Arial" ))
-		(text "pixelY[10..0]" (rect 21 171 83 183)(font "Arial" ))
-		(line (pt 0 176)(pt 16 176)(line_width 3))
-	)
-	(port
-		(pt 0 192)
-		(input)
-		(text "pause" (rect 0 0 29 12)(font "Arial" ))
-		(text "pause" (rect 21 187 50 199)(font "Arial" ))
-		(line (pt 0 192)(pt 16 192))
-	)
-	(port
-		(pt 288 32)
-		(output)
-		(text "drawingRequests[2..0]" (rect 0 0 109 12)(font "Arial" ))
-		(text "drawingRequests[2..0]" (rect 175 27 284 39)(font "Arial" ))
-		(line (pt 288 32)(pt 272 32)(line_width 3))
-	)
-	(port
-		(pt 288 48)
-		(output)
-		(text "offsetX[10..0]" (rect 0 0 68 12)(font "Arial" ))
-		(text "offsetX[10..0]" (rect 210 43 278 55)(font "Arial" ))
-		(line (pt 288 48)(pt 272 48)(line_width 3))
-	)
-	(port
-		(pt 288 64)
-		(output)
-		(text "offsetY[10..0]" (rect 0 0 70 12)(font "Arial" ))
-		(text "offsetY[10..0]" (rect 208 59 278 71)(font "Arial" ))
-		(line (pt 288 64)(pt 272 64)(line_width 3))
-	)
-	(port
-		(pt 288 80)
-		(output)
-		(text "RGB_OUT[7..0]" (rect 0 0 77 12)(font "Arial" ))
-		(text "RGB_OUT[7..0]" (rect 202 75 279 87)(font "Arial" ))
-		(line (pt 288 80)(pt 272 80)(line_width 3))
-	)
-	(port
-		(pt 288 96)
-		(output)
-		(text "nonAvailable" (rect 0 0 62 12)(font "Arial" ))
-		(text "nonAvailable" (rect 215 91 277 103)(font "Arial" ))
-		(line (pt 288 96)(pt 272 96))
-	)
-	(parameter
-		"BULLET_WIDTH_X"
-		"10"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"BULLET_HEIGHT_Y"
-		"10"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"BULLET_COLOR"
-		"0"
-		""
-		(type "PARAMETER_UNSIGNED_BIN")	)
-	(parameter
-		"BULLET_SPEED"
-		"250"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 272 224))
-	)
-	(annotation_block (parameter)(rect 544 -680 771 -585))
 )
 (symbol
 	(rect -1784 224 -1544 368)
@@ -1772,21 +1606,21 @@ agreement for further details.
 		(pt 304 32)
 		(output)
 		(text "redOut[7..0]" (rect 0 0 59 12)(font "Arial" ))
-		(text "redOut[7..0]" (rect 234 27 283 39)(font "Arial" ))
+		(text "redOut[7..0]" (rect 234 27 293 39)(font "Arial" ))
 		(line (pt 304 32)(pt 288 32)(line_width 3))
 	)
 	(port
 		(pt 304 48)
 		(output)
 		(text "greenOut[7..0]" (rect 0 0 70 12)(font "Arial" ))
-		(text "greenOut[7..0]" (rect 224 43 283 55)(font "Arial" ))
+		(text "greenOut[7..0]" (rect 224 43 294 55)(font "Arial" ))
 		(line (pt 304 48)(pt 288 48)(line_width 3))
 	)
 	(port
 		(pt 304 64)
 		(output)
 		(text "blueOut[7..0]" (rect 0 0 63 12)(font "Arial" ))
-		(text "blueOut[7..0]" (rect 230 59 283 71)(font "Arial" ))
+		(text "blueOut[7..0]" (rect 230 59 293 71)(font "Arial" ))
 		(line (pt 304 64)(pt 288 64)(line_width 3))
 	)
 	(drawing
@@ -1864,35 +1698,35 @@ agreement for further details.
 		(pt 320 32)
 		(output)
 		(text "ShotBoxCollision[2..0]" (rect 0 0 108 12)(font "Arial" ))
-		(text "ShotBoxCollision[2..0]" (rect 208 27 299 39)(font "Arial" ))
+		(text "ShotBoxCollision[2..0]" (rect 208 27 316 39)(font "Arial" ))
 		(line (pt 320 32)(pt 304 32)(line_width 3))
 	)
 	(port
 		(pt 320 48)
 		(output)
 		(text "TowerEnemyHUCollision" (rect 0 0 121 12)(font "Arial" ))
-		(text "TowerEnemyHUCollision" (rect 197 43 299 55)(font "Arial" ))
+		(text "TowerEnemyHUCollision" (rect 197 43 318 55)(font "Arial" ))
 		(line (pt 320 48)(pt 304 48))
 	)
 	(port
 		(pt 320 64)
 		(output)
 		(text "ShotHeadsDownCollision" (rect 0 0 122 12)(font "Arial" ))
-		(text "ShotHeadsDownCollision" (rect 196 59 299 71)(font "Arial" ))
+		(text "ShotHeadsDownCollision" (rect 196 59 318 71)(font "Arial" ))
 		(line (pt 320 64)(pt 304 64))
 	)
 	(port
 		(pt 320 80)
 		(output)
 		(text "ShotEnemyCollision[2..0]" (rect 0 0 125 12)(font "Arial" ))
-		(text "ShotEnemyCollision[2..0]" (rect 194 75 299 87)(font "Arial" ))
+		(text "ShotEnemyCollision[2..0]" (rect 194 75 319 87)(font "Arial" ))
 		(line (pt 320 80)(pt 304 80)(line_width 3))
 	)
 	(port
 		(pt 320 96)
 		(output)
 		(text "towerPlayerCollision" (rect 0 0 99 12)(font "Arial" ))
-		(text "towerPlayerCollision" (rect 216 91 299 103)(font "Arial" ))
+		(text "towerPlayerCollision" (rect 216 91 315 103)(font "Arial" ))
 		(line (pt 320 96)(pt 304 96))
 	)
 	(drawing
@@ -1970,42 +1804,42 @@ agreement for further details.
 		(pt 272 32)
 		(output)
 		(text "offsetX[10..0]" (rect 0 0 68 12)(font "Arial" ))
-		(text "offsetX[10..0]" (rect 194 27 251 39)(font "Arial" ))
+		(text "offsetX[10..0]" (rect 194 27 262 39)(font "Arial" ))
 		(line (pt 272 32)(pt 256 32)(line_width 3))
 	)
 	(port
 		(pt 272 48)
 		(output)
 		(text "offsetY[10..0]" (rect 0 0 70 12)(font "Arial" ))
-		(text "offsetY[10..0]" (rect 192 43 251 55)(font "Arial" ))
+		(text "offsetY[10..0]" (rect 192 43 262 55)(font "Arial" ))
 		(line (pt 272 48)(pt 256 48)(line_width 3))
 	)
 	(port
 		(pt 272 64)
 		(output)
 		(text "headsUpDrawReq" (rect 0 0 88 12)(font "Arial" ))
-		(text "headsUpDrawReq" (rect 177 59 251 71)(font "Arial" ))
+		(text "headsUpDrawReq" (rect 177 59 265 71)(font "Arial" ))
 		(line (pt 272 64)(pt 256 64))
 	)
 	(port
 		(pt 272 80)
 		(output)
 		(text "headsDownDrawReq" (rect 0 0 101 12)(font "Arial" ))
-		(text "headsDownDrawReq" (rect 166 75 251 87)(font "Arial" ))
+		(text "headsDownDrawReq" (rect 166 75 267 87)(font "Arial" ))
 		(line (pt 272 80)(pt 256 80))
 	)
 	(port
 		(pt 272 96)
 		(output)
 		(text "enemyDrawReq" (rect 0 0 79 12)(font "Arial" ))
-		(text "enemyDrawReq" (rect 185 91 251 103)(font "Arial" ))
+		(text "enemyDrawReq" (rect 185 91 264 103)(font "Arial" ))
 		(line (pt 272 96)(pt 256 96))
 	)
 	(port
 		(pt 272 112)
 		(output)
 		(text "drawingRequestorId[3..0]" (rect 0 0 122 12)(font "Arial" ))
-		(text "drawingRequestorId[3..0]" (rect 148 107 251 119)(font "Arial" ))
+		(text "drawingRequestorId[3..0]" (rect 148 107 270 119)(font "Arial" ))
 		(line (pt 272 112)(pt 256 112)(line_width 3))
 	)
 	(parameter
@@ -2157,6 +1991,353 @@ agreement for further details.
 	)
 	(annotation_block (parameter)(rect -2800 16 -2518 149))
 )
+(symbol
+	(rect -1576 752 -1336 896)
+	(text "audio_modulator_fsm" (rect 5 0 111 12)(font "Arial" ))
+	(text "inst999" (rect 8 128 43 140)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "resetN" (rect 0 0 33 12)(font "Arial" ))
+		(text "resetN" (rect 21 43 54 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "slowClk" (rect 0 0 37 12)(font "Arial" ))
+		(text "slowClk" (rect 21 59 58 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "shotFired" (rect 0 0 46 12)(font "Arial" ))
+		(text "shotFired" (rect 21 75 67 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "enemyDead[2..0]" (rect 0 0 86 12)(font "Arial" ))
+		(text "enemyDead[2..0]" (rect 21 91 107 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "playerDead" (rect 0 0 56 12)(font "Arial" ))
+		(text "playerDead" (rect 21 107 77 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112))
+	)
+	(port
+		(pt 240 32)
+		(output)
+		(text "sound_key[3..0]" (rect 0 0 80 12)(font "Arial" ))
+		(text "sound_key[3..0]" (rect 152 27 232 39)(font "Arial" ))
+		(line (pt 240 32)(pt 224 32)(line_width 3))
+	)
+	(port
+		(pt 240 48)
+		(output)
+		(text "request_time" (rect 0 0 63 12)(font "Arial" ))
+		(text "request_time" (rect 166 43 229 55)(font "Arial" ))
+		(line (pt 240 48)(pt 224 48))
+	)
+	(port
+		(pt 240 64)
+		(output)
+		(text "time_amount[3..0]" (rect 0 0 89 12)(font "Arial" ))
+		(text "time_amount[3..0]" (rect 144 59 233 71)(font "Arial" ))
+		(line (pt 240 64)(pt 224 64)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 224 128))
+	)
+)
+(symbol
+	(rect -1832 784 -1624 928)
+	(text "clk_countdown" (rect 5 0 76 12)(font "Arial" ))
+	(text "ins998" (rect 8 128 39 140)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "resetN" (rect 0 0 33 12)(font "Arial" ))
+		(text "resetN" (rect 21 43 54 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "startOfFrame" (rect 0 0 67 12)(font "Arial" ))
+		(text "startOfFrame" (rect 21 59 88 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "request_start" (rect 0 0 64 12)(font "Arial" ))
+		(text "request_start" (rect 21 75 85 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "requested_time[3..0]" (rect 0 0 101 12)(font "Arial" ))
+		(text "requested_time[3..0]" (rect 21 91 122 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 208 32)
+		(output)
+		(text "slowclk" (rect 0 0 35 12)(font "Arial" ))
+		(text "slowclk" (rect 158 27 193 39)(font "Arial" ))
+		(line (pt 208 32)(pt 192 32))
+	)
+	(drawing
+		(rectangle (rect 16 16 192 128))
+	)
+)
+(symbol
+	(rect 248 -384 296 -352)
+	(text "NOT" (rect 1 0 21 10)(font "Arial" (font_size 6)))
+	(text "inst19" (rect 3 21 32 33)(font "Arial" ))
+	(port
+		(pt 0 16)
+		(input)
+		(text "IN" (rect 2 7 13 19)(font "Courier New" (bold))(invisible))
+		(text "IN" (rect 2 7 13 19)(font "Courier New" (bold))(invisible))
+		(line (pt 0 16)(pt 13 16))
+	)
+	(port
+		(pt 48 16)
+		(output)
+		(text "OUT" (rect 32 7 49 19)(font "Courier New" (bold))(invisible))
+		(text "OUT" (rect 32 7 49 19)(font "Courier New" (bold))(invisible))
+		(line (pt 39 16)(pt 48 16))
+	)
+	(drawing
+		(line (pt 13 25)(pt 13 7))
+		(line (pt 13 7)(pt 31 16))
+		(line (pt 13 25)(pt 31 16))
+		(circle (rect 31 12 39 20))
+	)
+)
+(symbol
+	(rect 104 -464 320 -384)
+	(text "shot_directionDecider" (rect 5 0 111 12)(font "Arial" ))
+	(text "inst8" (rect 8 64 30 81)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "moveLeft" (rect 0 0 48 12)(font "Arial" ))
+		(text "moveLeft" (rect 21 27 69 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "moveRight" (rect 0 0 54 12)(font "Arial" ))
+		(text "moveRight" (rect 21 43 75 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 216 32)
+		(output)
+		(text "shotDirection[2..0]" (rect 0 0 90 12)(font "Arial" ))
+		(text "shotDirection[2..0]" (rect 119 27 209 39)(font "Arial" ))
+		(line (pt 216 32)(pt 200 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 200 64))
+	)
+)
+(symbol
+	(rect 528 -544 816 -304)
+	(text "shot_StockManager" (rect 5 0 101 12)(font "Arial" ))
+	(text "inst22" (rect 8 224 37 236)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "resetN" (rect 0 0 33 12)(font "Arial" ))
+		(text "resetN" (rect 21 43 54 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "shotEnemyCollision[2..0]" (rect 0 0 123 12)(font "Arial" ))
+		(text "shotEnemyCollision[2..0]" (rect 21 59 144 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "shotTowerCollision[2..0]" (rect 0 0 116 12)(font "Arial" ))
+		(text "shotTowerCollision[2..0]" (rect 21 75 137 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "shotDirection[2..0]" (rect 0 0 90 12)(font "Arial" ))
+		(text "shotDirection[2..0]" (rect 21 91 111 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "trigger" (rect 0 0 30 12)(font "Arial" ))
+		(text "trigger" (rect 21 107 51 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "startOfFrame" (rect 0 0 67 12)(font "Arial" ))
+		(text "startOfFrame" (rect 21 123 88 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "player_tpX[10..0]" (rect 0 0 83 12)(font "Arial" ))
+		(text "player_tpX[10..0]" (rect 21 139 104 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 3))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "player_tpY[10..0]" (rect 0 0 86 12)(font "Arial" ))
+		(text "player_tpY[10..0]" (rect 21 155 107 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 3))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "pixelX[10..0]" (rect 0 0 60 12)(font "Arial" ))
+		(text "pixelX[10..0]" (rect 21 171 81 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 3))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "pixelY[10..0]" (rect 0 0 62 12)(font "Arial" ))
+		(text "pixelY[10..0]" (rect 21 187 83 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 3))
+	)
+	(port
+		(pt 0 208)
+		(input)
+		(text "pause" (rect 0 0 29 12)(font "Arial" ))
+		(text "pause" (rect 21 203 50 215)(font "Arial" ))
+		(line (pt 0 208)(pt 16 208))
+	)
+	(port
+		(pt 288 32)
+		(output)
+		(text "drawingRequests[2..0]" (rect 0 0 109 12)(font "Arial" ))
+		(text "drawingRequests[2..0]" (rect 175 27 284 39)(font "Arial" ))
+		(line (pt 288 32)(pt 272 32)(line_width 3))
+	)
+	(port
+		(pt 288 48)
+		(output)
+		(text "offsetX[10..0]" (rect 0 0 68 12)(font "Arial" ))
+		(text "offsetX[10..0]" (rect 210 43 278 55)(font "Arial" ))
+		(line (pt 288 48)(pt 272 48)(line_width 3))
+	)
+	(port
+		(pt 288 64)
+		(output)
+		(text "offsetY[10..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "offsetY[10..0]" (rect 208 59 278 71)(font "Arial" ))
+		(line (pt 288 64)(pt 272 64)(line_width 3))
+	)
+	(port
+		(pt 288 80)
+		(output)
+		(text "RGB_OUT[7..0]" (rect 0 0 77 12)(font "Arial" ))
+		(text "RGB_OUT[7..0]" (rect 202 75 279 87)(font "Arial" ))
+		(line (pt 288 80)(pt 272 80)(line_width 3))
+	)
+	(port
+		(pt 288 96)
+		(output)
+		(text "draw_shot_dir[2..0]" (rect 0 0 93 12)(font "Arial" ))
+		(text "draw_shot_dir[2..0]" (rect 189 91 282 103)(font "Arial" ))
+		(line (pt 288 96)(pt 272 96)(line_width 3))
+	)
+	(port
+		(pt 288 112)
+		(output)
+		(text "shot_fired" (rect 0 0 49 12)(font "Arial" ))
+		(text "shot_fired" (rect 226 107 275 119)(font "Arial" ))
+		(line (pt 288 112)(pt 272 112))
+	)
+	(port
+		(pt 288 128)
+		(output)
+		(text "nonAvailable" (rect 0 0 62 12)(font "Arial" ))
+		(text "nonAvailable" (rect 215 123 277 135)(font "Arial" ))
+		(line (pt 288 128)(pt 272 128))
+	)
+	(parameter
+		"BULLET_WIDTH_X"
+		"10"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"BULLET_HEIGHT_Y"
+		"10"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"BULLET_COLOR"
+		"0"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"BULLET_NO_ANGLE_SPEED"
+		"250"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"BULLET_LATERAL_SPEED"
+		"55"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"BULLET_ANGLED_FORWARD_SPEED"
+		"200"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 272 224))
+	)
+	(annotation_block (parameter)(rect 544 -696 863 -563))
+)
 (connector
 	(text "clk" (rect -72 1208 -58 1225)(font "Intel Clear" ))
 	(pt -120 1224)
@@ -2274,12 +2455,6 @@ agreement for further details.
 	(text "box_offY[10..0]" (rect -104 1256 -25 1268)(font "Arial" ))
 	(pt -120 1272)
 	(pt 24 1272)
-	(bus)
-)
-(connector
-	(text "SW[3..0]" (rect 672 896 712 913)(font "Intel Clear" ))
-	(pt 664 912)
-	(pt 736 912)
 	(bus)
 )
 (connector
@@ -2544,75 +2719,6 @@ agreement for further details.
 	(bus)
 )
 (connector
-	(text "clk" (rect 464 -512 478 -495)(font "Intel Clear" ))
-	(pt 528 -496)
-	(pt 432 -496)
-)
-(connector
-	(text "resetN" (rect 476 -496 506 -479)(font "Intel Clear" ))
-	(pt 528 -480)
-	(pt 432 -480)
-)
-(connector
-	(text "triggerShot" (rect 327 -464 378 -447)(font "Intel Clear" ))
-	(pt 312 -448)
-	(pt 344 -448)
-)
-(connector
-	(text "shotEnemyCollision[2..0]" (rect 448 -480 566 -463)(font "Intel Clear" ))
-	(pt 528 -464)
-	(pt 440 -464)
-	(bus)
-)
-(connector
-	(text "triggerShot" (rect 485 -448 536 -431)(font "Intel Clear" ))
-	(pt 432 -432)
-	(pt 528 -432)
-)
-(connector
-	(text "Start_of_frame" (rect 469 -432 540 -415)(font "Intel Clear" ))
-	(pt 528 -416)
-	(pt 432 -416)
-)
-(connector
-	(pt 488 -384)
-	(pt 528 -384)
-	(bus)
-)
-(connector
-	(pt 472 -400)
-	(pt 528 -400)
-	(bus)
-)
-(connector
-	(text "pixelY[10..0]" (rect 498 -368 560 -356)(font "Arial" ))
-	(pt 496 -352)
-	(pt 528 -352)
-	(bus)
-)
-(connector
-	(text "pixelX[10..0]" (rect 498 -384 558 -372)(font "Arial" ))
-	(pt 496 -368)
-	(pt 528 -368)
-	(bus)
-)
-(connector
-	(pt 488 -384)
-	(pt 488 -216)
-	(bus)
-)
-(connector
-	(pt 472 -400)
-	(pt 472 -200)
-	(bus)
-)
-(connector
-	(text "shotTowerCollision[2..0]" (rect 448 -464 562 -447)(font "Intel Clear" ))
-	(pt 528 -448)
-	(pt 440 -448)
-	(bus)
-)
-(connector
 	(text "death_fg_RGB[7..0]" (rect -1528 240 -1435 257)(font "Intel Clear" ))
 	(pt -1544 256)
 	(pt -1504 256)
@@ -2703,36 +2809,6 @@ agreement for further details.
 	(pt -1824 336)
 )
 (connector
-	(pt 264 -448)
-	(pt 256 -448)
-)
-(connector
-	(pt 256 -448)
-	(pt 248 -448)
-)
-(connector
-	(pt 784 -496)
-	(pt 816 -496)
-	(bus)
-)
-(connector
-	(text "bullet_req[2..0]" (rect 810 -512 883 -495)(font "Intel Clear" ))
-	(pt 816 -496)
-	(pt 840 -496)
-	(bus)
-)
-(connector
-	(pt 784 -448)
-	(pt 816 -448)
-	(bus)
-)
-(connector
-	(text "bullet_RGB[7..0]" (rect 813 -464 892 -447)(font "Intel Clear" ))
-	(pt 816 -448)
-	(pt 840 -448)
-	(bus)
-)
-(connector
 	(pt -160 1304)
 	(pt -152 1304)
 	(bus)
@@ -2746,11 +2822,6 @@ agreement for further details.
 	(text "pause" (rect 552 88 580 105)(font "Intel Clear" ))
 	(pt 600 104)
 	(pt 544 104)
-)
-(connector
-	(text "pause" (rect 440 -352 468 -335)(font "Intel Clear" ))
-	(pt 528 -336)
-	(pt 432 -336)
 )
 (connector
 	(pt -624 568)
@@ -3207,13 +3278,237 @@ agreement for further details.
 	(pt -1040 632)
 	(pt -1168 632)
 )
+(connector
+	(text "clk" (rect -1608 768 -1594 785)(font "Intel Clear" ))
+	(pt -1616 784)
+	(pt -1576 784)
+)
+(connector
+	(text "resetN" (rect -1579 784 -1549 801)(font "Intel Clear" ))
+	(pt -1616 800)
+	(pt -1576 800)
+)
+(connector
+	(text "shot_fired" (rect -1595 816 -1548 833)(font "Intel Clear" ))
+	(pt -1576 832)
+	(pt -1616 832)
+)
+(connector
+	(text "playerDead" (rect -1591 848 -1536 865)(font "Intel Clear" ))
+	(pt -1576 864)
+	(pt -1608 864)
+)
+(connector
+	(pt -1624 816)
+	(pt -1576 816)
+)
+(connector
+	(text "sound_key[3..0]" (rect -1318 760 -1243 777)(font "Intel Clear" ))
+	(pt -1336 784)
+	(pt -1296 784)
+	(bus)
+)
+(connector
+	(pt -1856 952)
+	(pt -1856 864)
+)
+(connector
+	(pt -1856 864)
+	(pt -1832 864)
+)
+(connector
+	(pt -1336 816)
+	(pt -1328 816)
+	(bus)
+)
+(connector
+	(pt -1328 944)
+	(pt -1328 816)
+	(bus)
+)
+(connector
+	(pt -1328 944)
+	(pt -1848 944)
+	(bus)
+)
+(connector
+	(pt -1848 944)
+	(pt -1848 880)
+	(bus)
+)
+(connector
+	(pt -1848 880)
+	(pt -1832 880)
+	(bus)
+)
+(connector
+	(text "Start_of_frame" (rect -1842 832 -1771 849)(font "Intel Clear" ))
+	(pt -1832 848)
+	(pt -1856 848)
+)
+(connector
+	(text "clk" (rect -1848 800 -1834 817)(font "Intel Clear" ))
+	(pt -1832 816)
+	(pt -1856 816)
+)
+(connector
+	(text "resetN" (rect -1848 816 -1818 833)(font "Intel Clear" ))
+	(pt -1832 832)
+	(pt -1856 832)
+)
+(connector
+	(text "moveLeft" (rect 75 -448 121 -431)(font "Intel Clear" ))
+	(pt 104 -432)
+	(pt 56 -432)
+)
+(connector
+	(text "moveRight" (rect 77 -432 128 -415)(font "Intel Clear" ))
+	(pt 104 -416)
+	(pt 56 -416)
+)
+(connector
+	(text "triggerShot" (rect 311 -384 362 -367)(font "Intel Clear" ))
+	(pt 296 -368)
+	(pt 328 -368)
+)
+(connector
+	(pt 320 -432)
+	(pt 328 -432)
+	(bus)
+)
+(connector
+	(text "clk" (rect 464 -528 478 -511)(font "Intel Clear" ))
+	(pt 528 -512)
+	(pt 432 -512)
+)
+(connector
+	(text "resetN" (rect 476 -512 506 -495)(font "Intel Clear" ))
+	(pt 528 -496)
+	(pt 432 -496)
+)
+(connector
+	(text "shotEnemyCollision[2..0]" (rect 448 -496 566 -479)(font "Intel Clear" ))
+	(pt 528 -480)
+	(pt 440 -480)
+	(bus)
+)
+(connector
+	(text "shotTowerCollision[2..0]" (rect 448 -480 562 -463)(font "Intel Clear" ))
+	(pt 528 -464)
+	(pt 440 -464)
+	(bus)
+)
+(connector
+	(text "triggerShot" (rect 485 -448 536 -431)(font "Intel Clear" ))
+	(pt 432 -432)
+	(pt 528 -432)
+)
+(connector
+	(text "Start_of_frame" (rect 469 -432 540 -415)(font "Intel Clear" ))
+	(pt 528 -416)
+	(pt 432 -416)
+)
+(connector
+	(pt 488 -384)
+	(pt 528 -384)
+	(bus)
+)
+(connector
+	(pt 472 -400)
+	(pt 528 -400)
+	(bus)
+)
+(connector
+	(text "pixelY[10..0]" (rect 498 -368 560 -356)(font "Arial" ))
+	(pt 496 -352)
+	(pt 528 -352)
+	(bus)
+)
+(connector
+	(text "pixelX[10..0]" (rect 498 -384 558 -372)(font "Arial" ))
+	(pt 496 -368)
+	(pt 528 -368)
+	(bus)
+)
+(connector
+	(text "pause" (rect 440 -352 468 -335)(font "Intel Clear" ))
+	(pt 528 -336)
+	(pt 432 -336)
+)
+(connector
+	(pt 328 -432)
+	(pt 328 -448)
+	(bus)
+)
+(connector
+	(pt 328 -448)
+	(pt 528 -448)
+	(bus)
+)
+(connector
+	(text "bullet_req[2..0]" (rect 810 -528 883 -511)(font "Intel Clear" ))
+	(pt 816 -512)
+	(pt 840 -512)
+	(bus)
+)
+(connector
+	(text "bullet_RGB[7..0]" (rect 813 -480 892 -463)(font "Intel Clear" ))
+	(pt 816 -464)
+	(pt 840 -464)
+	(bus)
+)
+(connector
+	(text "shot_fired" (rect 831 -448 878 -431)(font "Intel Clear" ))
+	(pt 840 -432)
+	(pt 816 -432)
+)
+(connector
+	(pt 488 -384)
+	(pt 488 -216)
+	(bus)
+)
+(connector
+	(pt 472 -400)
+	(pt 472 -200)
+	(bus)
+)
+(connector
+	(pt 232 -368)
+	(pt 240 -368)
+)
+(connector
+	(pt 240 -368)
+	(pt 248 -368)
+)
+(connector
+	(text "sound_key[3..0]" (rect 672 896 747 913)(font "Intel Clear" ))
+	(pt 664 912)
+	(pt 736 912)
+	(bus)
+)
+(connector
+	(text "shotEnemyCollision[2..0]" (rect -1614 832 -1496 849)(font "Intel Clear" ))
+	(pt -1576 848)
+	(pt -1624 848)
+	(bus)
+)
+(connector
+	(pt -1336 800)
+	(pt -1312 800)
+)
+(connector
+	(pt -1312 952)
+	(pt -1312 800)
+)
+(connector
+	(pt -1856 952)
+	(pt -1312 952)
+)
 (junction (pt 736 912))
 (junction (pt -152 1304))
-(junction (pt 816 -448))
-(junction (pt 816 -496))
-(junction (pt 256 -448))
 (junction (pt 976 -24))
 (junction (pt 1000 -8))
+(junction (pt 240 -368))
 (text "Sound Unit" (rect 960 752 1026 771)(font "Intel Clear" (font_size 8)))
 (text "Output to 7Seg" (rect 880 1032 970 1051)(font "Intel Clear" (font_size 8)))
 (text "Smileyface moving and drawing" (rect 864 -128 1053 -109)(font "Intel Clear" (font_size 8)))
@@ -3227,3 +3522,4 @@ agreement for further details.
 (rectangle (rect -1848 -512 -192 -152)(color 0 0 0)(line_width 3))
 (rectangle (rect -1872 208 -1288 400)(color 0 0 0)(line_width 3))
 (rectangle (rect -1864 416 -1280 680)(color 0 0 0)(line_width 3))
+(rectangle (rect -1864 704 -1280 968)(color 0 0 0)(line_width 3))
