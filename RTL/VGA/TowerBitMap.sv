@@ -54,18 +54,14 @@ logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 };
 
 
-
-
-// TODO: put here bitmap of tower
-
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin
-		RGBout <=8'h00;
+		RGBout <=8'h22;
 	end
 	else begin
 			if (InsideRectangle) begin
-				RGBout <= object_colors[(offsetY-9)>>2][(offsetX-11)>>2];
+				RGBout <= object_colors[offsetY>>1][offsetX>>1];				
 			end
 			else RGBout <= TRANSPARENT_ENCODING;
 	end 

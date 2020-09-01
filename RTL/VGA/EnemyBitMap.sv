@@ -107,7 +107,7 @@ begin
 		
 		if (InsideRectangle == 1'b1 ) begin  // inside an external bracket 
 			if (flip) 	RGBout <= object_colors[offsetY][offsetX];	
-			else RGBout <= object_colors[offsetY][OBJECT_WIDTH_X-offsetX-1];
+			else RGBout <= object_colors[offsetY][OBJECT_WIDTH_X-offsetX-1];		
 		end
 		else 
 			RGBout <= TRANSPARENT_ENCODING ; // force color to transparent so it will not be displayed 

@@ -22,41 +22,21 @@ module	towers_moveCollision	(
 parameter int FALL_SPEED=100;
 parameter  int OBJECT_WIDTH_X = 28;
 parameter  int OBJECT_HEIGHT_Y = 58;
-parameter  logic [7:0] OBJECT_COLOR = 8'h5b;
 
 parameter int MAX_TOWERS_AMOUNT=10;
 parameter int TOWERS_WAIT=100;
 
 int currTowersAmount=1;
-logic [4:0] towerIndex=0; // used in for loop
+logic [4:0] towerIndex; // used in for loop
 int towerTimer=TOWERS_WAIT;
 
-logic [31:0][31:0] towersTLX_FIXED_POINT=0;
-logic [31:0][31:0] towersTLY_FIXED_POINT=0;
+logic [31:0][31:0] towersTLX_FIXED_POINT;
+logic [31:0][31:0] towersTLY_FIXED_POINT;
  
 int Y_Speed=FALL_SPEED;
-localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// bitmap  representation for a transparent pixel 
- 
-int topLeftX;
-int topLeftY;
-//int rightX ; //coordinates of the sides  
-//int bottomY ;
-
-logic insideBracket;
-int topLeftX_FixedPoint; // local parameters 
-int topLeftY_FixedPoint;
 
 const int FIXED_POINT_MULTIPLIER=64;
-//////////--------------------------------------------------------------------------------------------------------------=
-// Calculate object right  & bottom  boundaries
-//
-//assign topLeftX=topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER;
-//assign topLeftY=topLeftY_FixedPoint/FIXED_POINT_MULTIPLIER;
-//
-//assign rightX	= (topLeftX + OBJECT_WIDTH_X);
-//assign bottomY	= (topLeftY + OBJECT_HEIGHT_Y);
 
-//////////--------------------------------------------------------------------------------------------------------------=
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin
@@ -88,15 +68,6 @@ begin
 		
 			if (towerIndex<currTowersAmount) begin
 		
-				if ((towersTLX_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER>=pixelX) &&
-					 (towersTLX_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER<pixelX+OBJECT_WIDTH_X) &&
-					 (towersTLY_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER>=pixelY) &&
-					 (towersTLY_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER<pixelY+OBJECT_HEIGHT_Y)) begin
-					drawingRequest <= 1'b1 ;
-					offsetX	<= (pixelX - towersTLX_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER);
-					offsetY	<= (pixelY - towersTLY_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER);
-				end				
-				
 				if(startOfFrame) begin				
 					if(towersTLY_FIXED_POINT[towerIndex]>480*FIXED_POINT_MULTIPLIER) begin 				
 						towersTLY_FIXED_POINT[towerIndex] <= 0;
@@ -105,43 +76,19 @@ begin
 					else
 						towersTLY_FIXED_POINT[towerIndex]<=towersTLY_FIXED_POINT[towerIndex]+Y_Speed;
 				end
+		
+				if ((towersTLX_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER<=pixelX) &&
+					 (towersTLX_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER+OBJECT_WIDTH_X>pixelX) &&
+					 (towersTLY_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER<=pixelY) &&
+					 (towersTLY_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER+OBJECT_HEIGHT_Y>pixelY)) begin
+					drawingRequest <= 1'b1 ;
+					offsetX	<= (pixelX - towersTLX_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER);
+					offsetY	<= (pixelY - towersTLY_FIXED_POINT[towerIndex]/FIXED_POINT_MULTIPLIER);
+				end	
+			
 			end				
 		end
 	end
-	
-	
-//	else begin 
-//		topLeftY_FixedPoint <= topLeftY_FixedPoint;
-//		topLeftX_FixedPoint <= topLeftX_FixedPoint;
-//		
-//
-//		//this is an example of using blocking sentence inside an always_ff block, 
-//		//and not waiting a clock to use the result  
-//		insideBracket  = 	 ( (pixelX  >= topLeftX) &&  (pixelX < rightX) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
-//						   && (pixelY  >= topLeftY) &&  (pixelY < bottomY) )  ; 
-//		
-//		if (insideBracket ) // test if it is inside the rectangle 
-//		begin 
-//			drawingRequest <= 1'b1 ;
-//			offsetX	<= (pixelX - topLeftX_FixedPoint/FIXED_POINT_MULTIPLIER); //calculate relative offsets from top left corner
-//			offsetY	<= (pixelY - topLeftY);
-//		end 
-//		
-//		else begin  
-//			drawingRequest <= 1'b0 ;// transparent color 
-//			offsetX	<= 0; //no offset
-//			offsetY	<= 0; //no offset
-//		end 
-//		
-//		
-//		if(startOfFrame) begin
-//			if(topLeftY_FixedPoint>480*FIXED_POINT_MULTIPLIER) begin 				
-//				topLeftY_FixedPoint <= 0;
-//				topLeftX_FixedPoint <= spawnX*FIXED_POINT_MULTIPLIER;
-//			end
-//			else
-//				topLeftY_FixedPoint<=topLeftY_FixedPoint+Y_Speed;
-//		end
-//	end
+
 end 
 endmodule 

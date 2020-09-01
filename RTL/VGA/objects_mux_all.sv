@@ -60,7 +60,7 @@ begin
 		else if (smileyDrawingRequest)   tmpRGB <= smileyRGB;  
 	   else if (towersDrawingRequest) tmpRGB <= towersRGB;
 		else if (enemiesDrawingRequest) tmpRGB <= enemiesRGB;
-		//else if (enemisHeadsUpDrawingRequest) tmpRGB <= 8'b00101111; for headsUp debug
+		else if (enemisHeadsUpDrawingRequest) tmpRGB <= 8'b00101111; //for headsUp debug
 		else if(bulletDrawingRequest!=0) tmpRGB <= bulletRGB;
 		else tmpRGB <= backGroundRGB ; // last priority 
 		end ; 

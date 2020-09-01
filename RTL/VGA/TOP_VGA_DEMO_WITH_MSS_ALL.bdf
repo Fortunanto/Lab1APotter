@@ -960,7 +960,7 @@ agreement for further details.
 	)
 )
 (symbol
-	(rect -2344 288 -2120 432)
+	(rect -2352 232 -2128 376)
 	(text "TowerBitMap" (rect 5 0 66 12)(font "Arial" ))
 	(text "inst25" (rect 8 128 37 140)(font "Arial" ))
 	(port
@@ -1020,7 +1020,7 @@ agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 208 128))
 	)
-	(annotation_block (parameter)(rect -2120 248 -1912 288))
+	(annotation_block (parameter)(rect -2296 48 -2088 88))
 )
 (symbol
 	(rect 528 -528 816 -288)
@@ -2006,10 +2006,10 @@ agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 256 160))
 	)
-	(annotation_block (parameter)(rect -1032 368 -791 501))
+	(annotation_block (parameter)(rect -1048 336 -807 469))
 )
 (symbol
-	(rect -2712 320 -2488 496)
+	(rect -2720 264 -2496 440)
 	(text "towers_moveCollision" (rect 5 0 112 12)(font "Arial" ))
 	(text "inst23" (rect 8 160 37 172)(font "Arial" ))
 	(port
@@ -2089,12 +2089,12 @@ agreement for further details.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"OBJECT_WIDTH_X"
-		"56"
+		"28"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"OBJECT_HEIGHT_Y"
-		"116"
+		"58"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
@@ -2115,7 +2115,7 @@ agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 208 160))
 	)
-	(annotation_block (parameter)(rect -2712 240 -2430 373))
+	(annotation_block (parameter)(rect -2800 16 -2518 149))
 )
 (connector
 	(text "clk" (rect -72 1208 -58 1225)(font "Intel Clear" ))
@@ -2386,72 +2386,6 @@ agreement for further details.
 	(pt -2680 568)
 )
 (connector
-	(text "clk" (rect -2727 336 -2713 353)(font "Intel Clear" ))
-	(pt -2712 352)
-	(pt -2736 352)
-)
-(connector
-	(text "resetN" (rect -2726 352 -2696 369)(font "Intel Clear" ))
-	(pt -2712 368)
-	(pt -2736 368)
-)
-(connector
-	(text "pixelX[10..0]" (rect -2776 384 -2717 401)(font "Intel Clear" ))
-	(pt -2712 400)
-	(pt -2816 400)
-	(bus)
-)
-(connector
-	(text "pixelY[10..0]" (rect -2772 400 -2713 417)(font "Intel Clear" ))
-	(pt -2712 416)
-	(pt -2816 416)
-	(bus)
-)
-(connector
-	(text "SQR_topLeftX[10..0]" (rect -2761 416 -2664 433)(font "Intel Clear" ))
-	(pt -2712 432)
-	(pt -2824 432)
-	(bus)
-)
-(connector
-	(text "Start_of_frame" (rect -2792 368 -2721 385)(font "Intel Clear" ))
-	(pt -2712 384)
-	(pt -2800 384)
-)
-(connector
-	(text "clk" (rect -2359 304 -2345 321)(font "Intel Clear" ))
-	(pt -2344 320)
-	(pt -2368 320)
-)
-(connector
-	(text "resetN" (rect -2358 320 -2328 337)(font "Intel Clear" ))
-	(pt -2344 336)
-	(pt -2368 336)
-)
-(connector
-	(text "<<__$DEF_ALIAS5994>>" (rect -2455 336 -2337 353)(font "Intel Clear" )(invisible))
-	(pt -2344 352)
-	(pt -2488 352)
-	(bus)
-)
-(connector
-	(text "<<__$DEF_ALIAS5996>>" (rect -2478 352 -2360 369)(font "Intel Clear" )(invisible))
-	(pt -2344 368)
-	(pt -2488 368)
-	(bus)
-)
-(connector
-	(text "tower_req" (rect -2106 304 -2058 321)(font "Intel Clear" ))
-	(pt -2120 320)
-	(pt -2080 320)
-)
-(connector
-	(text "tower_RGB[7..0]" (rect -2101 320 -2024 337)(font "Intel Clear" ))
-	(pt -2120 336)
-	(pt -2080 336)
-	(bus)
-)
-(connector
 	(pt -648 880)
 	(pt -664 880)
 )
@@ -2702,11 +2636,6 @@ agreement for further details.
 	(bus)
 )
 (connector
-	(text "<<__$DEF_ALIAS5998>>" (rect -2468 368 -2350 385)(font "Intel Clear" )(invisible))
-	(pt -2488 384)
-	(pt -2344 384)
-)
-(connector
 	(text "death_fg_RGB[7..0]" (rect -1528 240 -1435 257)(font "Intel Clear" ))
 	(pt -1544 256)
 	(pt -1504 256)
@@ -2850,11 +2779,6 @@ agreement for further details.
 	(text "pause" (rect 440 -352 468 -335)(font "Intel Clear" ))
 	(pt 528 -336)
 	(pt 432 -336)
-)
-(connector
-	(text "pause" (rect -2768 432 -2740 449)(font "Intel Clear" ))
-	(pt -2712 448)
-	(pt -2776 448)
 )
 (connector
 	(pt -624 568)
@@ -3145,6 +3069,82 @@ agreement for further details.
 	(pt -624 664)
 	(pt -688 664)
 )
+(connector
+	(text "clk" (rect -2735 280 -2721 297)(font "Intel Clear" ))
+	(pt -2720 296)
+	(pt -2744 296)
+)
+(connector
+	(text "resetN" (rect -2734 296 -2704 313)(font "Intel Clear" ))
+	(pt -2720 312)
+	(pt -2744 312)
+)
+(connector
+	(text "pixelX[10..0]" (rect -2784 328 -2725 345)(font "Intel Clear" ))
+	(pt -2720 344)
+	(pt -2824 344)
+	(bus)
+)
+(connector
+	(text "pixelY[10..0]" (rect -2780 344 -2721 361)(font "Intel Clear" ))
+	(pt -2720 360)
+	(pt -2824 360)
+	(bus)
+)
+(connector
+	(text "SQR_topLeftX[10..0]" (rect -2769 360 -2672 377)(font "Intel Clear" ))
+	(pt -2720 376)
+	(pt -2832 376)
+	(bus)
+)
+(connector
+	(text "Start_of_frame" (rect -2800 312 -2729 329)(font "Intel Clear" ))
+	(pt -2720 328)
+	(pt -2808 328)
+)
+(connector
+	(text "clk" (rect -2367 248 -2353 265)(font "Intel Clear" ))
+	(pt -2352 264)
+	(pt -2376 264)
+)
+(connector
+	(text "resetN" (rect -2366 264 -2336 281)(font "Intel Clear" ))
+	(pt -2352 280)
+	(pt -2376 280)
+)
+(connector
+	(text "<<__$DEF_ALIAS5994>>" (rect -2463 280 -2345 297)(font "Intel Clear" )(invisible))
+	(pt -2352 296)
+	(pt -2496 296)
+	(bus)
+)
+(connector
+	(text "<<__$DEF_ALIAS5996>>" (rect -2486 296 -2368 313)(font "Intel Clear" )(invisible))
+	(pt -2352 312)
+	(pt -2496 312)
+	(bus)
+)
+(connector
+	(text "tower_req" (rect -2114 248 -2066 265)(font "Intel Clear" ))
+	(pt -2128 264)
+	(pt -2088 264)
+)
+(connector
+	(text "tower_RGB[7..0]" (rect -2109 264 -2032 281)(font "Intel Clear" ))
+	(pt -2128 280)
+	(pt -2088 280)
+	(bus)
+)
+(connector
+	(text "<<__$DEF_ALIAS5998>>" (rect -2476 312 -2358 329)(font "Intel Clear" )(invisible))
+	(pt -2496 328)
+	(pt -2352 328)
+)
+(connector
+	(text "pause" (rect -2776 376 -2748 393)(font "Intel Clear" ))
+	(pt -2720 392)
+	(pt -2784 392)
+)
 (junction (pt 736 912))
 (junction (pt -152 1304))
 (junction (pt 816 -448))
@@ -3158,7 +3158,7 @@ agreement for further details.
 (text "Input can be from keyborad  or from DE-10 Borad push buttons  " (rect -288 136 95 155)(font "Intel Clear" (font_size 8)))
 (text "The keys  are active low" (rect 48 16 189 35)(font "Intel Clear" (font_size 8)))
 (rectangle (rect 616 736 1528 1000)(color 0 0 0)(line_width 3))
-(rectangle (rect -2872 232 -1944 808)(color 0 0 0)(line_width 3))
+(rectangle (rect -2872 -88 -1944 808)(color 0 0 0)(line_width 3))
 (rectangle (rect 616 1016 1344 1160)(color 0 0 0)(line_width 3))
 (rectangle (rect -2848 536 -2576 664)(color 0 0 0)(line_width 3))
 (rectangle (rect -1224 216 -320 824)(color 0 0 0)(line_width 3))
