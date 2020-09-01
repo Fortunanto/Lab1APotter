@@ -28,17 +28,28 @@ parameter int TOWERS_WAIT=100;
 
 int currTowersAmount=1;
 logic [4:0] towerIndex; // used in for loop
-int towerTimer=TOWERS_WAIT;
+shortint towerTimer=TOWERS_WAIT;
 
-logic [31:0][31:0] towersTLX_FIXED_POINT;
-logic [31:0][31:0] towersTLY_FIXED_POINT;
+int towersTLX_FIXED_POINT [31:0];
+int towersTLY_FIXED_POINT [31:0];
 
-logic [31:0][31:0] towersTLX;
-logic [31:0][31:0] towersTLY;
+shortint towersTLX [31:0];
+shortint towersTLY [31:0];
+
+bit alreadyDrawing;
+
+shortint offsetXsigned;
+shortint offsetYsigned;
+
+assign offsetX = offsetXsigned;
+assign offsetY = offsetYsigned;
  
 int Y_Speed=FALL_SPEED;
 
 const int FIXED_POINT_MULTIPLIER=64;
+
+logic [9:0][10:0] randoms = {11'd6,11'd500,11'd80,11'd100,11'd140,11'd18,11'd44,11'd340,11'd210,11'd277};
+byte rndIndex=0;
 
 genvar i;
 generate
@@ -71,9 +82,10 @@ begin
 		end
 		
 		drawingRequest <= 1'b0 ;// transparent color 
-		offsetX	<= 0; //no offset
-		offsetY	<= 0; //no offset
+		offsetXsigned	<= 0; //no offset
+		offsetYsigned	<= 0; //no offset
 		
+		alreadyDrawing=0;
 	
 		for (towerIndex=0;towerIndex<20;towerIndex++) begin
 		
@@ -81,20 +93,32 @@ begin
 		
 				if(startOfFrame) begin				
 					if(towersTLY[towerIndex]>480) begin 				
-						towersTLY_FIXED_POINT[towerIndex] <= 0;
-						towersTLX_FIXED_POINT[towerIndex] <= spawnX*FIXED_POINT_MULTIPLIER;
+						towersTLY_FIXED_POINT[towerIndex] <= (OBJECT_HEIGHT_Y)*FIXED_POINT_MULTIPLIER*(-1);
+						//towersTLY_FIXED_POINT[towerIndex] <= 0;
+						towersTLX_FIXED_POINT[towerIndex] <= (spawnX+randoms[rndIndex])*FIXED_POINT_MULTIPLIER;
+						rndIndex<=rndIndex+1;
+						if (rndIndex>10) rndIndex <= 0;
 					end
 					else
 						towersTLY_FIXED_POINT[towerIndex]<=towersTLY_FIXED_POINT[towerIndex]+Y_Speed;
+						
+					if (towersTLX[towerIndex]>640) towersTLX_FIXED_POINT[towerIndex]<=towersTLX_FIXED_POINT[towerIndex]-(640*FIXED_POINT_MULTIPLIER);	
 				end
 		
-				if ((towersTLX[towerIndex]<=pixelX) &&
-					 (towersTLX[towerIndex]+OBJECT_WIDTH_X>pixelX) &&
-					 (towersTLY[towerIndex]<=pixelY) &&
-					 (towersTLY[towerIndex]+OBJECT_HEIGHT_Y>pixelY)) begin
-					drawingRequest <= 1'b1 ;
-					offsetX	<= (pixelX - towersTLX[towerIndex]);
-					offsetY	<= (pixelY - towersTLY[towerIndex]);
+				if ((towersTLX[towerIndex]<=$signed(pixelX)) &&
+					 (towersTLX[towerIndex]+OBJECT_WIDTH_X>$signed(pixelX)) &&
+					 (towersTLY[towerIndex]<=$signed(pixelY)) &&
+					 (towersTLY[towerIndex]+OBJECT_HEIGHT_Y>$signed(pixelY))) begin
+					 if (alreadyDrawing) begin
+							towersTLX_FIXED_POINT[towerIndex]<=towersTLX_FIXED_POINT[towerIndex]+(OBJECT_WIDTH_X+20)*FIXED_POINT_MULTIPLIER;
+							towersTLY_FIXED_POINT[towerIndex]<=towersTLY_FIXED_POINT[towerIndex]-(OBJECT_HEIGHT_Y+77)*FIXED_POINT_MULTIPLIER;
+					 end
+					 else begin
+							drawingRequest <= 1'b1 ;
+							offsetXsigned	<= (pixelX - towersTLX[towerIndex]);
+							offsetYsigned	<= (pixelY - towersTLY[towerIndex]);
+							alreadyDrawing = 1;
+					 end
 				end				
 			end				
 		end

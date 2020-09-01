@@ -33,7 +33,7 @@ parameter int OBJECT_HEIGHT_Y=30;
 
 parameter int X_SPEED=120;
 
-parameter int dodgeBulletWait = 50;
+parameter int dodgeBulletWait = 30;
 
 parameter  logic [7:0] OBJECT_COLOR = 8'h5b ; 
 
@@ -45,7 +45,8 @@ int bottomY ;
 
 int direction = 1;
 
-const int directionChangeWait = 100;
+const int directionChangeWait = 20;
+
 int directionChangeTimer=0;
 int dodgeBulletTimer=0;
 
