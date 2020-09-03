@@ -50,7 +50,7 @@ logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 {8'hFF, 8'hFF, 8'hFF, 8'h45, 8'hB2, 8'hD6, 8'h89, 8'h89, 8'hB2, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
 {8'hFF, 8'hFF, 8'hFF, 8'h45, 8'hB1, 8'hD1, 8'h89, 8'h89, 8'hB2, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
 {8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h89, 8'hCD, 8'h89, 8'h89, 8'h91, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
-{8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h89, 8'h89, 8'h89, 8'h89, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF }
+{8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89 }
 };
 
 

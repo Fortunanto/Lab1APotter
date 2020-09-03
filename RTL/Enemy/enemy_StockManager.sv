@@ -35,6 +35,10 @@ parameter int HEADS_UP_HEIGHT = 80;
 parameter int HEADS_DOWN_HEIGHT = 80;
 parameter int ENEMY_INITIAL_SPEED = 120;
 parameter int HEADS_SIDE_MARGIN = 8;
+parameter int LEFT_EDGE=30;
+parameter int RIGHT_EDGE = 580;
+
+parameter  logic [7:0] ENEMY_COLOR = 8'h72 ;
 
 //logic [AMOUNT_OF_ENEMIES-1:0] shotCollisionMap=0;
 
@@ -54,23 +58,40 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
  genvar i;
  generate
 	for (i=0;i<AMOUNT_OF_ENEMIES;i=i+1) begin: gen_loop
-		enemies_moveCollision #(.INITIAL_X(100*(i+1)),.INITIAL_Y(100*(i+1)), .OBJECT_WIDTH_X(ENEMY_WIDTH), .OBJECT_HEIGHT_Y(ENEMY_HEIGHT), .X_SPEED(ENEMY_INITIAL_SPEED), .OBJECT_COLOR(8'h5b))
+		enemies_moveCollision #(
+		  .INITIAL_X(100*(i+1)),
+		  .INITIAL_Y(100*(i+1)), 
+		  .RIGHT_EDGE(RIGHT_EDGE),
+		  .LEFT_EDGE(LEFT_EDGE),
+		  .X_SPEED(ENEMY_INITIAL_SPEED)) 
 		enemy(
 			.clk(clk),
 			.resetN(resetN),
 			.startOfFrame(startOfFrame),
-			.pixelX(pixelX),
-			.pixelY(pixelY),
 			.changeDirection((changeDir && (drawingRequestorId==i))),
 			.dodgeBullet((dodgeBullet && (drawingRequestorId==i))),
 			.shotCollision(shotCollision!=0 && (drawingRequestorId==i)),
 			.pause(pause),
 			.topLeftX(enemiesTLX[i]),
-			.topLeftY(enemiesTLY[i]),
-			.offsetX(enemiesOffsetX[i]),
-			.offsetY(enemiesOffsetY[i]),
-			.drawingRequest(enemiesDrawReqMap[i])
+			.topLeftY(enemiesTLY[i])
 		);
+		
+		square_object #(
+		 .OBJECT_WIDTH_X(ENEMY_WIDTH),
+		 .OBJECT_HEIGHT_Y(ENEMY_HEIGHT),
+		 .OBJECT_COLOR(ENEMY_COLOR)
+		 ) sq(
+				.clk(clk),
+				.resetN(resetN),
+				.pixelX(pixelX),
+				.pixelY(pixelY),
+				.topLeftX(enemiesTLX[i]),
+				.topLeftY(enemiesTLY[i]),
+				.offsetX(enemiesOffsetX[i]),
+				.offsetY(enemiesOffsetY[i]),
+				.drawingRequest(enemiesDrawReqMap[i]),
+				.RGBout(RGBs[i])
+		 );
 				
 		object_collider#(
 		.OBJECT_WIDTH_X(ENEMY_WIDTH),
@@ -107,19 +128,6 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 			.RGBout(RGBs[i]),
 			.drawingRequest(headsDownDrawReqMap[i])		
 		);
-				
-//		enemiesHeadsUp_moveCollision #(.OBJECT_WIDTH_X(ENEMY_WIDTH), .OBJECT_HEIGHT_Y(ENEMY_HEIGHT), .HEADS_UP_HEIGHT(HEADS_UP_HEIGHT), .OBJECT_COLOR(8'h5b))
-//		headsUp(
-//			.clk(clk),
-//			.resetN(resetN),
-//			.startOfFrame(startOfFrame),
-//			.pixelX(pixelX),
-//			.pixelY(pixelY),
-//			.topLeftXinput(enemiesTLX[i]),
-//			.topLeftYinput(enemiesTLY[i]),
-//			.RGBout(RGBs[i]),
-//			.drawingRequest(headsUpDrawReqMap[i])		
-//		);
 	end
 endgenerate
 
