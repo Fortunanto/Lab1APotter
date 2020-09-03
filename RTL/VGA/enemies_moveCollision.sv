@@ -47,9 +47,6 @@ logic dodgingAgg;
 
 int direction = 1;
 
-const int directionChangeWait = 35;
-
-int directionChangeTimer=0;
 int dodgeBulletTimer=0;
 
 
@@ -132,9 +129,10 @@ begin
 				end			
 				
 				topLeftX_FixedPoint <= topLeftX_FixedPoint + direction*xSpeed_Cur;
-				//if (directionChangeTimer > 0) directionChangeTimer<=directionChangeTimer-1;
+				
 				if (dodgingAgg==0) dodging <= 0;
 				dodgingAgg<=0;
+				
 				if (dodgeBulletTimer > 0) dodgeBulletTimer<=dodgeBulletTimer-1;
 			end	
 		if (pause) topLeftX_FixedPoint <= topLeftX_FixedPoint;
