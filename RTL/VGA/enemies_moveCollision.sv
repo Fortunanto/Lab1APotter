@@ -9,24 +9,18 @@ module	enemies_moveCollision	(
 					input		logic	clk,
 					input		logic	resetN,
 					input    logic startOfFrame,
-					//input 	logic	[10:0] pixelX,// current VGA pixel 
-					//input 	logic	[10:0] pixelY,
-					
+									
 					input logic changeDirection,
 					input logic dodgeBullet,
 					input logic[2:0] shotCollision,
 					input logic pause,
 					output logic  [10:0] topLeftX,
-					output logic  [10:0] topLeftY
-					
-					//output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
-					//output 	logic	[10:0] offsetY,					
-					//output	logic	drawingRequest // indicates pixel inside the bracket				
+					output logic  [10:0] topLeftY			
 										
 );
 logic collide;
 parameter int INITIAL_X=240;
-parameter int INITIAL_Y=200;
+parameter int INITIAL_Y=210;
 
 parameter int RIGHT_EDGE=500;
 parameter int LEFT_EDGE =50;
@@ -55,7 +49,7 @@ int topLeftX_FixedPoint;
 int topLeftY_FixedPoint;
 
 int pixelX_FixedPoint,rightX_FixedPoint;
-int xSpeed_Cur;
+int xSpeed_Cur=80;
 
 const int FIXED_POINT_MULTIPLIER=64;
 //////////--------------------------------------------------------------------------------------------------------------=
