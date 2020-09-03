@@ -14,10 +14,10 @@ module shot_StockManager (
 	output logic   [2:0] drawingRequests,
 	output logic   [10:0] offsetX,
 	output logic   [10:0] offsetY,
-	output logic   [7:0] RGB_OUT,
 	output logic [2:0] draw_shot_dir,
 	output logic shot_fired,
-	output logic nonAvailable
+	output logic nonAvailable,
+	output logic anyDrawRequest
 	
 );
 
@@ -38,6 +38,8 @@ logic [2:0][10:0] offsetsY;
 logic [2:0][10:0] rgbs_out;
 logic [2:0][2:0] draw_shot_dir_bus;
 int delay;
+
+assign anyDrawRequest = (drawingRequests!=0);
 
 always_ff@(posedge clk or negedge resetN)
 begin
@@ -113,25 +115,21 @@ end
 		3'b1:begin 
 					offsetX = offsetsX[0];
 					offsetY = offsetsY[0];
-					RGB_OUT = rgbs_out[0];
 					draw_shot_dir = draw_shot_dir_bus[0];
 				 end 
 		3'b10:begin 
 					offsetX = offsetsX[1];
 					offsetY = offsetsY[1];
-					RGB_OUT = rgbs_out[1];
 					draw_shot_dir = draw_shot_dir_bus[1];
 				 end 
 		3'b100:begin 
 					offsetX = offsetsX[2];
 					offsetY = offsetsY[2];
-					RGB_OUT = rgbs_out[2];
 					draw_shot_dir = draw_shot_dir_bus[2];
 
 				 end 
 		default:begin offsetX = offsetsX[0];
 					offsetY = offsetsY[0];
-					RGB_OUT = rgbs_out[0];
 					draw_shot_dir = draw_shot_dir_bus[0];
 					end
 	  endcase 

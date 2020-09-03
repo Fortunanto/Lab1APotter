@@ -45,7 +45,7 @@ int bottomY ;
 
 int direction = 1;
 
-const int directionChangeWait = 20;
+const int directionChangeWait = 35;
 
 int directionChangeTimer=0;
 int dodgeBulletTimer=0;

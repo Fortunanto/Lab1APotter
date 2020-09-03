@@ -97,9 +97,9 @@ agreement for further details.
 	(port
 		(pt 0 192)
 		(input)
-		(text "bulletDrawingRequest[2..0]" (rect 0 0 105 12)(font "Arial" ))
-		(text "bulletDrawingRequest[2..0]" (rect 21 187 126 199)(font "Arial" ))
-		(line (pt 0 192)(pt 16 192)(line_width 3))
+		(text "anyBulletDrawingRequest" (rect 0 0 101 12)(font "Arial" ))
+		(text "anyBulletDrawingRequest" (rect 21 187 122 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 1))
 	)
 	(port
 		(pt 0 208)

@@ -27,7 +27,7 @@ assign ShotBoxCollision = (drawing_request_shot!=0 && drawing_request_tower)? dr
 assign TowerEnemyHUCollision = (drawing_request_enemy_HU && drawing_request_tower);
 assign ShotEnemyCollision = (drawing_request_shot!=0 && drawing_request_enemy)? drawing_request_shot:0;
 assign towerPlayerCollision = (drawing_request_Ball && drawing_request_tower);
-assign ShotHeadsDownCollision = (drawing_request_shot!=0 && drawing_request_enemy_HD)? drawing_request_shot:0;
+assign ShotHeadsDownCollision = (drawing_request_shot!=0 && drawing_request_enemy_HD);
 //always_ff@(posedge clk or negedge resetN)
 //begin
 //	if(!resetN)
