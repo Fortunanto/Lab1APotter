@@ -42,6 +42,8 @@ localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// bitmap  representation f
 int rightX ; //coordinates of the sides  
 int bottomY ;
 
+logic dodging;
+logic dodgingAgg;
 
 int direction = 1;
 
@@ -79,13 +81,13 @@ begin
 		topLeftX_FixedPoint <= INITIAL_X*FIXED_POINT_MULTIPLIER;
 		topLeftY_FixedPoint <= INITIAL_Y*FIXED_POINT_MULTIPLIER;		
 		xSpeed_Cur <= X_SPEED;
+		dodging<=0;
 	end
 	else begin 
 	
 		topLeftY_FixedPoint <= topLeftY_FixedPoint;
 		topLeftX_FixedPoint <= topLeftX_FixedPoint;
-	
-
+		
 		//this is an example of using blocking sentence inside an always_ff block, 
 		//and not waiting a clock to use the result  
 		insideBracket  = 	 ( (pixelX  >= topLeftX) &&  (pixelX < rightX) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
@@ -102,9 +104,11 @@ begin
 			offsetY	<= 0; //no offset
 		end 
 		
-		if (changeDirection==1 && directionChangeTimer==0) begin
+		if (changeDirection) dodgingAgg <= 1;
+		
+		if (changeDirection==1 && dodging==0) begin
 				direction<=-1*direction;
-				directionChangeTimer <= directionChangeWait;
+				dodging <=1;
 		end
 		
 		if (dodgeBullet && dodgeBulletTimer==0) begin
@@ -128,7 +132,9 @@ begin
 				end			
 				
 				topLeftX_FixedPoint <= topLeftX_FixedPoint + direction*xSpeed_Cur;
-				if (directionChangeTimer > 0) directionChangeTimer<=directionChangeTimer-1;
+				//if (directionChangeTimer > 0) directionChangeTimer<=directionChangeTimer-1;
+				if (dodgingAgg==0) dodging <= 0;
+				dodgingAgg<=0;
 				if (dodgeBulletTimer > 0) dodgeBulletTimer<=dodgeBulletTimer-1;
 			end	
 		if (pause) topLeftX_FixedPoint <= topLeftX_FixedPoint;
