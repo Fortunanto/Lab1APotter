@@ -10,10 +10,13 @@ module	player_moveCollision	(
 					input	logic	resetN,
 					input	logic	startOfFrame,  // short pulse every start of frame 30Hz 
 					input	logic	moveLeft,  
-					input	logic	moveRight, 
-
-					input logic collision,  //collision if smiley hits an object
-					input	logic	[3:0] HitEdgeCode, //one bit per edge 
+					input	logic	moveRight,
+					
+					// TODO: remove after asking yiftach
+					//input logic collision,  //collision if smiley hits an object
+					//input	logic	[3:0] HitEdgeCode, //one bit per edge 
+					
+					
 					input logic pause,
 					output	 logic signed 	[10:0]	topLeftX,// output the top left corner 
 					output	 logic signed	[10:0]	topLeftY

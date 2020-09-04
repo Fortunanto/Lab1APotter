@@ -12,14 +12,10 @@ module bitmap_offsetFlip	(
 					input logic startOfFrame,
 					
 					output logic [10:0] newOffsetX,
-					output logic [10:0] newOffsetY,
-		
-					output	logic	[7:0]		RGBout
+					output logic [10:0] newOffsetY		
 );
-// generating a smily bitmap 
 
-localparam OBJECT_WIDTH_X=11;
-localparam OBJECT_HEIGHT_Y=48;
+parameter shortint OBJECT_WIDTH_X = 5;
 
 
 parameter int FLIP_TIME = 5;
@@ -31,9 +27,7 @@ initial begin
 	flip = 0;
 	flipTimer = FLIP_TIME;
 end
-// pipeline (ff) to get the pixel color from the array 	 
 
-//////////--------------------------------------------------------------------------------------------------------------=
 always_ff@(posedge clk)
 begin
 	if (startOfFrame) begin
@@ -44,10 +38,10 @@ begin
 		end
 	end
 	
-	if (flip) newOffsetY <= offsetY;	
-	else newOffsetY <= OBJECT_WIDTH_X-offsetX-1;	
+	if (flip) newOffsetX <= offsetX;	
+	else newOffsetX <= OBJECT_WIDTH_X-offsetX-1;	
 	
-	newOffsetX <= offsetX;	
+	newOffsetY <= offsetY;	
 end
 
 endmodule
