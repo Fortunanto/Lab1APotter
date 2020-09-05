@@ -1,0 +1,196 @@
+// Copyright (C) 2017  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other 
+// applicable license agreement, including, without limitation, 
+// that your use is for the sole purpose of programming logic 
+// devices manufactured by Intel and sold by Intel or its 
+// authorized distributors.  Please refer to the applicable 
+// agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "09/05/2020 18:22:37"
+                                                                                
+// Verilog Test Bench (with test vectors) for design :                          scoreManager
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module scoreManager_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg amount_2_3;
+reg amount_2_2;
+reg amount_2_1;
+reg amount_2_0;
+reg amount_1_3;
+reg amount_1_2;
+reg amount_1_1;
+reg amount_1_0;
+reg amount_0_3;
+reg amount_0_2;
+reg amount_0_1;
+reg amount_0_0;
+reg clk;
+reg enableAdd;
+reg enableRemove;
+reg resetN;
+// wires                                               
+wire score_0_0;
+wire score_0_1;
+wire score_0_2;
+wire score_0_3;
+wire score_1_0;
+wire score_1_1;
+wire score_1_2;
+wire score_1_3;
+wire score_2_0;
+wire score_2_1;
+wire score_2_2;
+wire score_2_3;
+wire score_3_0;
+wire score_3_1;
+wire score_3_2;
+wire score_3_3;
+wire score_4_0;
+wire score_4_1;
+wire score_4_2;
+wire score_4_3;
+wire score_5_0;
+wire score_5_1;
+wire score_5_2;
+wire score_5_3;
+
+// assign statements (if any)                          
+scoreManager i1 (
+// port map - connection between master ports and signals/registers   
+	.amount_2_3(amount_2_3),
+	.amount_2_2(amount_2_2),
+	.amount_2_1(amount_2_1),
+	.amount_2_0(amount_2_0),
+	.amount_1_3(amount_1_3),
+	.amount_1_2(amount_1_2),
+	.amount_1_1(amount_1_1),
+	.amount_1_0(amount_1_0),
+	.amount_0_3(amount_0_3),
+	.amount_0_2(amount_0_2),
+	.amount_0_1(amount_0_1),
+	.amount_0_0(amount_0_0),
+	.clk(clk),
+	.enableAdd(enableAdd),
+	.enableRemove(enableRemove),
+	.resetN(resetN)
+);
+initial 
+begin 
+#1000000 $finish;
+end 
+
+// clk
+always
+begin
+	clk = 1'b0;
+	clk = #5000 1'b1;
+	#5000;
+end 
+
+// resetN
+initial
+begin
+	resetN = 1'b1;
+	resetN = #60000 1'b0;
+	resetN = #40000 1'b1;
+end 
+
+// enableAdd
+initial
+begin
+	enableAdd = 1'b0;
+	enableAdd = #190000 1'b1;
+	enableAdd = #20000 1'b0;
+end 
+
+// amount[2][3]
+initial
+begin
+	amount_2_3 = 1'b0;
+end 
+
+// amount[2][2]
+initial
+begin
+	amount_2_2 = 1'b0;
+end 
+
+// amount[2][1]
+initial
+begin
+	amount_2_1 = 1'b0;
+end 
+
+// amount[2][0]
+initial
+begin
+	amount_2_0 = 1'b0;
+end 
+
+// amount[1][3]
+initial
+begin
+	amount_1_3 = 1'b1;
+end 
+
+// amount[1][2]
+initial
+begin
+	amount_1_2 = 1'b0;
+end 
+
+// amount[1][1]
+initial
+begin
+	amount_1_1 = 1'b0;
+end 
+
+// amount[1][0]
+initial
+begin
+	amount_1_0 = 1'b0;
+end 
+
+// amount[0][3]
+initial
+begin
+	amount_0_3 = 1'b0;
+end 
+
+// amount[0][2]
+initial
+begin
+	amount_0_2 = 1'b0;
+end 
+
+// amount[0][1]
+initial
+begin
+	amount_0_1 = 1'b0;
+end 
+
+// amount[0][0]
+initial
+begin
+	amount_0_0 = 1'b0;
+end 
+endmodule
+
