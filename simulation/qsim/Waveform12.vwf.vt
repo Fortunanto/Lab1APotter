@@ -1,0 +1,250 @@
+// Copyright (C) 2017  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel MegaCore Function License Agreement, or other 
+// applicable license agreement, including, without limitation, 
+// that your use is for the sole purpose of programming logic 
+// devices manufactured by Intel and sold by Intel or its 
+// authorized distributors.  Please refer to the applicable 
+// agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "09/05/2020 20:33:04"
+                                                                                
+// Verilog Test Bench (with test vectors) for design :                          decimalAddSubSixDigs
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module decimalAddSubSixDigs_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg [0:23] amountIn;
+reg clk;
+reg enableAdd;
+reg enableSub;
+reg resetN;
+// wires                                               
+wire [0:23] resultOut;
+
+// assign statements (if any)                          
+decimalAddSubSixDigs i1 (
+// port map - connection between master ports and signals/registers   
+	.amountIn(amountIn),
+	.clk(clk),
+	.enableAdd(enableAdd),
+	.enableSub(enableSub),
+	.resetN(resetN),
+	.resultOut(resultOut)
+);
+initial 
+begin 
+#1000000 $finish;
+end 
+
+// clk
+always
+begin
+	clk = 1'b0;
+	clk = #5000 1'b1;
+	#5000;
+end 
+
+// resetN
+initial
+begin
+	resetN = 1'b1;
+	resetN = #60000 1'b0;
+	resetN = #10000 1'b1;
+end 
+
+// enableAdd
+initial
+begin
+	enableAdd = 1'b0;
+	enableAdd = #140000 1'b1;
+	enableAdd = #20000 1'b0;
+	enableAdd = #140000 1'b1;
+	enableAdd = #20000 1'b0;
+	enableAdd = #310000 1'b1;
+	enableAdd = #10000 1'b0;
+	enableAdd = #70000 1'b1;
+	enableAdd = #10000 1'b0;
+	enableAdd = #70000 1'b1;
+	enableAdd = #50000 1'b0;
+end 
+
+// enableSub
+initial
+begin
+	enableSub = 1'b0;
+	enableSub = #380000 1'b1;
+	enableSub = #10000 1'b0;
+end 
+
+// amountIn[0]
+initial
+begin
+	amountIn[0] = 1'b0;
+	amountIn[0] = #590000 1'b1;
+	amountIn[0] = #110000 1'b0;
+end 
+
+// amountIn[1]
+initial
+begin
+	amountIn[1] = 1'b1;
+	amountIn[1] = #590000 1'b0;
+	amountIn[1] = #110000 1'b1;
+end 
+
+// amountIn[2]
+initial
+begin
+	amountIn[2] = 1'b1;
+	amountIn[2] = #590000 1'b0;
+	amountIn[2] = #110000 1'b1;
+end 
+
+// amountIn[3]
+initial
+begin
+	amountIn[3] = 1'b1;
+	amountIn[3] = #590000 1'b0;
+	amountIn[3] = #110000 1'b1;
+end 
+
+// amountIn[4]
+initial
+begin
+	amountIn[4] = 1'b0;
+end 
+
+// amountIn[5]
+initial
+begin
+	amountIn[5] = 1'b0;
+end 
+
+// amountIn[6]
+initial
+begin
+	amountIn[6] = 1'b0;
+	amountIn[6] = #580000 1'b1;
+	amountIn[6] = #400000 1'b0;
+end 
+
+// amountIn[7]
+initial
+begin
+	amountIn[7] = 1'b0;
+end 
+
+// amountIn[8]
+initial
+begin
+	amountIn[8] = 1'b0;
+end 
+
+// amountIn[9]
+initial
+begin
+	amountIn[9] = 1'b0;
+end 
+
+// amountIn[10]
+initial
+begin
+	amountIn[10] = 1'b0;
+end 
+
+// amountIn[11]
+initial
+begin
+	amountIn[11] = 1'b0;
+end 
+
+// amountIn[12]
+initial
+begin
+	amountIn[12] = 1'b0;
+end 
+
+// amountIn[13]
+initial
+begin
+	amountIn[13] = 1'b0;
+end 
+
+// amountIn[14]
+initial
+begin
+	amountIn[14] = 1'b0;
+end 
+
+// amountIn[15]
+initial
+begin
+	amountIn[15] = 1'b0;
+end 
+
+// amountIn[16]
+initial
+begin
+	amountIn[16] = 1'b0;
+end 
+
+// amountIn[17]
+initial
+begin
+	amountIn[17] = 1'b0;
+end 
+
+// amountIn[18]
+initial
+begin
+	amountIn[18] = 1'b0;
+end 
+
+// amountIn[19]
+initial
+begin
+	amountIn[19] = 1'b0;
+end 
+
+// amountIn[20]
+initial
+begin
+	amountIn[20] = 1'b0;
+end 
+
+// amountIn[21]
+initial
+begin
+	amountIn[21] = 1'b0;
+end 
+
+// amountIn[22]
+initial
+begin
+	amountIn[22] = 1'b0;
+end 
+
+// amountIn[23]
+initial
+begin
+	amountIn[23] = 1'b0;
+end 
+endmodule
+

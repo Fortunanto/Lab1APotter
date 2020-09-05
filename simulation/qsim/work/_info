@@ -52,8 +52,52 @@ r1
 R10
 R11
 ndecimal@adder_vlg_vec_tst
+vdecimalAddSubSixDigs
+Z13 !s110 1599327186
+!i10b 1
+!s100 ]hJ8k@>[Z<OkKmD41aRdo3
+IKziT6C`Dg1F0VlY[Fk_Bn0
+R2
+R3
+w1599327185
+R4
+R5
+R6
+R7
+r1
+!s85 0
+31
+Z14 !s108 1599327186.000000
+R8
+R9
+!i113 1
+R10
+R11
+ndecimal@add@sub@six@digs
+vdecimalAddSubSixDigs_vlg_vec_tst
+R13
+!i10b 1
+!s100 H8PLK;k3N3;e2]05f[HjZ2
+I4O2UR3Y0[]N@aN_=aeio_3
+R2
+R3
+w1599327184
+8Waveform12.vwf.vt
+FWaveform12.vwf.vt
+R12
+R7
+r1
+!s85 0
+31
+R14
+!s107 Waveform12.vwf.vt|
+!s90 -work|work|Waveform12.vwf.vt|
+!i113 1
+R10
+R11
+ndecimal@add@sub@six@digs_vlg_vec_tst
 vdecimalSubtractor
-Z13 !s110 1599325288
+Z15 !s110 1599325288
 !i10b 1
 !s100 @1FLPc0zX>cg6]K:oWPPO2
 ITIFh?=]L3C[Dz0C2b:jhm2
@@ -67,7 +111,7 @@ R7
 r1
 !s85 0
 31
-Z14 !s108 1599325288.000000
+Z16 !s108 1599325288.000000
 R8
 R9
 !i113 1
@@ -75,7 +119,7 @@ R10
 R11
 ndecimal@subtractor
 vdecimalSubtractor_vlg_vec_tst
-R13
+R15
 !i10b 1
 !s100 :Ek5JzegKLQka00A8gGnV1
 I1CnXiJ?5;aE4;cDOjXYQo2
@@ -89,7 +133,7 @@ R7
 r1
 !s85 0
 31
-R14
+R16
 !s107 Waveform11.vwf.vt|
 !s90 -work|work|Waveform11.vwf.vt|
 !i113 1
@@ -97,7 +141,7 @@ R10
 R11
 ndecimal@subtractor_vlg_vec_tst
 venemies_moveCollision
-Z15 !s110 1599166120
+Z17 !s110 1599166120
 !i10b 1
 !s100 h6T@1CKkMlm09K=MG[^JO1
 IK2?lH2;3Q6bl7VJ;fPH0Z0
@@ -111,7 +155,7 @@ R7
 r1
 !s85 0
 31
-Z16 !s108 1599166120.000000
+Z18 !s108 1599166120.000000
 R8
 R9
 !i113 1
@@ -119,7 +163,7 @@ R10
 R11
 nenemies_move@collision
 venemies_moveCollision_vlg_vec_tst
-R15
+R17
 !i10b 1
 !s100 E@7^e5AeRa;G>BMB4JQk62
 Ic@DEfX[1bB]UW:O<K^GF@0
@@ -133,7 +177,7 @@ R7
 r1
 !s85 0
 31
-R16
+R18
 !s107 Waveform3.vwf.vt|
 !s90 -work|work|Waveform3.vwf.vt|
 !i113 1
@@ -141,7 +185,7 @@ R10
 R11
 nenemies_move@collision_vlg_vec_tst
 vgame_fsm
-Z17 !s110 1598800960
+Z19 !s110 1598800960
 !i10b 1
 !s100 ;`hHHgz`@h`?4AX8l;f@<0
 Idk=:eJX8]<FF>j_;`S?nD2
@@ -155,14 +199,14 @@ R7
 r1
 !s85 0
 31
-Z18 !s108 1598800960.000000
+Z20 !s108 1598800960.000000
 R8
 R9
 !i113 1
 R10
 R11
 vgame_fsm_vlg_vec_tst
-R17
+R19
 !i10b 1
 !s100 1I3HgW0nfB:I]V5G<N;4n0
 IX6c]7@ec]6n5<3TR2LnU61
@@ -176,14 +220,14 @@ R7
 r1
 !s85 0
 31
-R18
+R20
 !s107 output_files/Waveform1.vwf.vt|
 !s90 -work|work|output_files/Waveform1.vwf.vt|
 !i113 1
 R10
 R11
 vscoreManager
-Z19 !s110 1599325963
+Z21 !s110 1599325963
 !i10b 1
 !s100 BIE8N<L?[N1jKTlV<:jMR0
 IeECVPP>Oo^JIW;10e=`k13
@@ -205,7 +249,7 @@ R10
 R11
 nscore@manager
 vscoreManager_vlg_vec_tst
-R19
+R21
 !i10b 1
 !s100 jiiF7KgoOZB0Hkl=E=5D]2
 I^TNKg3RbYo4m9n>F;4l5[1
@@ -227,7 +271,7 @@ R10
 R11
 nscore@manager_vlg_vec_tst
 vShot_MoveCollision
-Z20 !s110 1598522268
+Z22 !s110 1598522268
 !i10b 1
 !s100 dIhXfDd3`7FbGCY@<D]DQ1
 IdYL?RL2z6_Ed]ZWH35Ia`0
@@ -241,7 +285,7 @@ R7
 r1
 !s85 0
 31
-Z21 !s108 1598522268.000000
+Z23 !s108 1598522268.000000
 R8
 R9
 !i113 1
@@ -249,7 +293,7 @@ R10
 R11
 n@shot_@move@collision
 vShot_MoveCollision_vlg_vec_tst
-R20
+R22
 !i10b 1
 !s100 4gzi2^kYHTf_XdM?3G3Y?3
 I9AnUc>[7e3bo;A@dTK>E22
@@ -263,7 +307,7 @@ R7
 r1
 !s85 0
 31
-R21
+R23
 !s107 Waveform.vwf.vt|
 !s90 -work|work|Waveform.vwf.vt|
 !i113 1
@@ -271,7 +315,7 @@ R10
 R11
 n@shot_@move@collision_vlg_vec_tst
 vshot_StockManager
-Z22 !s110 1598612876
+Z24 !s110 1598612876
 !i10b 1
 !s100 5M3icWQHEJj9<73Z;cVg<1
 IlJEN_<1N0ALOza0g3n_PZ2
@@ -285,7 +329,7 @@ R7
 r1
 !s85 0
 31
-Z23 !s108 1598612876.000000
+Z25 !s108 1598612876.000000
 R8
 R9
 !i113 1
@@ -293,7 +337,7 @@ R10
 R11
 nshot_@stock@manager
 vshot_StockManager_vlg_vec_tst
-R22
+R24
 !i10b 1
 !s100 Pg3M:<BGOFNl__PPU5KU`1
 IFQz1=EcJ5L?elBJkATUmg3
@@ -307,7 +351,7 @@ R7
 r1
 !s85 0
 31
-R23
+R25
 !s107 Waveform1.vwf.vt|
 !s90 -work|work|Waveform1.vwf.vt|
 !i113 1
