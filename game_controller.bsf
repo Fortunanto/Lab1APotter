@@ -122,6 +122,27 @@ agreement for further details.
 		(text "towerPlayerCollision" (rect 222 91 299 103)(font "Arial" ))
 		(line (pt 320 96)(pt 304 96)(line_width 1))
 	)
+	(port
+		(pt 320 112)
+		(output)
+		(text "scoreAmount[0..23]" (rect 0 0 80 12)(font "Arial" ))
+		(text "scoreAmount[0..23]" (rect 219 107 299 119)(font "Arial" ))
+		(line (pt 320 112)(pt 304 112)(line_width 3))
+	)
+	(port
+		(pt 320 128)
+		(output)
+		(text "enableAddScore" (rect 0 0 66 12)(font "Arial" ))
+		(text "enableAddScore" (rect 233 123 299 135)(font "Arial" ))
+		(line (pt 320 128)(pt 304 128)(line_width 1))
+	)
+	(port
+		(pt 320 144)
+		(output)
+		(text "enableRemoveScore" (rect 0 0 84 12)(font "Arial" ))
+		(text "enableRemoveScore" (rect 215 139 299 151)(font "Arial" ))
+		(line (pt 320 144)(pt 304 144)(line_width 1))
+	)
 	(drawing
 		(rectangle (rect 16 16 304 192)(line_width 1))
 	)
