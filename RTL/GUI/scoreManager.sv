@@ -1,16 +1,10 @@
-//-- Alex Grinshpun Apr 2017
-//-- Dudy Nov 13 2017
-// System-Verilog Alex Grinshpun May 2018
-// New coding convention dudy December 2018
-// (c) Technion IIT, Department of Electrical Engineering 2019 
-
-
+// TODO: rename to "decimalAddSubSixDigs"
 module	scoreManager(	
 					input		logic	clk,
 					input		logic	resetN,					
 					
 					input logic enableAdd,	
-					input logic enableRemove,
+					input logic enableSub,
 					input logic [0:23] amountIn,
 		
 					output logic [0:23] resultOut	
@@ -52,6 +46,29 @@ generate
 	end
 endgenerate 
 
+logic [0:5][0:3] newResultSub;
+logic [0:5] subCarrys;
+
+decimalSubtractor subber(
+							.val2(result[0]),
+							.val1(amount[0]),
+							.carryIn(0),
+							.carryOut(subCarrys[0]),
+							.out(newResultSub[0])
+								);
+								
+generate
+	for (i=1;i<6;i++) begin: subLoop
+		decimalSubtractor subber(
+							.val2(result[i]),
+							.val1(amount[i]),
+							.carryIn(subCarrys[i-1]),
+							.carryOut(subCarrys[i]),
+							.out(newResultSub[i])
+								);
+	end
+endgenerate 
+
 
 always_ff@(posedge clk or negedge resetN)
 begin
@@ -60,6 +77,7 @@ begin
 	end
 	else begin
 		if (enableAdd) result <= newResultAdd;
+		else if (enableSub) result <= newResultSub;
 	end
 end
 

@@ -21,6 +21,7 @@ after 2500 simTimestamp
 run -all
 quit -f
 
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -39,6 +40,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 
 </modelsim_script_timing>
 <hdl_lang>verilog</hdl_lang>
@@ -105,7 +107,7 @@ SIGNAL("amountIn[7]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "amountIn";
+	PARENT = "";
 }
 
 SIGNAL("amountIn[6]")
@@ -115,7 +117,7 @@ SIGNAL("amountIn[6]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "amountIn";
+	PARENT = "";
 }
 
 SIGNAL("amountIn[5]")
@@ -125,7 +127,7 @@ SIGNAL("amountIn[5]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "amountIn";
+	PARENT = "";
 }
 
 SIGNAL("amountIn[4]")
@@ -135,7 +137,7 @@ SIGNAL("amountIn[4]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "amountIn";
+	PARENT = "";
 }
 
 SIGNAL("amountIn[3]")
@@ -145,7 +147,7 @@ SIGNAL("amountIn[3]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "amountIn";
+	PARENT = "";
 }
 
 SIGNAL("amountIn[2]")
@@ -155,7 +157,7 @@ SIGNAL("amountIn[2]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "amountIn";
+	PARENT = "";
 }
 
 SIGNAL("amountIn[1]")
@@ -165,7 +167,7 @@ SIGNAL("amountIn[1]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "amountIn";
+	PARENT = "";
 }
 
 SIGNAL("amountIn[0]")
@@ -175,7 +177,7 @@ SIGNAL("amountIn[0]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "amountIn";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[23]")
@@ -185,7 +187,7 @@ SIGNAL("resultOut[23]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[22]")
@@ -195,7 +197,7 @@ SIGNAL("resultOut[22]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[21]")
@@ -205,7 +207,7 @@ SIGNAL("resultOut[21]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[20]")
@@ -215,7 +217,7 @@ SIGNAL("resultOut[20]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[19]")
@@ -225,7 +227,7 @@ SIGNAL("resultOut[19]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[18]")
@@ -235,7 +237,7 @@ SIGNAL("resultOut[18]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[17]")
@@ -245,7 +247,7 @@ SIGNAL("resultOut[17]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[16]")
@@ -255,7 +257,7 @@ SIGNAL("resultOut[16]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[15]")
@@ -265,7 +267,7 @@ SIGNAL("resultOut[15]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[14]")
@@ -275,7 +277,7 @@ SIGNAL("resultOut[14]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[13]")
@@ -285,7 +287,7 @@ SIGNAL("resultOut[13]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[12]")
@@ -295,7 +297,7 @@ SIGNAL("resultOut[12]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[11]")
@@ -305,7 +307,7 @@ SIGNAL("resultOut[11]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[10]")
@@ -315,7 +317,7 @@ SIGNAL("resultOut[10]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[9]")
@@ -325,7 +327,7 @@ SIGNAL("resultOut[9]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[8]")
@@ -335,7 +337,7 @@ SIGNAL("resultOut[8]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[7]")
@@ -345,7 +347,7 @@ SIGNAL("resultOut[7]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[6]")
@@ -355,7 +357,7 @@ SIGNAL("resultOut[6]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[5]")
@@ -365,7 +367,7 @@ SIGNAL("resultOut[5]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[4]")
@@ -375,7 +377,7 @@ SIGNAL("resultOut[4]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[3]")
@@ -385,7 +387,7 @@ SIGNAL("resultOut[3]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[2]")
@@ -395,7 +397,7 @@ SIGNAL("resultOut[2]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[1]")
@@ -405,7 +407,7 @@ SIGNAL("resultOut[1]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
+	PARENT = "";
 }
 
 SIGNAL("resultOut[0]")
@@ -415,20 +417,10 @@ SIGNAL("resultOut[0]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "resultOut";
-}
-
-SIGNAL("enableAdd")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
 	PARENT = "";
 }
 
-SIGNAL("enableRemove")
+SIGNAL("enableAdd")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -476,6 +468,16 @@ GROUP("resultOut4")
 GROUP("resultOut5")
 {
 	MEMBERS = "resultOut[20]", "resultOut[21]", "resultOut[22]", "resultOut[23]";
+}
+
+SIGNAL("enableSub")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
 }
 
 TRANSITION_LIST("clk")
@@ -808,12 +810,16 @@ TRANSITION_LIST("enableAdd")
 	}
 }
 
-TRANSITION_LIST("enableRemove")
+TRANSITION_LIST("enableSub")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 1000.0;
+		LEVEL 0 FOR 590.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 20.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 370.0;
 	}
 }
 
@@ -846,7 +852,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "enableRemove";
+	CHANNEL = "enableSub";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 3;

@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "09/05/2020 19:42:16"
+// Generated on "09/05/2020 20:12:40"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          scoreManager
 // 
@@ -33,7 +33,7 @@ module scoreManager_vlg_vec_tst();
 reg [0:23] amountIn;
 reg clk;
 reg enableAdd;
-reg enableRemove;
+reg enableSub;
 reg resetN;
 // wires                                               
 wire [0:23] resultOut;
@@ -44,7 +44,7 @@ scoreManager i1 (
 	.amountIn(amountIn),
 	.clk(clk),
 	.enableAdd(enableAdd),
-	.enableRemove(enableRemove),
+	.enableSub(enableSub),
 	.resetN(resetN),
 	.resultOut(resultOut)
 );
@@ -83,10 +83,14 @@ begin
 	enableAdd = #20000 1'b0;
 end 
 
-// enableRemove
+// enableSub
 initial
 begin
-	enableRemove = 1'b0;
+	enableSub = 1'b0;
+	enableSub = #590000 1'b1;
+	enableSub = #10000 1'b0;
+	enableSub = #20000 1'b1;
+	enableSub = #10000 1'b0;
 end 
 
 // amountIn[0]
