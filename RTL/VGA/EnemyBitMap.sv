@@ -23,7 +23,14 @@ localparam OBJECT_WIDTH_X=11;
 localparam OBJECT_HEIGHT_Y=48;
 
 localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;
+localparam logic [7:0] DEBUG_COLOR = 8'hAA;
 
+logic [7:0] outColor;
+
+// comment for PROD
+//assign outColor = DEBUG_COLOR;
+
+// comment for DEBUG
 logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 {8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h00, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
 {8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h00, 8'h38, 8'h00, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
@@ -74,41 +81,18 @@ logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 {8'hFF, 8'hFF, 8'hFF, 8'h00, 8'h00, 8'h00, 8'h00, 8'h00, 8'hFF, 8'hFF, 8'hFF },
 {8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h00, 8'hFF, 8'h00, 8'hFF, 8'hFF, 8'hFF, 8'hFF }
 };
+assign outColor = object_colors[offsetY][offsetX];
+	 
 
-//
-//parameter int FLIP_TIME = 5;
-//int flipTimer;
-//logic flip;
-// 
-// 
-//initial begin
-//	flip = 0;
-//	flipTimer = FLIP_TIME;
-//end
-// pipeline (ff) to get the pixel color from the array 	 
-
-//////////--------------------------------------------------------------------------------------------------------------=
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin
 		RGBout <=	8'h00;
 	end
 	else begin
-		//HitEdgeCode <= hit_colors[offsetY >> OBJECT_HEIGHT_Y_DIVIDER][offsetX >> OBJECT_WIDTH_X_DIVIDER];	//get hitting edge from the colors table  
-
-//		
-//		if (startOfFrame) begin
-//			if (flipTimer>0) flipTimer <= flipTimer - 1;
-//			else begin
-//				flipTimer <= 5;
-//				flip <= !flip;
-//			end
-//		end
 		
-		if (InsideRectangle == 1'b1 ) begin  // inside an external bracket 
-//			if (flip) 	RGBout <= object_colors[offsetY][offsetX];	
-//			else RGBout <= object_colors[offsetY][OBJECT_WIDTH_X-offsetX-1];		
-			RGBout <= object_colors[offsetY][offsetX];
+		if (InsideRectangle == 1'b1 ) begin  // inside an external bracket 	
+			RGBout <= outColor;
 		end
 		else 
 			RGBout <= TRANSPARENT_ENCODING ; // force color to transparent so it will not be displayed 

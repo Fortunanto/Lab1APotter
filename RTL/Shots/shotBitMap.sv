@@ -26,6 +26,14 @@ localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// RGB value in the bitmap 
 localparam  int OBJECT_HEIGHT_Y = 16;
 localparam  int OBJECT_WIDTH_X = 16;
 
+localparam logic [7:0] DEBUG_COLOR = 8'hB3;
+
+logic [7:0] outColor;
+
+// comment for PROD
+//assign outColor = DEBUG_COLOR;
+
+// comment for DEBUG
 logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 {8'hFF, 8'hFF, 8'hFF, 8'h01, 8'h01, 8'h01, 8'h01, 8'h05, 8'h05, 8'h05, 8'h01, 8'h01, 8'h01, 8'hFF, 8'hFF, 8'hFF },
 {8'hFF, 8'h01, 8'h01, 8'h05, 8'h06, 8'h06, 8'h0A, 8'h0A, 8'h0A, 8'h0A, 8'h0A, 8'h06, 8'h05, 8'h01, 8'h01, 8'hFF },
@@ -44,52 +52,17 @@ logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 {8'hFF, 8'h01, 8'h01, 8'h06, 8'h06, 8'h0A, 8'h0A, 8'h0B, 8'h0B, 8'h0B, 8'h0A, 8'h06, 8'h06, 8'h01, 8'h01, 8'hFF },
 {8'hFF, 8'hFF, 8'h00, 8'h01, 8'h01, 8'h05, 8'h06, 8'h06, 8'h06, 8'h06, 8'h05, 8'h01, 8'h01, 8'h00, 8'hFF, 8'hFF }
 };
+assign outColor = object_colors[offsetY][offsetX];
 
-
-//hit bit map has one bit per edge:  hit_colors[3:0] =   {Left, Top, Right, Bottom}	
-//there is one bit per edge, in the corner two bits are set  
-
-
-//logic [0:3] [0:3] [3:0] hit_colors = 
-//{16'hC446,     
-// 16'h8C62,    
-// 16'h8932,
-// 16'h9113};
-
- 
-
-parameter int FLIP_TIME = 5;
-int flipTimer;
-logic flip;
- 
- 
-initial begin
-	flip = 0;
-	flipTimer = FLIP_TIME;
-end
-// pipeline (ff) to get the pixel color from the array 	 
-
-//////////--------------------------------------------------------------------------------------------------------------=
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin
 		RGBout <=	8'h00;
 	end
 	else begin
-		//HitEdgeCode <= hit_colors[offsetY >> OBJECT_HEIGHT_Y_DIVIDER][offsetX >> OBJECT_WIDTH_X_DIVIDER];	//get hitting edge from the colors table  
-
-		
-		if (startOfFrame) begin
-			if (flipTimer>0) flipTimer <= flipTimer - 1;
-			else begin
-				flipTimer <= 5;
-				flip <= !flip;
-			end
-		end
 		
 		if (InsideRectangle == 1'b1 ) begin  // inside an external bracket 
-			if (flip) 	RGBout <= object_colors[offsetY][offsetX];	
-			else RGBout <= object_colors[offsetY][OBJECT_WIDTH_X-offsetX-1];
+			RGBout <= outColor;
 		end
 		else 
 			RGBout <= TRANSPARENT_ENCODING ; // force color to transparent so it will not be displayed 

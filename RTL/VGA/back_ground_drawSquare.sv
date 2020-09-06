@@ -27,6 +27,14 @@ const int FIXED_POINT_MULIPLIER=64;
 localparam  int OBJECT_HEIGHT_Y = 64;
 localparam  int OBJECT_WIDTH_X = 64;
 
+localparam logic [7:0] DEBUG_COLOR = 8'hBB;
+
+logic [7:0] outColor;
+
+// comment for PROD
+//assign outColor = DEBUG_COLOR;
+
+// comment for DEBUG
 logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 {8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'hBD, 8'hBD, 8'h30, 8'h30, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h75, 8'h75, 8'hBD, 8'hBD, 8'h75, 8'h75, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h51, 8'h51, 8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h99, 8'h99, 8'h75, 8'h75, 8'h75, 8'h75, 8'h50, 8'h50, 8'h51, 8'h51, 8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h75, 8'h75 },
 {8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'hBD, 8'hBD, 8'h30, 8'h30, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h75, 8'h75, 8'hBD, 8'hBD, 8'h75, 8'h75, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h51, 8'h51, 8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h99, 8'h99, 8'h75, 8'h75, 8'h75, 8'h75, 8'h50, 8'h50, 8'h51, 8'h51, 8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h75, 8'h75 },
@@ -93,18 +101,15 @@ logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 {8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h75, 8'h75, 8'h50, 8'h50, 8'h51, 8'h51, 8'h50, 8'h50, 8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'hBD, 8'hBD, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h51, 8'h51, 8'h75, 8'h75, 8'h99, 8'h99, 8'h51, 8'h51, 8'h2C, 8'h2C, 8'hBD, 8'hBD, 8'h75, 8'h75, 8'h50, 8'h50, 8'h51, 8'h51, 8'h75, 8'h75, 8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h2C, 8'h2C },
 {8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h75, 8'h75, 8'h50, 8'h50, 8'h51, 8'h51, 8'h50, 8'h50, 8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'hBD, 8'hBD, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h75, 8'h2C, 8'h2C, 8'h51, 8'h51, 8'h75, 8'h75, 8'h99, 8'h99, 8'h51, 8'h51, 8'h2C, 8'h2C, 8'hBD, 8'hBD, 8'h75, 8'h75, 8'h50, 8'h50, 8'h51, 8'h51, 8'h75, 8'h75, 8'h75, 8'h75, 8'h99, 8'h99, 8'h75, 8'h75, 8'h2C, 8'h2C }
 };
-
-
-const int	xFrameSize	=	639;
-const int	yFrameSize	=	479;
+assign outColor = object_colors[pixelY-offset][pixelX];
 
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin
-		BG_RGB <= object_colors[pixelY][pixelX];
+		BG_RGB <= 0;
 	end 
 	else begin		
-		BG_RGB <= object_colors[pixelY-offset][pixelX];
+		BG_RGB <= outColor;
 		if (startOfFrame) offsetFIXED<=offsetFIXED+BG_SPEED;
 	end; 	
 end

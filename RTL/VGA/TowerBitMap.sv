@@ -16,11 +16,18 @@ module TowerBitMap	(
 					output	logic	[7:0]		RGBout
 );
 
-localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;
+localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF;
+localparam logic [7:0] DEBUG_COLOR = 8'hFA;
 
 localparam  int OBJECT_HEIGHT_Y = 29;
 localparam  int OBJECT_WIDTH_X = 14;
- 
+
+logic [7:0] outColor;
+
+// comment for PROD
+//assign outColor = DEBUG_COLOR;
+
+// comment for DEBUG 
 logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 {8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h05, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
 {8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'h05, 8'h05, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
@@ -52,6 +59,7 @@ logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
 {8'hFF, 8'hFF, 8'hFF, 8'h45, 8'h89, 8'hCD, 8'h89, 8'h89, 8'h91, 8'h45, 8'hFF, 8'hFF, 8'hFF, 8'hFF },
 {8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89, 8'h89 }
 };
+assign outColor = object_colors[offsetY>>1][offsetX>>1];
 
 
 always_ff@(posedge clk or negedge resetN)
@@ -61,7 +69,7 @@ begin
 	end
 	else begin
 			if (InsideRectangle) begin
-				RGBout <= object_colors[offsetY>>1][offsetX>>1];				
+				RGBout <= outColor;				
 			end
 			else RGBout <= TRANSPARENT_ENCODING;
 	end 
