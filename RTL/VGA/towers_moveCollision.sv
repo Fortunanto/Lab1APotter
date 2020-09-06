@@ -12,6 +12,7 @@ module	towers_moveCollision	(
 					input 	logic	[10:0] pixelX,// current VGA pixel 
 					input 	logic	[10:0] pixelY,
 					input 	logic signed	[10:0] spawnX, //position on the screen 
+					input    logic [3:0] curTreeCount,
 					input    logic pause,
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
 					output 	logic	[10:0] offsetY,					
@@ -23,7 +24,6 @@ parameter int FALL_SPEED=100;
 parameter  int OBJECT_WIDTH_X = 28;
 parameter  int OBJECT_HEIGHT_Y = 58;
 
-parameter int MAX_TOWERS_AMOUNT=10;
 parameter int TOWERS_WAIT=100;
 
 int currTowersAmount=1;
@@ -77,7 +77,7 @@ begin
 			end
 			else begin
 				towerTimer<=TOWERS_WAIT;
-				if (currTowersAmount<MAX_TOWERS_AMOUNT) currTowersAmount<=currTowersAmount+1;
+				if (currTowersAmount<curTreeCount) currTowersAmount<=currTowersAmount+1;
 			end
 		end
 		

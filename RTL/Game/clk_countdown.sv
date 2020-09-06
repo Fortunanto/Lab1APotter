@@ -3,10 +3,10 @@ input logic clk,
 input logic resetN,
 input startOfFrame,
 input request_start,
-input [3:0] requested_time,
+input [10:0] requested_time,
 output slowclk
 );
-logic [3:0] delay;
+logic [10:0] delay;
 logic flag;
 always_ff@(posedge clk or negedge resetN)
 begin

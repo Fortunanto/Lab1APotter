@@ -7,12 +7,12 @@ input logic [2:0] enemyDead,
 input logic playerDead,
 output logic [3:0] sound_key,
 output logic request_time,
-output logic [3:0] time_amount
+output logic [10:0] time_amount
 
 );
 
 enum logic [2:0] {Sidle, Sshot,SHit, SEnemyDead,Send} prState, nxtState;
-logic [3:0] delay,nxt_delay;
+logic [10:0] delay,nxt_delay;
 const int SOUND_LENGTH=5;
 
 

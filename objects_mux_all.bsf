@@ -21,9 +21,9 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 320 320)
+	(rect 16 16 320 352)
 	(text "objects_mux_all" (rect 5 0 68 12)(font "Arial" ))
-	(text "inst" (rect 8 288 20 300)(font "Arial" ))
+	(text "inst" (rect 8 320 20 332)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -111,23 +111,37 @@ agreement for further details.
 	(port
 		(pt 0 224)
 		(input)
-		(text "backGroundRGB[7..0]" (rect 0 0 89 12)(font "Arial" ))
-		(text "backGroundRGB[7..0]" (rect 21 219 110 231)(font "Arial" ))
-		(line (pt 0 224)(pt 16 224)(line_width 3))
+		(text "hoopDrawingRequest" (rect 0 0 84 12)(font "Arial" ))
+		(text "hoopDrawingRequest" (rect 21 219 105 231)(font "Arial" ))
+		(line (pt 0 224)(pt 16 224)(line_width 1))
 	)
 	(port
 		(pt 0 240)
 		(input)
-		(text "deathForeground_dr" (rect 0 0 81 12)(font "Arial" ))
-		(text "deathForeground_dr" (rect 21 235 102 247)(font "Arial" ))
-		(line (pt 0 240)(pt 16 240)(line_width 1))
+		(text "hoopRGB[7..0]" (rect 0 0 60 12)(font "Arial" ))
+		(text "hoopRGB[7..0]" (rect 21 235 81 247)(font "Arial" ))
+		(line (pt 0 240)(pt 16 240)(line_width 3))
 	)
 	(port
 		(pt 0 256)
 		(input)
-		(text "deathForegroundRGB[7..0]" (rect 0 0 108 12)(font "Arial" ))
-		(text "deathForegroundRGB[7..0]" (rect 21 251 129 263)(font "Arial" ))
+		(text "backGroundRGB[7..0]" (rect 0 0 89 12)(font "Arial" ))
+		(text "backGroundRGB[7..0]" (rect 21 251 110 263)(font "Arial" ))
 		(line (pt 0 256)(pt 16 256)(line_width 3))
+	)
+	(port
+		(pt 0 272)
+		(input)
+		(text "deathForeground_dr" (rect 0 0 81 12)(font "Arial" ))
+		(text "deathForeground_dr" (rect 21 267 102 279)(font "Arial" ))
+		(line (pt 0 272)(pt 16 272)(line_width 1))
+	)
+	(port
+		(pt 0 288)
+		(input)
+		(text "deathForegroundRGB[7..0]" (rect 0 0 108 12)(font "Arial" ))
+		(text "deathForegroundRGB[7..0]" (rect 21 283 129 295)(font "Arial" ))
+		(line (pt 0 288)(pt 16 288)(line_width 3))
 	)
 	(port
 		(pt 304 32)
@@ -151,6 +165,6 @@ agreement for further details.
 		(line (pt 304 64)(pt 288 64)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 288 288)(line_width 1))
+		(rectangle (rect 16 16 288 320)(line_width 1))
 	)
 )

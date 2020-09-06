@@ -6,6 +6,7 @@
 module	game_controller	(	
 			input		logic	clk,
 			input		logic	resetN,
+			input    logic ghostMode,
 			input	logic	startOfFrame,  // short pulse every start of frame 30Hz 
 			input	logic	drawing_request_Ball,
 			input logic drawing_request_enemy_HU,
@@ -22,29 +23,28 @@ module	game_controller	(
 );
 
 logic box_smiley_collision,box_edge_collision, edge_smiley_collision;
-
+logic flag;
 assign ShotBoxCollision = (drawing_request_shot!=0 && drawing_request_tower)? drawing_request_shot:0;
 assign TowerEnemyHUCollision = (drawing_request_enemy_HU && drawing_request_tower);
-assign ShotEnemyCollision = (drawing_request_shot!=0 && drawing_request_enemy)? drawing_request_shot:0;
-assign towerPlayerCollision = (drawing_request_Ball && drawing_request_tower);
+assign towerPlayerCollision = (drawing_request_Ball && drawing_request_tower && !ghostMode);
 assign ShotHeadsDownCollision = (drawing_request_shot!=0 && drawing_request_enemy_HD);
-//always_ff@(posedge clk or negedge resetN)
-//begin
-//	if(!resetN)
-//	begin 
-//		flag	<= 1'b0;
-//	end 
-//	else begin 
-//
-//			SingleHitPulse <= 1'b0 ; // default 
-//			if(startOfFrame) 
-//				flag = 1'b0 ; // reset for next time 	
-//			if ( ( box_edge_collision || box_smiley_collision ) && (flag == 1'b0)) begin 
-//				flag	<= 1'b1; // to enter only once 
-//				SingleHitPulse <= 1'b1;
-//			end ; 
-//		
-//	end 
-//end
+always_ff@(posedge clk or negedge resetN)
+begin
+	if(!resetN)
+	begin 
+		flag	<= 1'b0;
+	end 
+	else begin 
+
+			ShotEnemyCollision<=0;
+			if(startOfFrame) 
+				flag = 1'b0 ; // reset for next time 	
+			if ( (drawing_request_shot!=0 && drawing_request_enemy) && (flag == 1'b0)) begin 
+				flag	<= 1'b1; // to enter only once 
+				ShotEnemyCollision <= drawing_request_shot;
+			end ; 
+		
+	end 
+end
 
 endmodule

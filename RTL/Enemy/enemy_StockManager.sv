@@ -16,6 +16,8 @@ module enemy_StockManager(
 					input logic dodgeBullet,
 					input logic[2:0] shotCollision,
 					input logic pause,
+					input logic[10:0] enemySpeed,
+					input logic newLevel,
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
 					output 	logic	[10:0] offsetY,	
 					
@@ -27,13 +29,11 @@ module enemy_StockManager(
 										
 );
 
-
-parameter int AMOUNT_OF_ENEMIES = 2;
+parameter int AMOUNT_OF_ENEMIES=2;
 parameter int ENEMY_WIDTH = 20;
 parameter int ENEMY_HEIGHT = 20;
 parameter int HEADS_UP_HEIGHT = 80;
 parameter int HEADS_DOWN_HEIGHT = 80;
-parameter int ENEMY_INITIAL_SPEED = 120;
 parameter int HEADS_SIDE_MARGIN = 8;
 parameter int LEFT_EDGE=30;
 parameter int RIGHT_EDGE = 580;
@@ -62,9 +62,8 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 		  .INITIAL_X(100*(i+1)),
 		  .INITIAL_Y(100*(i+1)), 
 		  .RIGHT_EDGE(RIGHT_EDGE),
-		  .LEFT_EDGE(LEFT_EDGE),
-		  .X_SPEED(ENEMY_INITIAL_SPEED)) 
-		enemy(
+		  .LEFT_EDGE(LEFT_EDGE))
+		  enemy(
 			.clk(clk),
 			.resetN(resetN),
 			.startOfFrame(startOfFrame),
@@ -73,7 +72,9 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 			.shotCollision(shotCollision!=0 && (drawingRequestorId==i)),
 			.pause(pause),
 			.topLeftX(enemiesTLX[i]),
-			.topLeftY(enemiesTLY[i])
+			.topLeftY(enemiesTLY[i]),
+			.restart_loc(newLevel),
+			.enemySpeed(enemySpeed)
 		);
 		
 		square_object #(

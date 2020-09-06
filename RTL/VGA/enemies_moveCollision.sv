@@ -14,6 +14,8 @@ module	enemies_moveCollision	(
 					input logic dodgeBullet,
 					input logic[2:0] shotCollision,
 					input logic pause,
+					input logic restart_loc,
+					input logic[10:0] enemySpeed,
 					output logic  [10:0] topLeftX,
 					output logic  [10:0] topLeftY			
 										
@@ -24,8 +26,6 @@ parameter int INITIAL_Y=210;
 
 parameter int RIGHT_EDGE=500;
 parameter int LEFT_EDGE =50;
-
-parameter int X_SPEED=120;
 
 parameter int dodgeBulletWait = 35;
  
@@ -67,15 +67,14 @@ begin
 	if(!resetN) begin
 		topLeftX_FixedPoint <= INITIAL_X*FIXED_POINT_MULTIPLIER;
 		topLeftY_FixedPoint <= INITIAL_Y*FIXED_POINT_MULTIPLIER;		
-		xSpeed_Cur <= X_SPEED;
+		xSpeed_Cur <= enemySpeed;
 		dodging<=0;
 		dodgingShot<=0;
 	end
 	else begin 
-	
+		xSpeed_Cur <= enemySpeed;
 		topLeftY_FixedPoint <= topLeftY_FixedPoint;
 		topLeftX_FixedPoint <= topLeftX_FixedPoint;
-		
 		if (changeDirection) dodgingAgg <= 1;
 		if (dodgeBullet) dodgingShotAgg <= 1;
 		
@@ -88,7 +87,13 @@ begin
 			direction<=-1*direction;
 			dodgingShot <=1;			
 		end
-		
+		if (restart_loc) begin
+		      topLeftX_FixedPoint <= INITIAL_X*FIXED_POINT_MULTIPLIER;
+				topLeftY_FixedPoint <= INITIAL_Y*FIXED_POINT_MULTIPLIER;		
+				xSpeed_Cur <= enemySpeed;
+				dodging<=0;
+				dodgingShot<=0;
+		end
 		if (collide) begin
 				topLeftY_FixedPoint <= 50_000;
 				topLeftX_FixedPoint <= 50_000;

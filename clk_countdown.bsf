@@ -21,7 +21,7 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 224 160)
+	(rect 16 16 232 160)
 	(text "clk_countdown" (rect 5 0 62 12)(font "Arial" ))
 	(text "inst" (rect 8 128 20 140)(font "Arial" ))
 	(port
@@ -55,18 +55,18 @@ agreement for further details.
 	(port
 		(pt 0 96)
 		(input)
-		(text "requested_time[3..0]" (rect 0 0 81 12)(font "Arial" ))
-		(text "requested_time[3..0]" (rect 21 91 102 103)(font "Arial" ))
+		(text "requested_time[10..0]" (rect 0 0 84 12)(font "Arial" ))
+		(text "requested_time[10..0]" (rect 21 91 105 103)(font "Arial" ))
 		(line (pt 0 96)(pt 16 96)(line_width 3))
 	)
 	(port
-		(pt 208 32)
+		(pt 216 32)
 		(output)
 		(text "slowclk" (rect 0 0 27 12)(font "Arial" ))
-		(text "slowclk" (rect 160 27 187 39)(font "Arial" ))
-		(line (pt 208 32)(pt 192 32)(line_width 1))
+		(text "slowclk" (rect 168 27 195 39)(font "Arial" ))
+		(line (pt 216 32)(pt 200 32)(line_width 1))
 	)
 	(drawing
-		(rectangle (rect 16 16 192 128)(line_width 1))
+		(rectangle (rect 16 16 200 128)(line_width 1))
 	)
 )

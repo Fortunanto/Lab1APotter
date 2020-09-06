@@ -21,9 +21,9 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 288 224)
+	(rect 16 16 296 256)
 	(text "enemy_StockManager" (rect 5 0 97 12)(font "Arial" ))
-	(text "inst" (rect 8 192 20 204)(font "Arial" ))
+	(text "inst" (rect 8 224 20 236)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -88,46 +88,60 @@ agreement for further details.
 		(line (pt 0 160)(pt 16 160)(line_width 1))
 	)
 	(port
-		(pt 272 32)
+		(pt 0 176)
+		(input)
+		(text "enemySpeed[10..0]" (rect 0 0 76 12)(font "Arial" ))
+		(text "enemySpeed[10..0]" (rect 21 171 97 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 3))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "newLevel" (rect 0 0 37 12)(font "Arial" ))
+		(text "newLevel" (rect 21 187 58 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 1))
+	)
+	(port
+		(pt 280 32)
 		(output)
 		(text "offsetX[10..0]" (rect 0 0 53 12)(font "Arial" ))
-		(text "offsetX[10..0]" (rect 198 27 251 39)(font "Arial" ))
-		(line (pt 272 32)(pt 256 32)(line_width 3))
+		(text "offsetX[10..0]" (rect 206 27 259 39)(font "Arial" ))
+		(line (pt 280 32)(pt 264 32)(line_width 3))
 	)
 	(port
-		(pt 272 48)
+		(pt 280 48)
 		(output)
 		(text "offsetY[10..0]" (rect 0 0 54 12)(font "Arial" ))
-		(text "offsetY[10..0]" (rect 197 43 251 55)(font "Arial" ))
-		(line (pt 272 48)(pt 256 48)(line_width 3))
+		(text "offsetY[10..0]" (rect 205 43 259 55)(font "Arial" ))
+		(line (pt 280 48)(pt 264 48)(line_width 3))
 	)
 	(port
-		(pt 272 64)
+		(pt 280 64)
 		(output)
 		(text "headsUpDrawReq" (rect 0 0 74 12)(font "Arial" ))
-		(text "headsUpDrawReq" (rect 177 59 251 71)(font "Arial" ))
-		(line (pt 272 64)(pt 256 64)(line_width 1))
+		(text "headsUpDrawReq" (rect 185 59 259 71)(font "Arial" ))
+		(line (pt 280 64)(pt 264 64)(line_width 1))
 	)
 	(port
-		(pt 272 80)
+		(pt 280 80)
 		(output)
 		(text "headsDownDrawReq" (rect 0 0 84 12)(font "Arial" ))
-		(text "headsDownDrawReq" (rect 167 75 251 87)(font "Arial" ))
-		(line (pt 272 80)(pt 256 80)(line_width 1))
+		(text "headsDownDrawReq" (rect 175 75 259 87)(font "Arial" ))
+		(line (pt 280 80)(pt 264 80)(line_width 1))
 	)
 	(port
-		(pt 272 96)
+		(pt 280 96)
 		(output)
 		(text "enemyDrawReq" (rect 0 0 67 12)(font "Arial" ))
-		(text "enemyDrawReq" (rect 184 91 251 103)(font "Arial" ))
-		(line (pt 272 96)(pt 256 96)(line_width 1))
+		(text "enemyDrawReq" (rect 192 91 259 103)(font "Arial" ))
+		(line (pt 280 96)(pt 264 96)(line_width 1))
 	)
 	(port
-		(pt 272 112)
+		(pt 280 112)
 		(output)
 		(text "drawingRequestorId[3..0]" (rect 0 0 99 12)(font "Arial" ))
-		(text "drawingRequestorId[3..0]" (rect 152 107 251 119)(font "Arial" ))
-		(line (pt 272 112)(pt 256 112)(line_width 3))
+		(text "drawingRequestorId[3..0]" (rect 160 107 259 119)(font "Arial" ))
+		(line (pt 280 112)(pt 264 112)(line_width 3))
 	)
 	(parameter
 		"AMOUNT_OF_ENEMIES"
@@ -155,17 +169,27 @@ agreement for further details.
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
-		"ENEMY_INITIAL_SPEED"
-		"120"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
 		"HEADS_SIDE_MARGIN"
 		"8"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"LEFT_EDGE"
+		"30"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"RIGHT_EDGE"
+		"580"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"ENEMY_COLOR"
+		"01110010"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
 	(drawing
-		(rectangle (rect 16 16 256 192)(line_width 1))
+		(rectangle (rect 16 16 264 224)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 288 -64 388 16))
+	(annotation_block (parameter)(rect 296 -64 396 16))
 )
