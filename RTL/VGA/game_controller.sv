@@ -19,7 +19,10 @@ module	game_controller	(
 			output logic TowerEnemyHUCollision,
 			output logic ShotHeadsDownCollision,
 			output logic[2:0] ShotEnemyCollision,
-			output logic towerPlayerCollision
+			output logic towerPlayerCollision,
+			output logic [0:23] scoreAmount,
+			output logic enableAddScore,
+			output logic enableRemoveScore
 );
 
 logic box_smiley_collision,box_edge_collision, edge_smiley_collision;
@@ -33,6 +36,9 @@ begin
 	if(!resetN)
 	begin 
 		flag	<= 1'b0;
+		enableAddScore<=0;
+		enableRemoveScore<=0;
+		scoreAmount<=0;
 	end 
 	else begin 
 
@@ -43,6 +49,13 @@ begin
 				flag	<= 1'b1; // to enter only once 
 				ShotEnemyCollision <= drawing_request_shot;
 			end ; 
+			enableAddScore<=0;
+			enableRemoveScore<=0;
+			scoreAmount<=0;
+			if (ShotEnemyCollision!=0) begin
+				enableAddScore<=1;
+				scoreAmount <= 24'b0000_0100_0000_0000_0000_0000; //40
+			end
 		
 	end 
 end

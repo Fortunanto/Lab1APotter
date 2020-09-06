@@ -10,7 +10,7 @@ module bitmap_offsetFlip	(
 					input 	logic	[10:0] offsetX,// offset from top left  position 
 					input 	logic	[10:0] offsetY,	
 					input logic startOfFrame,
-					input logic pause,
+					
 					output logic [10:0] newOffsetX,
 					output logic [10:0] newOffsetY		
 );
@@ -31,14 +31,11 @@ end
 always_ff@(posedge clk)
 begin
 	if (startOfFrame) begin
-		if(!pause) begin
-			if (flipTimer>0) flipTimer <= flipTimer - 1;
-			else begin
-				flipTimer <= 5;
-				flip <= !flip;
-			end
+		if (flipTimer>0) flipTimer <= flipTimer - 1;
+		else begin
+			flipTimer <= 5;
+			flip <= !flip;
 		end
-		else flipTimer <=flipTimer;
 	end
 	
 	if (flip) newOffsetX <= offsetX;	
