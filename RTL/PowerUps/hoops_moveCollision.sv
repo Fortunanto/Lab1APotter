@@ -19,9 +19,6 @@ module hoop__moveCollision(
 	int hoopTLX_FIXED_POINT;
 	int hoopTLY_FIXED_POINT;
 	
-	shortint hoopTLX;
-	shortint hoopTLY;
-	
 	
 	int Y_Speed=FALL_SPEED;
 	
@@ -32,18 +29,25 @@ module hoop__moveCollision(
 	
 	assign topLeftX = hoopTLX_FIXED_POINT/FIXED_POINT_MULTIPLIER;
 	assign topLeftY = hoopTLY_FIXED_POINT/FIXED_POINT_MULTIPLIER;
+	
+	
+	initial begin
+		hoopTLY_FIXED_POINT = 0;
+		hoopTLY_FIXED_POINT = 0;
 
+	end
 	
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin
+	
 	end
 	else begin
 		if (pause) Y_Speed=0;
 		else Y_Speed=FALL_SPEED;
 		
 		if(startOfFrame) begin				
-			if(hoopTLY>480) begin 				
+			if(topLeftY>480) begin 				
 				hoopTLY_FIXED_POINT <= (OBJECT_HEIGHT_Y)*FIXED_POINT_MULTIPLIER*(-1);
 				hoopTLX_FIXED_POINT <= (spawnX+randoms[rndIndex])*FIXED_POINT_MULTIPLIER;
 				rndIndex<=rndIndex+1;
@@ -52,7 +56,7 @@ begin
 			else
 				hoopTLY_FIXED_POINT<=hoopTLY_FIXED_POINT+Y_Speed;
 						
-			if (hoopTLX>640) begin
+			if (topLeftX>640) begin
 				hoopTLX_FIXED_POINT<=hoopTLX_FIXED_POINT-(640*FIXED_POINT_MULTIPLIER);	
 			end
 		end

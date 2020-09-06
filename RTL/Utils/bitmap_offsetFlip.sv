@@ -6,42 +6,57 @@
 
 
 module bitmap_offsetFlip	(	
-					input		logic	clk,				
+					input		logic	clk,		
+					input		logic	resetN,				
 					input 	logic	[10:0] offsetX,// offset from top left  position 
 					input 	logic	[10:0] offsetY,	
-					input logic startOfFrame,
+					input logic slowClk,
+					input logic pause,
+					output logic requestSlowClk,
+					output logic [10:0] slowClkTime,
 					
 					output logic [10:0] newOffsetX,
 					output logic [10:0] newOffsetY		
 );
 
-parameter shortint OBJECT_WIDTH_X = 5;
-
+parameter shortint OBJECT_WIDTH_X = 11;
 
 parameter int FLIP_TIME = 5;
-int flipTimer;
 logic flip;
- 
+logic flag;
  
 initial begin
 	flip = 0;
-	flipTimer = FLIP_TIME;
+	flag = 1;
 end
 
-always_ff@(posedge clk)
+always_ff@(posedge clk or negedge resetN)
 begin
-	if (startOfFrame) begin
-		if (flipTimer>0) flipTimer <= flipTimer - 1;
-		else begin
-			flipTimer <= 5;
-			flip <= !flip;
-		end
+	if(!resetN) begin
+		flip <= 0;
+		flag <= 1;
 	end
-	
-	if (flip) newOffsetX <= offsetX;	
-	else newOffsetX <= OBJECT_WIDTH_X-offsetX-1;	
-	
-	newOffsetY <= offsetY;	
+	else begin
+		if(flag) begin  
+			requestSlowClk<=1;
+			slowClkTime<=FLIP_TIME;
+			flag<=0;
+		end
+		else begin
+			requestSlowClk<=0;
+			slowClkTime<=0;
+		end
+		if(slowClk) begin 
+			flip=~flip;
+			flag<=1;
+		end
+		if(pause) newOffsetX <= offsetX;	
+		else begin
+			if (flip)  newOffsetX <= offsetX;	
+			else newOffsetX <= OBJECT_WIDTH_X-offsetX-1;	
+		end
+		newOffsetY <= offsetY;	
+	end
 end
 
 endmodule
