@@ -10,8 +10,8 @@ module	square_object	(
 					input		logic	resetN,
 					input 	logic	[10:0] pixelX,// current VGA pixel 
 					input 	logic	[10:0] pixelY,
-					input 	logic signed	[10:0] topLeftX, //position on the screen 
-					input 	logic	signed [10:0] topLeftY,
+					input 	logic [10:0] topLeftX, //position on the screen 
+					input 	logic	[10:0] topLeftY,
 					
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
 					output 	logic	[10:0] offsetY,
@@ -30,8 +30,8 @@ logic insideBracket ;
 
 //////////--------------------------------------------------------------------------------------------------------------=
 // Calculate object right  & bottom  boundaries
-assign rightX	= (topLeftX + OBJECT_WIDTH_X);
-assign bottomY	= (topLeftY + OBJECT_HEIGHT_Y);
+assign rightX	= ($signed(topLeftX) + OBJECT_WIDTH_X);
+assign bottomY	= ($signed(topLeftY) + OBJECT_HEIGHT_Y);
 
 
 //////////--------------------------------------------------------------------------------------------------------------=
@@ -48,8 +48,8 @@ begin
 
 		//this is an example of using blocking sentence inside an always_ff block, 
 		//and not waiting a clock to use the result  
-		insideBracket  = 	 ( (pixelX  >= topLeftX) &&  (pixelX < rightX) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
-						   && (pixelY  >= topLeftY) &&  (pixelY < bottomY) )  ; 
+		insideBracket  = 	 ( ($signed(pixelX)  >= $signed(topLeftX)) &&  ($signed(pixelX) < rightX) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
+						   && ($signed(pixelY)  >= $signed(topLeftY)) &&  ($signed(pixelY) < bottomY) )  ; 
 		
 		if (insideBracket ) // test if it is inside the rectangle 
 		begin 

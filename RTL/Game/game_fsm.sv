@@ -1,10 +1,10 @@
 module game_fsm (
 	input logic clk, 
 	input logic resetN,
-	input logic startGame,
 	input logic playerDead,
 	input logic[2:0] shotEnemyCollision,
 	input logic slowClk,
+	input logic playerTrigger,
 	
 	output logic pause,
 	output logic[3:0] tree_count,
@@ -46,7 +46,7 @@ always_comb
 begin
 	case (prState)
 		SgameScreen: begin
-			if(startGame) nxtState = SlevelOne_Two_Enemies;
+			if(playerTrigger) nxtState = SlevelOne_Two_Enemies;
 			else nxtState=SgameScreen;
 		end
 		SlevelOne_Two_Enemies: begin
@@ -78,10 +78,12 @@ begin
 			else nxtState=SlevelTwo_One_Enemy;
 		end
 		SvictoryScreen: begin
-			nxtState=SlevelOne_Two_Enemies;
+			if(playerTrigger) nxtState=SlevelOne_Two_Enemies;
+			else nxtState=SvictoryScreen;
 		end
 		SDeath: begin
-			nxtState=SDeath;
+			if(playerTrigger) nxtState=SgameScreen;
+			else nxtState=SDeath;
 		end
 		endcase
 end
