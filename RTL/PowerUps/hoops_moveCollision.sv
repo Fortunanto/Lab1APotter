@@ -2,12 +2,12 @@ module hoop__moveCollision(
 	input		logic	clk,
 	input		logic	resetN,
 	input    logic startOfFrame,
-	input 	logic signed	[10:0] spawnX, //position on the screen 
+	input 	logic [10:0] spawnX, //position on the screen 
 	input    logic towerHoopCollision,
 	input    logic pause,
 	
-	output	 logic signed 	[10:0]	topLeftX,// output the top left corner 
-	output	 logic signed	[10:0]	topLeftY			
+	output	 logic signed [10:0]  		topLeftX,// output the top left corner 
+	output	 logic signed [10:0]	topLeftY			
 );
 					
 					
@@ -15,7 +15,7 @@ module hoop__moveCollision(
 	parameter  int OBJECT_WIDTH_X = 28;
 	parameter  int OBJECT_HEIGHT_Y = 58;
 	
-	
+	shortint topLeftXSigned,topLeftYSigned;
 	int hoopTLX_FIXED_POINT;
 	int hoopTLY_FIXED_POINT;
 	
@@ -27,13 +27,14 @@ module hoop__moveCollision(
 	logic [9:0][10:0] randoms = {11'd6,11'd500,11'd80,11'd100,11'd140,11'd18,11'd44,11'd340,11'd210,11'd277};
 	byte rndIndex=0;
 	
-	assign topLeftX = hoopTLX_FIXED_POINT/FIXED_POINT_MULTIPLIER;
-	assign topLeftY = hoopTLY_FIXED_POINT/FIXED_POINT_MULTIPLIER;
-	
-	
+	assign topLeftXSigned = hoopTLX_FIXED_POINT/FIXED_POINT_MULTIPLIER;
+	assign topLeftYSigned = hoopTLY_FIXED_POINT/FIXED_POINT_MULTIPLIER;
+	assign topLeftX=topLeftXSigned;
+	assign topLeftY=topLeftYSigned;
+
 	initial begin
-		hoopTLY_FIXED_POINT = 0;
-		hoopTLY_FIXED_POINT = 0;
+		hoopTLX_FIXED_POINT = 0;
+		hoopTLY_FIXED_POINT = (OBJECT_HEIGHT_Y)*FIXED_POINT_MULTIPLIER*(-1);
 
 	end
 	
@@ -59,6 +60,8 @@ begin
 			if (topLeftX>640) begin
 				hoopTLX_FIXED_POINT<=hoopTLX_FIXED_POINT-(640*FIXED_POINT_MULTIPLIER);	
 			end
+			 if (towerHoopCollision) 
+					hoopTLX_FIXED_POINT<=hoopTLX_FIXED_POINT+(OBJECT_WIDTH_X+30)*FIXED_POINT_MULTIPLIER;
 		end
 	end
 

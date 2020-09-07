@@ -33,7 +33,8 @@ module	objects_mux_all	(
 					input    logic [7:0] bulletRGB,	
 					
 		// hoops
-					input    logic hoopDrawingRequest,
+					input    logic hoopTopDrawingRequest,
+					input    logic hoopBottomDrawingRequest,
 					input    logic [7:0] hoopRGB,
 		// score
 					input    logic scoreDrawingRequest,
@@ -68,9 +69,10 @@ begin
 	end
 	else begin
 		if (deathForeground_dr) tmpRGB <= deathForegroundRGB;
-		else if (hoopDrawingRequest) tmpRGB <= hoopRGB;
+		else if (hoopTopDrawingRequest) tmpRGB <= hoopRGB;
 		else if (scoreDrawingRequest) tmpRGB <= scoreRGB;
-		else if (smileyDrawingRequest)   tmpRGB <= smileyRGB;  
+		else if (smileyDrawingRequest)   tmpRGB <= smileyRGB; 
+		else if (hoopBottomDrawingRequest) tmpRGB <= hoopRGB;	
 	   else if (towersDrawingRequest) tmpRGB <= towersRGB;
 		else if (enemiesDrawingRequest) tmpRGB <= enemiesRGB;
       //else if (enemiesHeadsDownDrawingRequest) tmpRGB <= 8'b11100100; // for headsDown debug

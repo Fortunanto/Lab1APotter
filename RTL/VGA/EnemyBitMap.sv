@@ -94,20 +94,9 @@ begin
 		RGBout <=	8'h00;
 	end
 	else begin
-		//HitEdgeCode <= hit_colors[offsetY >> OBJECT_HEIGHT_Y_DIVIDER][offsetX >> OBJECT_WIDTH_X_DIVIDER];	//get hitting edge from the colors table  
 
-//		
-//		if (startOfFrame) begin
-//			if (flipTimer>0) flipTimer <= flipTimer - 1;
-//			else begin
-//				flipTimer <= 5;
-//				flip <= !flip;
-//			end
-//		end
 		
 		if (InsideRectangle == 1'b1 ) begin  // inside an external bracket 
-//			if (flip) 	RGBout <= object_colors[offsetY][offsetX];	
-//			else RGBout <= object_colors[offsetY][OBJECT_WIDTH_X-offsetX-1];		
 			RGBout <= object_colors[offsetY][offsetX];
 		end
 		else 
