@@ -45,7 +45,7 @@ begin
 			if(offsetY<=23)
 				RGBout <= object_colors[offsetY/2][offsetX/2];
 			else
-				RGBout <= object_colors[inverted][offsetX/2];
+				RGBout <= object_colors[inverted-1][offsetX/2];
 		end
 		else 
 			RGBout <= TRANSPARENT_ENCODING ; // force color to transparent so it will not be displayed 

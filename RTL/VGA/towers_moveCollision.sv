@@ -54,7 +54,7 @@ byte rndIndex=0;
 genvar i;
 generate
 	for (i=0;i<20;i++) begin: assLoop
-		assign towersTLX[i] = towersTLX_FIXED_POINT[i]/FIXED_POINT_MULTIPLIER;
+		assign towersTLX[i] = ((towersTLX_FIXED_POINT[i]/FIXED_POINT_MULTIPLIER)/64)*64;
 		assign towersTLY[i] = towersTLY_FIXED_POINT[i]/FIXED_POINT_MULTIPLIER;
 	end
 endgenerate
@@ -110,8 +110,8 @@ begin
 					 (towersTLY[towerIndex]<=$signed(pixelY)) &&
 					 (towersTLY[towerIndex]+OBJECT_HEIGHT_Y>$signed(pixelY))) begin
 					 if (alreadyDrawing) begin
-							towersTLX_FIXED_POINT[towerIndex]<=towersTLX_FIXED_POINT[towerIndex]+(OBJECT_WIDTH_X+20)*FIXED_POINT_MULTIPLIER;
-							towersTLY_FIXED_POINT[towerIndex]<=towersTLY_FIXED_POINT[towerIndex]-(OBJECT_HEIGHT_Y+77)*FIXED_POINT_MULTIPLIER;
+							
+							towersTLY_FIXED_POINT[towerIndex]<=towersTLY_FIXED_POINT[towerIndex]-(OBJECT_HEIGHT_Y*4)*FIXED_POINT_MULTIPLIER;
 					 end
 					 else begin
 							drawingRequest <= 1'b1 ;
