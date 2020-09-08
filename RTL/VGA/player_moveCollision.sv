@@ -37,8 +37,8 @@ const int	FIXED_POINT_MULTIPLIER	=	64;
 const int	x_FRAME_SIZE	=	639 * FIXED_POINT_MULTIPLIER; // note it must be 2^n 
 
 
-int Xspeed=INITIAL_X_SPEED, topLeftX_FixedPoint; // local parameters 
-int  topLeftY_FixedPoint;
+int Xspeed=INITIAL_X_SPEED, topLeftX_FixedPoint=INITIAL_X * FIXED_POINT_MULTIPLIER; // local parameters 
+int  topLeftY_FixedPoint=INITIAL_Y * FIXED_POINT_MULTIPLIER;
 
 //////////--------------------------------------------------------------------------------------------------------------=
 // position calculate 

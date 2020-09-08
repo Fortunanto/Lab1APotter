@@ -168,7 +168,7 @@ agreement for further details.
 	(input)
 	(rect -360 224 -168 240)
 	(text "INPUT" (rect 149 0 177 10)(font "Arial" (font_size 6)))
-	(text "hoopTowerCollision" (rect 5 0 100 17)(font "Intel Clear" ))
+	(text "hoopTowerCollision" (rect 5 0 99 17)(font "Intel Clear" ))
 	(pt 192 8)
 	(drawing
 		(line (pt 108 12)(pt 133 12))
@@ -578,14 +578,14 @@ agreement for further details.
 		(pt 232 32)
 		(output)
 		(text "topLeftX[10..0]" (rect 0 0 73 12)(font "Arial" ))
-		(text "topLeftX[10..0]" (rect 150 27 211 39)(font "Arial" ))
+		(text "topLeftX[10..0]" (rect 150 27 223 39)(font "Arial" ))
 		(line (pt 232 32)(pt 216 32)(line_width 3))
 	)
 	(port
 		(pt 232 48)
 		(output)
 		(text "topLeftY[10..0]" (rect 0 0 75 12)(font "Arial" ))
-		(text "topLeftY[10..0]" (rect 148 43 211 55)(font "Arial" ))
+		(text "topLeftY[10..0]" (rect 148 43 223 55)(font "Arial" ))
 		(line (pt 232 48)(pt 216 48)(line_width 3))
 	)
 	(parameter
@@ -813,14 +813,14 @@ agreement for further details.
 	(pt -128 232)
 )
 (connector
-	(text "hoopTowerCollision" (rect 266 312 360 329)(font "Intel Clear" ))
-	(pt 208 328)
-	(pt 344 328)
-)
-(connector
 	(text "pause" (rect 292 328 320 345)(font "Intel Clear" ))
 	(pt 344 344)
 	(pt 264 344)
+)
+(connector
+	(text "hoopTowerCollision" (rect 266 312 360 329)(font "Intel Clear" ))
+	(pt 264 328)
+	(pt 344 328)
 )
 (rectangle (rect 920 496 1192 624)(color 0 0 0)(line_width 3))
 (rectangle (rect -424 64 192 392)(color 0 0 0)(line_width 3))

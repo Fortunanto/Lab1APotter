@@ -27,14 +27,14 @@ module hoop__moveCollision(
 	logic [9:0][10:0] randoms = {11'd6,11'd500,11'd80,11'd100,11'd140,11'd18,11'd44,11'd340,11'd210,11'd277};
 	byte rndIndex=0;
 	
-	assign topLeftXSigned = hoopTLX_FIXED_POINT/FIXED_POINT_MULTIPLIER;
-	assign topLeftYSigned = hoopTLY_FIXED_POINT/FIXED_POINT_MULTIPLIER;
-	assign topLeftX=topLeftXSigned;
-	assign topLeftY=topLeftYSigned;
+	assign topLeftXSigned = $signed(hoopTLX_FIXED_POINT)/$signed(FIXED_POINT_MULTIPLIER);
+	assign topLeftYSigned = $signed(hoopTLY_FIXED_POINT)/$signed(FIXED_POINT_MULTIPLIER);
+	assign topLeftX=hoopTLX_FIXED_POINT>>>6;
+	assign topLeftY=hoopTLY_FIXED_POINT>>>6;
 
 	initial begin
 		hoopTLX_FIXED_POINT = 0;
-		hoopTLY_FIXED_POINT = (OBJECT_HEIGHT_Y)*FIXED_POINT_MULTIPLIER*(-1);
+		hoopTLY_FIXED_POINT = $signed((OBJECT_HEIGHT_Y))*$signed(FIXED_POINT_MULTIPLIER)*4*$signed((-1));
 
 	end
 	
@@ -49,7 +49,7 @@ begin
 		
 		if(startOfFrame) begin				
 			if(topLeftY>480) begin 				
-				hoopTLY_FIXED_POINT <= (OBJECT_HEIGHT_Y)*FIXED_POINT_MULTIPLIER*(-1);
+				hoopTLY_FIXED_POINT <= $signed((OBJECT_HEIGHT_Y))*$signed(FIXED_POINT_MULTIPLIER)*4*$signed((-1));
 				hoopTLX_FIXED_POINT <= (spawnX+randoms[rndIndex])*FIXED_POINT_MULTIPLIER;
 				rndIndex<=rndIndex+1;
 				if (rndIndex>10) rndIndex <= 0;

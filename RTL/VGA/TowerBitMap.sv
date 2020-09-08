@@ -67,6 +67,6 @@ begin
 	end 
 end
 
-assign drawingRequest = (RGBout != TRANSPARENT_ENCODING ) ? 1'b1 : 1'b0 ;
+assign drawingRequest = (RGBout != TRANSPARENT_ENCODING && InsideRectangle ) ? 1'b1 : 1'b0 ;
 
 endmodule

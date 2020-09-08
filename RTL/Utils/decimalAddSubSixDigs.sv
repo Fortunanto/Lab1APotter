@@ -72,7 +72,10 @@ endgenerate
 always_ff@(posedge clk or negedge resetN)
 begin
 	if (!resetN) begin
-		result <= 0;
+		for(int i = 0; i <= 5; i++) begin
+			result[i]<= 0;
+		end
+//		result <= 0;
 	end
 	else begin
 		if (enableAdd) result <= newResultAdd;

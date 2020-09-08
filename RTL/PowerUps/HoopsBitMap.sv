@@ -54,8 +54,8 @@ end
 
 //////////--------------------------------------------------------------------------------------------------------------=
 // decide if to draw the pixel or not 
-assign topDrawingRequest = ((RGBout != TRANSPARENT_ENCODING ) &&  offsetY<=23 )? 1'b1 : 1'b0 ; // get optional transparent command from the bitmpap   
-assign bottomDrawingRequest = ((RGBout != TRANSPARENT_ENCODING ) &&  offsetY>23 )? 1'b1 : 1'b0 ; // get optional transparent command from the bitmpap   
+assign topDrawingRequest = ((RGBout != TRANSPARENT_ENCODING ) &&  offsetY<=23  && InsideRectangle)? 1'b1 : 1'b0 ; // get optional transparent command from the bitmpap   
+assign bottomDrawingRequest = ((RGBout != TRANSPARENT_ENCODING ) &&  offsetY>23 && InsideRectangle )? 1'b1 : 1'b0 ; // get optional transparent command from the bitmpap   
 
 
 endmodule

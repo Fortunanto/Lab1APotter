@@ -30,8 +30,8 @@ logic insideBracket ;
 
 //////////--------------------------------------------------------------------------------------------------------------=
 // Calculate object right  & bottom  boundaries
-assign rightX	= ($signed(topLeftX) + OBJECT_WIDTH_X);
-assign bottomY	= ($signed(topLeftY) + OBJECT_HEIGHT_Y);
+assign rightX	= ($signed(topLeftX) + $signed(OBJECT_WIDTH_X));
+assign bottomY	= ($signed(topLeftY) + $signed(OBJECT_HEIGHT_Y));
 
 
 //////////--------------------------------------------------------------------------------------------------------------=
@@ -48,8 +48,8 @@ begin
 
 		//this is an example of using blocking sentence inside an always_ff block, 
 		//and not waiting a clock to use the result  
-		insideBracket  = 	 ( ($signed(pixelX)  >= $signed(topLeftX)) &&  ($signed(pixelX) < rightX) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
-						   && ($signed(pixelY)  >= $signed(topLeftY)) &&  ($signed(pixelY) < bottomY) )  ; 
+		insideBracket  = 	 ( ($signed(pixelX)  >= $signed(topLeftX)) &&  ($signed(pixelX) < $signed(rightX)) // ----- LEGAL BLOCKING ASSINGMENT in ALWAYS_FF CODE 
+						   && ($signed(pixelY)  >= $signed(topLeftY)) &&  ($signed(pixelY) < $signed(bottomY)) )  ; 
 		
 		if (insideBracket ) // test if it is inside the rectangle 
 		begin 

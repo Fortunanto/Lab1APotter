@@ -81,15 +81,15 @@ begin
 		if (deathForeground_dr) tmpRGB <= deathForegroundRGB;
 		else if (lifeDrawReq) tmpRGB <= lifeRGB;
 		else if (timerDrawReq) tmpRGB <= timerRGB;		
-		else if (hoopTopDrawingRequest) tmpRGB <= hoopRGB;
 		else if (scoreDrawingRequest) tmpRGB <= scoreRGB;
+		else if (hoopTopDrawingRequest) tmpRGB <= hoopRGB;
 		else if (smileyDrawingRequest)   tmpRGB <= smileyRGB; 
+		else if (anyBulletDrawingRequest) tmpRGB <= bulletRGB;
 		else if (hoopBottomDrawingRequest) tmpRGB <= hoopRGB;	
 	   else if (towersDrawingRequest) tmpRGB <= towersRGB;
 		else if (enemiesDrawingRequest) tmpRGB <= enemiesRGB;
       //else if (enemiesHeadsDownDrawingRequest) tmpRGB <= 8'b11100100; // for headsDown debug
 		//else if (enemisHeadsUpDrawingRequest) tmpRGB <= 8'b00101111; //for headsUp debug
-		else if (anyBulletDrawingRequest) tmpRGB <= bulletRGB;
 
 		else tmpRGB <= backGroundRGB ; // last priority 
 		end ; 
