@@ -12,7 +12,6 @@ module	back_ground_drawSquare	(
 					input logic	[10:0]	pixelX,
 					input logic	[10:0]	pixelY,
 					input logic startOfFrame,
-					input logic[2:0] currentGameState,
 					input logic pause,
 					output	logic	[7:0]	BG_RGB
 );
@@ -106,7 +105,6 @@ begin
 	end 
 	else begin	
 
-	if(currentGameState==1) begin
 		if(pause) 	begin
 			BG_RGB <= object_colors[pixelY-offset][pixelX];
 			offsetFIXED<=offsetFIXED;
@@ -115,11 +113,7 @@ begin
 			BG_RGB <= object_colors[pixelY-offset][pixelX];
 			if (startOfFrame) offsetFIXED<=offsetFIXED+BG_SPEED;
 		end
-	end
-	else begin
-			BG_RGB <= 8'b11100011;
-		if (startOfFrame) offsetFIXED<=offsetFIXED+BG_SPEED;
-	end;
+	
 	end; 	
 end
 
