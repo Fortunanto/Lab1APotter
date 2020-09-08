@@ -588,6 +588,10 @@ set_global_assignment -name BDF_FILE RTL/GUI/TOP_TIMER.bdf
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/Utils/secondsClock.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/GUI/timeTracker.sv
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform5.vwf
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/GUI/lifeTracker.sv
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/GUI/lifeDisplay.sv
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/GUI/lifeBitMap.sv
+set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform3.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

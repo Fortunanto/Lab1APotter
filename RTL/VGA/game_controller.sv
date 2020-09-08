@@ -27,7 +27,10 @@ module	game_controller	(
 			output logic enableAddScore,
 			output logic enableRemoveScore,
 			output logic requestTime,
-			output logic [0:10] timeLenReq
+			output logic [0:10] timeLenReq,
+			output logic enableAddLife,
+			output logic enableRemoveLife,
+			output logic [0:2] lifeAmount
 );
 
 logic box_smiley_collision,box_edge_collision, edge_smiley_collision;
@@ -48,11 +51,14 @@ begin
 		enableRemoveScore<=0;
 		scoreAmount<=0;
 		hoopTransitionFlag<=1;
+		enableAddLife<=0;
+		enableRemoveLife<=0;
 	end 
 	else begin 
 			ShotEnemyCollision<=0;
 			requestTime <= 0;
-			timeLenReq <= 0;
+			timeLenReq <= 0;		
+			
 			
 			// Detect shot - Enemy collision
 			if(startOfFrame) 
@@ -67,12 +73,24 @@ begin
 			enableAddScore<=0;
 			enableRemoveScore<=0;
 			scoreAmount<=0;
+			
+			enableAddLife<=0;
+			enableRemoveLife<=0;
+			
 			if (ShotEnemyCollision!=0) begin
 				enableAddScore<=1;
 				scoreAmount <= 24'b0000_0100_0000_0000_0000_0000; //40
 			end
 			// Add score on hoop moving through
 			if(hoopTransitionFlag && hoopPlayerCollision) begin
+			
+				// TODO:  currently remove life on hoop collision for test, check how to insert to game_fsm
+				enableRemoveLife<=1;
+				lifeAmount<=1;
+			
+			
+			
+			
 				enableAddScore<=1;
 				scoreAmount <= 24'b0000_1010_0000_0000_0000_0000; //160
 				hoopTransitionFlag <= 0;
