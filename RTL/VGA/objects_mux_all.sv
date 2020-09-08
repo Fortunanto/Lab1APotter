@@ -45,6 +45,11 @@ module	objects_mux_all	(
 		// death
 					input		logic	deathForeground_dr, 
 					input    logic [7:0] deathForegroundRGB,	
+					
+		// timer
+		
+					input logic timerDrawReq,
+					input logic [7:0] timerRGB,
 
 
 					output	logic	[7:0] redOut, // full 24 bits color output
@@ -69,6 +74,7 @@ begin
 	end
 	else begin
 		if (deathForeground_dr) tmpRGB <= deathForegroundRGB;
+		else if (timerDrawReq) tmpRGB <= timerRGB;
 		else if (hoopTopDrawingRequest) tmpRGB <= hoopRGB;
 		else if (scoreDrawingRequest) tmpRGB <= scoreRGB;
 		else if (smileyDrawingRequest)   tmpRGB <= smileyRGB; 
