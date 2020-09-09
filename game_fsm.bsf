@@ -41,9 +41,9 @@ agreement for further details.
 	(port
 		(pt 0 64)
 		(input)
-		(text "playerDead" (rect 0 0 46 12)(font "Arial" ))
-		(text "playerDead" (rect 21 59 67 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 1))
+		(text "currLife[2..0]" (rect 0 0 51 12)(font "Arial" ))
+		(text "currLife[2..0]" (rect 21 59 72 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
 		(pt 0 80)

@@ -10,8 +10,8 @@ module	objects_mux_all	(
 					input		logic	resetN,
 
 		// smiley 
-					input		logic	smileyDrawingRequest, // two set of inputs per unit
-					input		logic	[7:0] smileyRGB, 
+					input		logic	playerDrawingRequest, // two set of inputs per unit
+					input		logic	[7:0] playerRGB, 
 		// towers
 					input logic towersDrawingRequest,
 					input logic [7:0] towersRGB,
@@ -88,7 +88,7 @@ begin
 		else if (scoreDrawingRequest) tmpRGB <= scoreRGB;
 		else if (dragonDrawReq) tmpRGB <= dragonRGB;
 		else if (hoopTopDrawingRequest) tmpRGB <= hoopRGB;
-		else if (smileyDrawingRequest)   tmpRGB <= smileyRGB; 
+		else if (playerDrawingRequest)   tmpRGB <= playerRGB; 
 		else if (anyBulletDrawingRequest) tmpRGB <= bulletRGB;
 		else if (hoopBottomDrawingRequest) tmpRGB <= hoopRGB;	
 	   else if (towersDrawingRequest) tmpRGB <= towersRGB;

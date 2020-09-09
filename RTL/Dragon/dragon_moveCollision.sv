@@ -84,7 +84,7 @@ begin
 				TLX_FIXED_POINT<=START_TLX*FIXED_POINT_MULTIPLIER;
 				TLY_FIXED_POINT<=START_TLY*FIXED_POINT_MULTIPLIER;	
 				
-				if ((RNG + randoms[rndIndex])>600 && (RNG + randoms[rndIndex])<605) dragonUnleashed<=1;
+				if ((RNG + randoms[rndIndex])>500 && (RNG + randoms[rndIndex])<605) dragonUnleashed<=1;
 			end
 			
 		end

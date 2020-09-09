@@ -60,9 +60,10 @@ begin
 			if (topLeftX>640) begin
 				hoopTLX_FIXED_POINT<=hoopTLX_FIXED_POINT-(640*FIXED_POINT_MULTIPLIER);	
 			end
-			 if (towerHoopCollision) 
-					hoopTLX_FIXED_POINT<=hoopTLX_FIXED_POINT+(OBJECT_WIDTH_X+30)*FIXED_POINT_MULTIPLIER;
+			 
 		end
+		if (towerHoopCollision) 
+					hoopTLX_FIXED_POINT<=hoopTLX_FIXED_POINT+(OBJECT_WIDTH_X+30)*FIXED_POINT_MULTIPLIER;
 	end
 
 end 

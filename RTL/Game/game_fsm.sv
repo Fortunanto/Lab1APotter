@@ -1,7 +1,7 @@
 module game_fsm (
 	input logic clk, 
 	input logic resetN,
-	input logic playerDead,
+	input logic [2:0] currLife,
 	input logic[2:0] shotEnemyCollision,
 	input logic slowClk,
 	input logic playerTrigger,
@@ -21,6 +21,9 @@ parameter int ENEMY_COUNT=2;
 parameter int LEVEL_1_TREE_COUNT=8;
 parameter int LEVEL_2_TREE_COUNT=8;
 int cur_level;
+
+logic playerDead;
+assign playerDead = (currLife == 0); 
 
 logic enemyDead;
 

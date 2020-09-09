@@ -1,12 +1,13 @@
 module secondsClock(	
 					input		logic	clk,
 					input		logic	resetN,
-					input startOfFrame,
+					input 	logic startOfFrame,
+					input    logic pause,
 					
 					output logic secPassed
 );
 
-const logic [0:8] FPS = 30;
+const logic [0:8] FPS = 60;
 
 logic [0:8] count;
 
@@ -19,7 +20,8 @@ begin
 	else begin
 		secPassed<=0;
 		if (startOfFrame) begin
-			count<=count+1;
+			if(!pause)
+				count<=count+1;
 			if (count==FPS) begin
 				count<=0;
 				secPassed<=1;

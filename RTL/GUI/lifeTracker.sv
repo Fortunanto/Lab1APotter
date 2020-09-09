@@ -2,16 +2,16 @@ module lifeTracker(
 					input		logic	clk,
 					input		logic	resetN,
 					
-					input logic [0:2] amount,
+					input logic [2:0] amount,
 					input logic enableSetLife,
 					input logic enableAddLife,
 					input logic enableRemoveLife,
 		
-					output logic [0:2] currLife
+					output logic [2:0] currLife
 );
 
 
-parameter logic [0:2] START_LIFE = 3;
+parameter logic [2:0] START_LIFE = 3;
 
 
 initial begin

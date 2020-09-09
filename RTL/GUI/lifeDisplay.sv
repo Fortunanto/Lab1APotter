@@ -2,7 +2,7 @@ module lifeDisplay(
 					input		logic	clk,
 					input		logic	resetN,					
 					
-					input logic [0:2] currLife,
+					input logic [2:0] currLife,
 					
 					input logic [10:0] pixelX,
 					input logic [10:0] pixelY,
