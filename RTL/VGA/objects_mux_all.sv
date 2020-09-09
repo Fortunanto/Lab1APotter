@@ -55,6 +55,10 @@ module	objects_mux_all	(
 		
 					input logic lifeDrawReq,
 					input logic [7:0] lifeRGB,
+					
+		// dragon 
+					input logic dragonDrawReq,
+					input logic [7:0] dragonRGB,
 
 
 					output	logic	[7:0] redOut, // full 24 bits color output
@@ -82,6 +86,7 @@ begin
 		else if (lifeDrawReq) tmpRGB <= lifeRGB;
 		else if (timerDrawReq) tmpRGB <= timerRGB;		
 		else if (scoreDrawingRequest) tmpRGB <= scoreRGB;
+		else if (dragonDrawReq) tmpRGB <= dragonRGB;
 		else if (hoopTopDrawingRequest) tmpRGB <= hoopRGB;
 		else if (smileyDrawingRequest)   tmpRGB <= smileyRGB; 
 		else if (anyBulletDrawingRequest) tmpRGB <= bulletRGB;
