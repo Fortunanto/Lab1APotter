@@ -16,6 +16,7 @@ module	game_controller	(
 			input logic [2:0] drawing_request_shot,
 			input logic drawing_request_hoop,
 			input logic slowClk,
+			input logic drawing_request_dragon,
 			
 			output logic[2:0] ShotTowerCollision,
 			output logic TowerEnemyHUCollision,
@@ -29,7 +30,9 @@ module	game_controller	(
 			output logic [0:10] timeLenReq,
 			output logic enableAddLife,
 			output logic enableRemoveLife,
-			output logic [2:0] lifeAmount
+			output logic [2:0] lifeAmount,
+			output logic [2:0] dragonShotCollision
+
 );
 
 parameter int PLAYER_TOWER_TIME_LEN = 200;
@@ -44,6 +47,8 @@ assign TowerEnemyHUCollision = (drawing_request_enemy_HU && drawing_request_towe
 assign ShotHeadsDownCollision = (drawing_request_shot!=0 && drawing_request_enemy_HD);
 assign hoopTowerCollision = (drawing_request_hoop && drawing_request_tower);
 assign hoopPlayerCollision = (drawing_request_Player && drawing_request_hoop);
+assign dragonShotCollision = (drawing_request_dragon && drawing_request_shot!=0) ? drawing_request_shot:0;
+
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN)

@@ -109,6 +109,13 @@ agreement for further details.
 		(line (pt 0 208)(pt 16 208)(line_width 1))
 	)
 	(port
+		(pt 0 224)
+		(input)
+		(text "drawing_request_dragon" (rect 0 0 97 12)(font "Arial" ))
+		(text "drawing_request_dragon" (rect 21 219 118 231)(font "Arial" ))
+		(line (pt 0 224)(pt 16 224)(line_width 1))
+	)
+	(port
 		(pt 320 32)
 		(output)
 		(text "ShotTowerCollision[2..0]" (rect 0 0 93 12)(font "Arial" ))
@@ -199,9 +206,16 @@ agreement for further details.
 		(text "lifeAmount[2..0]" (rect 236 219 299 231)(font "Arial" ))
 		(line (pt 320 224)(pt 304 224)(line_width 3))
 	)
+	(port
+		(pt 320 240)
+		(output)
+		(text "dragonShotCollision[2..0]" (rect 0 0 95 12)(font "Arial" ))
+		(text "dragonShotCollision[2..0]" (rect 204 235 299 247)(font "Arial" ))
+		(line (pt 320 240)(pt 304 240)(line_width 3))
+	)
 	(parameter
 		"PLAYER_TOWER_TIME_LEN"
-		"60"
+		"200"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing

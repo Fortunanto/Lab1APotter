@@ -21,9 +21,9 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 304 256)
+	(rect 16 16 304 288)
 	(text "shot_StockManager" (rect 5 0 85 12)(font "Arial" ))
-	(text "inst" (rect 8 224 20 236)(font "Arial" ))
+	(text "inst" (rect 8 256 20 268)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -55,58 +55,72 @@ agreement for further details.
 	(port
 		(pt 0 96)
 		(input)
-		(text "shotDirection[2..0]" (rect 0 0 70 12)(font "Arial" ))
-		(text "shotDirection[2..0]" (rect 21 91 91 103)(font "Arial" ))
+		(text "shotDragonCollision[2..0]" (rect 0 0 96 12)(font "Arial" ))
+		(text "shotDragonCollision[2..0]" (rect 21 91 117 103)(font "Arial" ))
 		(line (pt 0 96)(pt 16 96)(line_width 3))
 	)
 	(port
 		(pt 0 112)
 		(input)
-		(text "trigger" (rect 0 0 24 12)(font "Arial" ))
-		(text "trigger" (rect 21 107 45 119)(font "Arial" ))
-		(line (pt 0 112)(pt 16 112)(line_width 1))
+		(text "shotDirection[2..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "shotDirection[2..0]" (rect 21 107 91 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
 	)
 	(port
 		(pt 0 128)
 		(input)
-		(text "startOfFrame" (rect 0 0 55 12)(font "Arial" ))
-		(text "startOfFrame" (rect 21 123 76 135)(font "Arial" ))
+		(text "trigger" (rect 0 0 24 12)(font "Arial" ))
+		(text "trigger" (rect 21 123 45 135)(font "Arial" ))
 		(line (pt 0 128)(pt 16 128)(line_width 1))
 	)
 	(port
 		(pt 0 144)
 		(input)
-		(text "player_tpX[10..0]" (rect 0 0 67 12)(font "Arial" ))
-		(text "player_tpX[10..0]" (rect 21 139 88 151)(font "Arial" ))
-		(line (pt 0 144)(pt 16 144)(line_width 3))
+		(text "startOfFrame" (rect 0 0 55 12)(font "Arial" ))
+		(text "startOfFrame" (rect 21 139 76 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
 	)
 	(port
 		(pt 0 160)
 		(input)
-		(text "player_tpY[10..0]" (rect 0 0 68 12)(font "Arial" ))
-		(text "player_tpY[10..0]" (rect 21 155 89 167)(font "Arial" ))
+		(text "player_tpX[10..0]" (rect 0 0 67 12)(font "Arial" ))
+		(text "player_tpX[10..0]" (rect 21 155 88 167)(font "Arial" ))
 		(line (pt 0 160)(pt 16 160)(line_width 3))
 	)
 	(port
 		(pt 0 176)
 		(input)
-		(text "pixelX[10..0]" (rect 0 0 46 12)(font "Arial" ))
-		(text "pixelX[10..0]" (rect 21 171 67 183)(font "Arial" ))
+		(text "player_tpY[10..0]" (rect 0 0 68 12)(font "Arial" ))
+		(text "player_tpY[10..0]" (rect 21 171 89 183)(font "Arial" ))
 		(line (pt 0 176)(pt 16 176)(line_width 3))
 	)
 	(port
 		(pt 0 192)
 		(input)
-		(text "pixelY[10..0]" (rect 0 0 47 12)(font "Arial" ))
-		(text "pixelY[10..0]" (rect 21 187 68 199)(font "Arial" ))
+		(text "pixelX[10..0]" (rect 0 0 46 12)(font "Arial" ))
+		(text "pixelX[10..0]" (rect 21 187 67 199)(font "Arial" ))
 		(line (pt 0 192)(pt 16 192)(line_width 3))
 	)
 	(port
 		(pt 0 208)
 		(input)
+		(text "pixelY[10..0]" (rect 0 0 47 12)(font "Arial" ))
+		(text "pixelY[10..0]" (rect 21 203 68 215)(font "Arial" ))
+		(line (pt 0 208)(pt 16 208)(line_width 3))
+	)
+	(port
+		(pt 0 224)
+		(input)
 		(text "pause" (rect 0 0 23 12)(font "Arial" ))
-		(text "pause" (rect 21 203 44 215)(font "Arial" ))
-		(line (pt 0 208)(pt 16 208)(line_width 1))
+		(text "pause" (rect 21 219 44 231)(font "Arial" ))
+		(line (pt 0 224)(pt 16 224)(line_width 1))
+	)
+	(port
+		(pt 0 240)
+		(input)
+		(text "poweredUp" (rect 0 0 44 12)(font "Arial" ))
+		(text "poweredUp" (rect 21 235 65 247)(font "Arial" ))
+		(line (pt 0 240)(pt 16 240)(line_width 1))
 	)
 	(port
 		(pt 288 32)
@@ -187,8 +201,23 @@ agreement for further details.
 		"70"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"PU_BULLET_NO_ANGLE_SPEED"
+		"170"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"PU_BULLET_LATERAL_SPEED"
+		"50"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"PU_BULLET_ANGLED_FORWARD_SPEED"
+		"110"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 272 224)(line_width 1))
+		(rectangle (rect 16 16 272 256)(line_width 1))
 	)
 	(annotation_block (parameter)(rect 304 -64 404 16))
 )

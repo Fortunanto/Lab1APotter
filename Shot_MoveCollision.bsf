@@ -21,7 +21,7 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 264 256)
+	(rect 16 16 280 256)
 	(text "Shot_MoveCollision" (rect 5 0 82 12)(font "Arial" ))
 	(text "inst" (rect 8 224 20 236)(font "Arial" ))
 	(port
@@ -83,52 +83,91 @@ agreement for further details.
 	(port
 		(pt 0 160)
 		(input)
-		(text "player_topLeftX[10..0]" (rect 0 0 88 12)(font "Arial" ))
-		(text "player_topLeftX[10..0]" (rect 21 155 109 167)(font "Arial" ))
-		(line (pt 0 160)(pt 16 160)(line_width 3))
+		(text "poweredUp" (rect 0 0 44 12)(font "Arial" ))
+		(text "poweredUp" (rect 21 155 65 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 1))
 	)
 	(port
 		(pt 0 176)
 		(input)
-		(text "player_topLeftY[10..0]" (rect 0 0 89 12)(font "Arial" ))
-		(text "player_topLeftY[10..0]" (rect 21 171 110 183)(font "Arial" ))
+		(text "player_topLeftX[10..0]" (rect 0 0 88 12)(font "Arial" ))
+		(text "player_topLeftX[10..0]" (rect 21 171 109 183)(font "Arial" ))
 		(line (pt 0 176)(pt 16 176)(line_width 3))
 	)
 	(port
 		(pt 0 192)
 		(input)
-		(text "pause" (rect 0 0 23 12)(font "Arial" ))
-		(text "pause" (rect 21 187 44 199)(font "Arial" ))
-		(line (pt 0 192)(pt 16 192)(line_width 1))
+		(text "player_topLeftY[10..0]" (rect 0 0 89 12)(font "Arial" ))
+		(text "player_topLeftY[10..0]" (rect 21 187 110 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 3))
 	)
 	(port
-		(pt 248 32)
+		(pt 0 208)
+		(input)
+		(text "pause" (rect 0 0 23 12)(font "Arial" ))
+		(text "pause" (rect 21 203 44 215)(font "Arial" ))
+		(line (pt 0 208)(pt 16 208)(line_width 1))
+	)
+	(port
+		(pt 264 32)
 		(output)
 		(text "enable" (rect 0 0 24 12)(font "Arial" ))
-		(text "enable" (rect 203 27 227 39)(font "Arial" ))
-		(line (pt 248 32)(pt 232 32)(line_width 1))
+		(text "enable" (rect 219 27 243 39)(font "Arial" ))
+		(line (pt 264 32)(pt 248 32)(line_width 1))
 	)
 	(port
-		(pt 248 48)
+		(pt 264 48)
 		(output)
 		(text "topLeftX[10..0]" (rect 0 0 57 12)(font "Arial" ))
-		(text "topLeftX[10..0]" (rect 170 43 227 55)(font "Arial" ))
-		(line (pt 248 48)(pt 232 48)(line_width 3))
+		(text "topLeftX[10..0]" (rect 186 43 243 55)(font "Arial" ))
+		(line (pt 264 48)(pt 248 48)(line_width 3))
 	)
 	(port
-		(pt 248 64)
+		(pt 264 64)
 		(output)
 		(text "topLeftY[10..0]" (rect 0 0 59 12)(font "Arial" ))
-		(text "topLeftY[10..0]" (rect 168 59 227 71)(font "Arial" ))
-		(line (pt 248 64)(pt 232 64)(line_width 3))
+		(text "topLeftY[10..0]" (rect 184 59 243 71)(font "Arial" ))
+		(line (pt 264 64)(pt 248 64)(line_width 3))
+	)
+	(port
+		(pt 264 80)
+		(output)
+		(text "draw_shot_dir[2..0]" (rect 0 0 76 12)(font "Arial" ))
+		(text "draw_shot_dir[2..0]" (rect 167 75 243 87)(font "Arial" ))
+		(line (pt 264 80)(pt 248 80)(line_width 3))
 	)
 	(parameter
-		"SPEED"
+		"NO_ANGLE_SPEED"
 		"100"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"LATERAL_SPEED"
+		"30"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"ANGLED_FORWARD_SPEED"
+		"70"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"PU_BULLET_NO_ANGLE_SPEED"
+		"170"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"PU_BULLET_LATERAL_SPEED"
+		"50"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"PU_BULLET_ANGLED_FORWARD_SPEED"
+		"110"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 232 224)(line_width 1))
+		(rectangle (rect 16 16 248 224)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 264 -64 364 16))
+	(annotation_block (parameter)(rect 280 -64 380 16))
 )

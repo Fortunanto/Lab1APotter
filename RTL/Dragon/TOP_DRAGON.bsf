@@ -21,9 +21,9 @@ agreement for further details.
 */
 (header "symbol" (version "1.2"))
 (symbol
-	(rect 16 16 256 208)
+	(rect 16 16 320 240)
 	(text "TOP_DRAGON" (rect 5 0 92 19)(font "Intel Clear" (font_size 8)))
-	(text "inst" (rect 8 171 24 188)(font "Intel Clear" ))
+	(text "inst" (rect 8 203 24 220)(font "Intel Clear" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -88,20 +88,27 @@ agreement for further details.
 		(line (pt 0 160)(pt 16 160))
 	)
 	(port
-		(pt 240 32)
-		(output)
-		(text "dragonDrawReq" (rect 0 0 95 19)(font "Intel Clear" (font_size 8)))
-		(text "dragonDrawReq" (rect 124 27 219 46)(font "Intel Clear" (font_size 8)))
-		(line (pt 240 32)(pt 224 32))
+		(pt 0 176)
+		(input)
+		(text " shotDragonCollision[2..0]" (rect 0 0 151 19)(font "Intel Clear" (font_size 8)))
+		(text " shotDragonCollision[2..0]" (rect 21 171 172 190)(font "Intel Clear" (font_size 8)))
+		(line (pt 0 176)(pt 16 176)(line_width 3))
 	)
 	(port
-		(pt 240 48)
+		(pt 304 32)
+		(output)
+		(text "dragonDrawReq" (rect 0 0 95 19)(font "Intel Clear" (font_size 8)))
+		(text "dragonDrawReq" (rect 188 27 283 46)(font "Intel Clear" (font_size 8)))
+		(line (pt 304 32)(pt 288 32))
+	)
+	(port
+		(pt 304 48)
 		(output)
 		(text "dragonRGB[7..0]" (rect 0 0 97 19)(font "Intel Clear" (font_size 8)))
-		(text "dragonRGB[7..0]" (rect 122 43 219 62)(font "Intel Clear" (font_size 8)))
-		(line (pt 240 48)(pt 224 48)(line_width 3))
+		(text "dragonRGB[7..0]" (rect 186 43 283 62)(font "Intel Clear" (font_size 8)))
+		(line (pt 304 48)(pt 288 48)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 224 176))
+		(rectangle (rect 16 16 288 208))
 	)
 )

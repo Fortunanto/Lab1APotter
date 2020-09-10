@@ -3,7 +3,8 @@ module shot_StockManager (
 	input  logic resetN,
 	input  logic[2:0] shotEnemyCollision,
 	input  logic[2:0] shotTowerCollision,
-	input	logic [2:0] shotDirection, 
+	input  logic [2:0] shotDragonCollision,
+	input	 logic [2:0] shotDirection, 
 	input  logic trigger,
 	input  logic startOfFrame,
 	input  logic   [10:0] player_tpX,
@@ -11,6 +12,8 @@ module shot_StockManager (
 	input  logic	[10:0] pixelX,// current VGA pixel 
 	input  logic	[10:0] pixelY,
 	input  logic          pause,
+	input  logic poweredUp,
+	
 	output logic   [2:0] drawingRequests,
 	output logic   [10:0] offsetX,
 	output logic   [10:0] offsetY,
@@ -28,6 +31,9 @@ parameter  logic [7:0] BULLET_COLOR = 8'h5b ;
 parameter int BULLET_NO_ANGLE_SPEED = 100;
 parameter int BULLET_LATERAL_SPEED = 30;
 parameter int BULLET_ANGLED_FORWARD_SPEED = 70;
+parameter int PU_BULLET_NO_ANGLE_SPEED = 170;
+parameter int PU_BULLET_LATERAL_SPEED = 50;
+parameter int PU_BULLET_ANGLED_FORWARD_SPEED = 110;
 
 logic [2:0] triggerOut;
 logic [2:0][10:0] tpX_bullet;
@@ -84,15 +90,20 @@ end
     begin : gen_loop
         Shot_MoveCollision #(.NO_ANGLE_SPEED(BULLET_NO_ANGLE_SPEED),
 									  .LATERAL_SPEED(BULLET_LATERAL_SPEED),
-									  .ANGLED_FORWARD_SPEED(BULLET_ANGLED_FORWARD_SPEED)) shot(.clk(clk),.resetN(resetN),
+									  .ANGLED_FORWARD_SPEED(BULLET_ANGLED_FORWARD_SPEED),
+									  .PU_NO_ANGLE_SPEED(PU_BULLET_NO_ANGLE_SPEED),
+									  .PU_LATERAL_SPEED(PU_BULLET_LATERAL_SPEED),
+									  .PU_ANGLED_FORWARD_SPEED(PU_BULLET_ANGLED_FORWARD_SPEED)) shot(.clk(clk),.resetN(resetN),
 										  .startOfFrame(startOfFrame),
 										  .triggerShot(triggerOut[itr]),
 										  .shotEnemyCollision(shotEnemyCollision[itr]),
 										  .shotBoxCollision(shotTowerCollision[itr]),
+										  .shotDragonCollision(shotDragonCollision[itr]),
 										  .shotDirection(shotDirection),
 										  .player_topLeftX(player_tpX),
 										  .player_topLeftY(player_tpY),
 										  .enable(enable[itr]),
+										  .poweredUp(poweredUp),
 										  .topLeftX(tpX_bullet[itr]),
 										  .topLeftY(tpY_bullet[itr]),
 										  .pause(pause),

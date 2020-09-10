@@ -165,6 +165,22 @@ agreement for further details.
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
 )
 (pin
+	(input)
+	(rect -192 472 24 488)
+	(text "INPUT" (rect 173 0 201 10)(font "Arial" (font_size 6)))
+	(text " shotDragonCollision[2..0]" (rect 5 0 126 17)(font "Intel Clear" ))
+	(pt 216 8)
+	(drawing
+		(line (pt 132 12)(pt 157 12))
+		(line (pt 132 4)(pt 157 4))
+		(line (pt 161 8)(pt 216 8))
+		(line (pt 132 12)(pt 132 4))
+		(line (pt 157 4)(pt 161 8))
+		(line (pt 157 12)(pt 161 8))
+	)
+	(text "VCC" (rect 176 7 196 17)(font "Arial" (font_size 6)))
+)
+(pin
 	(output)
 	(rect 248 176 424 192)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
@@ -396,84 +412,6 @@ agreement for further details.
 	)
 )
 (symbol
-	(rect 928 664 1144 808)
-	(text "dragon_moveCollision" (rect 5 0 113 12)(font "Arial" ))
-	(text "inst26" (rect 8 128 36 145)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "clk" (rect 0 0 14 12)(font "Arial" ))
-		(text "clk" (rect 21 27 35 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "resetN" (rect 0 0 33 12)(font "Arial" ))
-		(text "resetN" (rect 21 43 54 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "startOfFrame" (rect 0 0 67 12)(font "Arial" ))
-		(text "startOfFrame" (rect 21 59 88 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "pause" (rect 0 0 29 12)(font "Arial" ))
-		(text "pause" (rect 21 75 50 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "RNG[10..0]" (rect 0 0 56 12)(font "Arial" ))
-		(text "RNG[10..0]" (rect 21 91 77 103)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
-	)
-	(port
-		(pt 216 32)
-		(output)
-		(text "topLeftX[10..0]" (rect 0 0 73 12)(font "Arial" ))
-		(text "topLeftX[10..0]" (rect 134 27 207 39)(font "Arial" ))
-		(line (pt 216 32)(pt 200 32)(line_width 3))
-	)
-	(port
-		(pt 216 48)
-		(output)
-		(text "topLeftY[10..0]" (rect 0 0 75 12)(font "Arial" ))
-		(text "topLeftY[10..0]" (rect 132 43 207 55)(font "Arial" ))
-		(line (pt 216 48)(pt 200 48)(line_width 3))
-	)
-	(parameter
-		"X_SPEED"
-		"-120"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"Y_SPEED"
-		"50"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"OBJECT_WIDTH_X"
-		"31"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"OBJECT_HEIGHT_Y"
-		"32"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 200 128))
-	)
-	(annotation_block (parameter)(rect 872 464 1090 559))
-)
-(symbol
 	(rect 1336 600 1560 744)
 	(text "square_object" (rect 5 0 73 12)(font "Arial" ))
 	(text "inst31" (rect 8 128 36 145)(font "Intel Clear" ))
@@ -566,6 +504,91 @@ agreement for further details.
 		(rectangle (rect 16 16 208 128))
 	)
 	(annotation_block (parameter)(rect 1232 496 1487 572))
+)
+(symbol
+	(rect 928 664 1184 808)
+	(text "dragon_moveCollision" (rect 5 0 113 12)(font "Arial" ))
+	(text "inst26" (rect 8 128 37 140)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "resetN" (rect 0 0 33 12)(font "Arial" ))
+		(text "resetN" (rect 21 43 54 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "startOfFrame" (rect 0 0 67 12)(font "Arial" ))
+		(text "startOfFrame" (rect 21 59 88 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "pause" (rect 0 0 29 12)(font "Arial" ))
+		(text "pause" (rect 21 75 50 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "RNG[10..0]" (rect 0 0 56 12)(font "Arial" ))
+		(text "RNG[10..0]" (rect 21 91 77 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "shotDragonCollision[2..0]" (rect 0 0 123 12)(font "Arial" ))
+		(text "shotDragonCollision[2..0]" (rect 21 107 144 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
+		(pt 256 32)
+		(output)
+		(text "topLeftX[10..0]" (rect 0 0 73 12)(font "Arial" ))
+		(text "topLeftX[10..0]" (rect 174 27 235 39)(font "Arial" ))
+		(line (pt 256 32)(pt 240 32)(line_width 3))
+	)
+	(port
+		(pt 256 48)
+		(output)
+		(text "topLeftY[10..0]" (rect 0 0 75 12)(font "Arial" ))
+		(text "topLeftY[10..0]" (rect 172 43 235 55)(font "Arial" ))
+		(line (pt 256 48)(pt 240 48)(line_width 3))
+	)
+	(parameter
+		"X_SPEED"
+		"-120"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"Y_SPEED"
+		"50"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"OBJECT_WIDTH_X"
+		"31"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"OBJECT_HEIGHT_Y"
+		"32"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 240 128))
+	)
+	(annotation_block (parameter)(rect 872 464 1090 559))
 )
 (connector
 	(text "resetN" (rect 34 248 64 265)(font "Intel Clear" ))
@@ -756,18 +779,30 @@ agreement for further details.
 	(bus)
 )
 (connector
-	(pt 1144 696)
+	(text "dragonDrawReq" (rect 1881 584 1957 601)(font "Intel Clear" ))
+	(pt 1880 600)
+	(pt 1992 600)
+)
+(connector
+	(text " shotDragonCollision[2..0]" (rect 50 464 171 481)(font "Intel Clear" ))
+	(pt 24 480)
+	(pt 72 480)
+	(bus)
+)
+(connector
+	(pt 1184 696)
 	(pt 1336 696)
 	(bus)
 )
 (connector
-	(pt 1144 712)
+	(pt 1184 712)
 	(pt 1336 712)
 	(bus)
 )
 (connector
-	(text "dragonDrawReq" (rect 1881 584 1957 601)(font "Intel Clear" ))
-	(pt 1880 600)
-	(pt 1992 600)
+	(text " shotDragonCollision[2..0]" (rect 864 760 985 777)(font "Intel Clear" ))
+	(pt 928 776)
+	(pt 856 776)
+	(bus)
 )
 (rectangle (rect 296 704 568 832)(color 0 0 0)(line_width 3))

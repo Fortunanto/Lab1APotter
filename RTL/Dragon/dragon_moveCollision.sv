@@ -3,12 +3,13 @@ module dragon_moveCollision(
 	input		logic	resetN,
 	input    logic startOfFrame,		
 	input    logic pause,
-	input logic [10:0] RNG,
-	
-	output	 logic signed [10:0] topLeftX,
-	output	 logic signed [10:0]	topLeftY			
+	input 	logic [10:0] RNG,
+	input  	logic [2:0]shotDragonCollision,
+	output	logic signed [10:0] topLeftX,
+	output	logic signed [10:0]	topLeftY			
 );
-					
+	logic collision;
+	
 	const int START_TLX = 680;
 	const int START_TLY = 60;
 	
@@ -28,7 +29,8 @@ module dragon_moveCollision(
 		
 	assign topLeftX=TLX_FIXED_POINT>>>6;
 	assign topLeftY=TLY_FIXED_POINT>>>6;	
-
+	assign collision=shotDragonCollision!=0;
+	
 	logic [9:0][10:0] randoms = {11'd6,11'd501,11'd80,11'd100,11'd140,11'd18,11'd44,11'd340,11'd210,11'd277};
 	byte rndIndex=0;	
 	
@@ -53,6 +55,13 @@ begin
 //			currXSpeed<=X_SPEED;
 //			currYSpeed<=Y_SPEED;
 //		end
+		if(collision) begin
+			dragonUnleashed<=0;
+			currXSpeed<=0;
+			currYSpeed<=0;
+			TLX_FIXED_POINT<=60_000;
+			TLY_FIXED_POINT<=60_000;
+		end
 		
 		if(startOfFrame) begin	
 		
@@ -60,7 +69,7 @@ begin
 			if (rndIndex>10) rndIndex<=0;
 		
 			if (dragonUnleashed) begin
-			
+				
 				currYSpeed<=Y_SPEED;
 				currXSpeed<=X_SPEED;
 

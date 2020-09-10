@@ -17,7 +17,7 @@ module game_fsm (
 	output logic [10:0] slowClkRequest
 );
 
-parameter int ENEMY_COUNT=2;
+int curEnemyCount=2;
 parameter int LEVEL_1_TREE_COUNT=8;
 parameter int LEVEL_2_TREE_COUNT=8;
 int cur_level;
@@ -33,7 +33,7 @@ enum logic [4:0] {SgameScreen, SlevelOne_Two_Enemies,
 						SlevelOne_One_Enemy,SlevelOneToTwoStart
 						,SlevelOneToTwoEnd,SlevelTwo_Two_Enemies, 
 						SlevelTwo_One_Enemy,SvictoryScreen,
-																SDeath} prState, nxtState;
+																SDeath,SDragonPowerUp} prState, nxtState;
 
  	
 always @(posedge clk or negedge resetN)
