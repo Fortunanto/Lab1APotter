@@ -5,7 +5,8 @@ module game_fsm (
 	input logic[2:0] shotEnemyCollision,
 	input logic slowClk,
 	input logic playerTrigger,
-	
+	input logic transitionDone,
+		
 	output logic pause,
 	output logic[3:0] tree_count,
 	output logic [10:0] curEnemySpeed,
@@ -14,7 +15,8 @@ module game_fsm (
 	output logic [2:0] currentGameState,
 	output logic newLevel,
 	output logic requestTime,
-	output logic [10:0] slowClkRequest
+	output logic [10:0] slowClkRequest,
+	output logic transition_screen
 );
 
 int curEnemyCount=2;
@@ -33,7 +35,7 @@ enum logic [4:0] {SgameScreen, SlevelOne_Two_Enemies,
 						SlevelOne_One_Enemy,SlevelOneToTwoStart
 						,SlevelOneToTwoEnd,SlevelTwo_Two_Enemies, 
 						SlevelTwo_One_Enemy,SvictoryScreen,
-																SDeath,SDragonPowerUp} prState, nxtState;
+																SDeath,SDragonPowerUp,STransitionScreen} prState, nxtState;
 
  	
 always @(posedge clk or negedge resetN)
@@ -58,7 +60,7 @@ begin
 			else nxtState=SlevelOne_Two_Enemies;
 		end
 		SlevelOne_One_Enemy: begin
-			if(enemyDead) nxtState = SlevelOneToTwoStart;
+			if(enemyDead) nxtState = STransitionScreen;
 			else if(playerDead) nxtState=SDeath;
 			else nxtState=SlevelOne_One_Enemy;
 		end
@@ -88,6 +90,10 @@ begin
 			if(playerTrigger) nxtState=SgameScreen;
 			else nxtState=SDeath;
 		end
+		STransitionScreen: begin
+			if (transitionDone) nxtState = SlevelOneToTwoStart;
+			else nxtState = STransitionScreen;
+		end
 		endcase
 end
 
@@ -95,7 +101,7 @@ always_comb
 begin
 	newLevel=0;
 	requestTime=0;
-	slowClkRequest=0;
+	slowClkRequest=0;	
 	case (prState)
 		SgameScreen: begin
 			currentGameState=0;
@@ -127,6 +133,9 @@ begin
 		SDeath: begin
 			currentGameState=5;
 		end
+		STransitionScreen: begin
+			currentGameState=6;
+		end
 		endcase
 end
 always @ (*)
@@ -134,12 +143,14 @@ always @ (*)
      case (currentGameState) 
 		0:begin 
 					pause=1;
+					transition_screen=0;
 					death_screen=0;
 					start_screen=1;
 					curEnemySpeed=120;
 				 end 
 		1:begin 
 					pause=0;
+					transition_screen=0;
 					death_screen=0;
 					start_screen=0;
 					tree_count=LEVEL_1_TREE_COUNT;
@@ -147,12 +158,14 @@ always @ (*)
 				 end 
 		2:begin 
 					pause=1;
+					transition_screen=0;
 					death_screen=0;
 					start_screen=0;
 					curEnemySpeed=240;
 				 end 
 		3:begin 
 					pause=0;
+					transition_screen=0;
 					death_screen=0;
 					start_screen=0;
 					tree_count=LEVEL_2_TREE_COUNT;
@@ -161,14 +174,22 @@ always @ (*)
 				 end 
 		5:begin 
 					pause=1;
+					transition_screen=0;
 					death_screen=1;
 					start_screen=0;
 
 				 end 
+		6:begin 
+					pause=1;
+					transition_screen=1;
+					death_screen=0;
+					start_screen=0;
+				 end 		 
 		default:begin
 					pause=1;
 					death_screen=0;
 					start_screen=0;
+					transition_screen=0;
 					end
 	  endcase 
  end 

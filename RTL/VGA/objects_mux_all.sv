@@ -59,6 +59,11 @@ module	objects_mux_all	(
 		// dragon 
 					input logic dragonDrawReq,
 					input logic [7:0] dragonRGB,
+					
+		// next level transition
+		
+					input logic transitionDrawReq,
+					input logic [7:0] transitionRGB,
 
 
 					output	logic	[7:0] redOut, // full 24 bits color output
@@ -83,6 +88,7 @@ begin
 	end
 	else begin
 		if (deathForeground_dr) tmpRGB <= deathForegroundRGB;
+		else if (transitionDrawReq) tmpRGB <= transitionRGB;
 		else if (lifeDrawReq) tmpRGB <= lifeRGB;
 		else if (timerDrawReq) tmpRGB <= timerRGB;		
 		else if (scoreDrawingRequest) tmpRGB <= scoreRGB;

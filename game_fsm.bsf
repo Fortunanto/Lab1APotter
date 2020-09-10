@@ -67,6 +67,13 @@ agreement for further details.
 		(line (pt 0 112)(pt 16 112)(line_width 1))
 	)
 	(port
+		(pt 0 128)
+		(input)
+		(text "transitionDone" (rect 0 0 55 12)(font "Arial" ))
+		(text "transitionDone" (rect 21 123 76 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 1))
+	)
+	(port
 		(pt 296 32)
 		(output)
 		(text "pause" (rect 0 0 23 12)(font "Arial" ))
@@ -129,11 +136,13 @@ agreement for further details.
 		(text "slowClkRequest[10..0]" (rect 188 155 275 167)(font "Arial" ))
 		(line (pt 296 160)(pt 280 160)(line_width 3))
 	)
-	(parameter
-		"ENEMY_COUNT"
-		"2"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
+	(port
+		(pt 296 176)
+		(output)
+		(text "transition_screen" (rect 0 0 67 12)(font "Arial" ))
+		(text "transition_screen" (rect 208 171 275 183)(font "Arial" ))
+		(line (pt 296 176)(pt 280 176)(line_width 1))
+	)
 	(parameter
 		"LEVEL_1_TREE_COUNT"
 		"8"
