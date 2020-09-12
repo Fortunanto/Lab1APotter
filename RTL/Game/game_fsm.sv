@@ -6,6 +6,7 @@ module game_fsm (
 	input logic slowClk,
 	input logic playerTrigger,
 	input logic transitionDone,
+	input logic [0:23] currentTime,
 		
 	output logic pause,
 	output logic[3:0] tree_count,
@@ -25,7 +26,7 @@ parameter int LEVEL_2_TREE_COUNT=8;
 int cur_level;
 
 logic playerDead;
-assign playerDead = (currLife == 0); 
+assign playerDead = (currLife == 0) || (currentTime==0); 
 
 logic enemyDead;
 

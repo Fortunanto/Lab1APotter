@@ -92,7 +92,7 @@ begin
 			if (towerIndex<currTowersAmount) begin
 		
 				if(startOfFrame) begin				
-					if(towersTLY[towerIndex]>480) begin 				
+					if(towersTLY[towerIndex]>480 || towersTLX[towerIndex]==0) begin 				
 						towersTLY_FIXED_POINT[towerIndex] <= (OBJECT_HEIGHT_Y)*FIXED_POINT_MULTIPLIER*(-1);
 						//towersTLY_FIXED_POINT[towerIndex] <= 0;
 						towersTLX_FIXED_POINT[towerIndex] <= (spawnX+randoms[rndIndex])*FIXED_POINT_MULTIPLIER;

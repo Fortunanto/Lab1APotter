@@ -368,10 +368,18 @@ begin
 		drawingRequest <=	1'b0;
 	end
 	else begin
-			drawingRequest <= (number_bitmap[digit][offsetY][offsetX]) && (InsideRectangle == 1'b1 );	//get value from bitmap  
+		if (InsideRectangle) begin
+			drawingRequest<=1;
+			
+			if (number_bitmap[digit][offsetY][offsetX]) RGBout <= digit_color;
+			else RGBout <= 8'h00;
+		end
+		else drawingRequest <= 0;
+
+		//drawingRequest <= (number_bitmap[digit][offsetY][offsetX]) && (InsideRectangle == 1'b1 );	//get value from bitmap  
 	end 
 end
 
-assign RGBout = digit_color ; // this is a fixed color 
+//assign RGBout = digit_color ; // this is a fixed color 
 
 endmodule
