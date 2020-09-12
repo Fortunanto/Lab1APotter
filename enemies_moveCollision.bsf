@@ -21,7 +21,7 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 248 224)
+	(rect 16 16 256 224)
 	(text "enemies_moveCollision" (rect 5 0 98 12)(font "Arial" ))
 	(text "inst" (rect 8 192 20 204)(font "Arial" ))
 	(port
@@ -48,79 +48,65 @@ agreement for further details.
 	(port
 		(pt 0 80)
 		(input)
-		(text "pixelX[10..0]" (rect 0 0 46 12)(font "Arial" ))
-		(text "pixelX[10..0]" (rect 21 75 67 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80)(line_width 3))
+		(text "changeDirection" (rect 0 0 62 12)(font "Arial" ))
+		(text "changeDirection" (rect 21 75 83 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 1))
 	)
 	(port
 		(pt 0 96)
 		(input)
-		(text "pixelY[10..0]" (rect 0 0 47 12)(font "Arial" ))
-		(text "pixelY[10..0]" (rect 21 91 68 103)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
+		(text "dodgeBullet" (rect 0 0 43 12)(font "Arial" ))
+		(text "dodgeBullet" (rect 21 91 64 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 1))
 	)
 	(port
 		(pt 0 112)
 		(input)
-		(text "changeDirection" (rect 0 0 62 12)(font "Arial" ))
-		(text "changeDirection" (rect 21 107 83 119)(font "Arial" ))
-		(line (pt 0 112)(pt 16 112)(line_width 1))
+		(text "shotCollision[2..0]" (rect 0 0 67 12)(font "Arial" ))
+		(text "shotCollision[2..0]" (rect 21 107 88 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
 	)
 	(port
 		(pt 0 128)
 		(input)
-		(text "dodgeBullet" (rect 0 0 43 12)(font "Arial" ))
-		(text "dodgeBullet" (rect 21 123 64 135)(font "Arial" ))
+		(text "pause" (rect 0 0 23 12)(font "Arial" ))
+		(text "pause" (rect 21 123 44 135)(font "Arial" ))
 		(line (pt 0 128)(pt 16 128)(line_width 1))
 	)
 	(port
 		(pt 0 144)
 		(input)
-		(text "shotCollision[2..0]" (rect 0 0 67 12)(font "Arial" ))
-		(text "shotCollision[2..0]" (rect 21 139 88 151)(font "Arial" ))
-		(line (pt 0 144)(pt 16 144)(line_width 3))
+		(text "restart_loc" (rect 0 0 42 12)(font "Arial" ))
+		(text "restart_loc" (rect 21 139 63 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
 	)
 	(port
 		(pt 0 160)
 		(input)
-		(text "pause" (rect 0 0 23 12)(font "Arial" ))
-		(text "pause" (rect 21 155 44 167)(font "Arial" ))
-		(line (pt 0 160)(pt 16 160)(line_width 1))
+		(text "enemySpeed[10..0]" (rect 0 0 76 12)(font "Arial" ))
+		(text "enemySpeed[10..0]" (rect 21 155 97 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 3))
 	)
 	(port
-		(pt 232 32)
+		(pt 0 176)
+		(input)
+		(text "RNG" (rect 0 0 22 12)(font "Arial" ))
+		(text "RNG" (rect 21 171 43 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 1))
+	)
+	(port
+		(pt 240 32)
 		(output)
 		(text "topLeftX[10..0]" (rect 0 0 57 12)(font "Arial" ))
-		(text "topLeftX[10..0]" (rect 154 27 211 39)(font "Arial" ))
-		(line (pt 232 32)(pt 216 32)(line_width 3))
+		(text "topLeftX[10..0]" (rect 162 27 219 39)(font "Arial" ))
+		(line (pt 240 32)(pt 224 32)(line_width 3))
 	)
 	(port
-		(pt 232 48)
+		(pt 240 48)
 		(output)
 		(text "topLeftY[10..0]" (rect 0 0 59 12)(font "Arial" ))
-		(text "topLeftY[10..0]" (rect 152 43 211 55)(font "Arial" ))
-		(line (pt 232 48)(pt 216 48)(line_width 3))
-	)
-	(port
-		(pt 232 64)
-		(output)
-		(text "offsetX[10..0]" (rect 0 0 53 12)(font "Arial" ))
-		(text "offsetX[10..0]" (rect 158 59 211 71)(font "Arial" ))
-		(line (pt 232 64)(pt 216 64)(line_width 3))
-	)
-	(port
-		(pt 232 80)
-		(output)
-		(text "offsetY[10..0]" (rect 0 0 54 12)(font "Arial" ))
-		(text "offsetY[10..0]" (rect 157 75 211 87)(font "Arial" ))
-		(line (pt 232 80)(pt 216 80)(line_width 3))
-	)
-	(port
-		(pt 232 96)
-		(output)
-		(text "drawingRequest" (rect 0 0 63 12)(font "Arial" ))
-		(text "drawingRequest" (rect 148 91 211 103)(font "Arial" ))
-		(line (pt 232 96)(pt 216 96)(line_width 1))
+		(text "topLeftY[10..0]" (rect 160 43 219 55)(font "Arial" ))
+		(line (pt 240 48)(pt 224 48)(line_width 3))
 	)
 	(parameter
 		"INITIAL_X"
@@ -129,36 +115,26 @@ agreement for further details.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"INITIAL_Y"
-		"200"
+		"210"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
-		"OBJECT_WIDTH_X"
-		"30"
+		"RIGHT_EDGE"
+		"500"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
-		"OBJECT_HEIGHT_Y"
-		"30"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"X_SPEED"
-		"120"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"dodgeBulletWait"
+		"LEFT_EDGE"
 		"50"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
-		"OBJECT_COLOR"
-		"01011011"
+		"dodgeBulletWait"
+		"35"
 		""
-		(type "PARAMETER_UNSIGNED_BIN")	)
+		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 216 192)(line_width 1))
+		(rectangle (rect 16 16 224 192)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 248 -64 348 16))
+	(annotation_block (parameter)(rect 256 -64 356 16))
 )

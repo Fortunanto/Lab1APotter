@@ -102,6 +102,13 @@ agreement for further details.
 		(line (pt 0 192)(pt 16 192)(line_width 1))
 	)
 	(port
+		(pt 0 208)
+		(input)
+		(text "RNG[10..0]" (rect 0 0 46 12)(font "Arial" ))
+		(text "RNG[10..0]" (rect 21 203 67 215)(font "Arial" ))
+		(line (pt 0 208)(pt 16 208)(line_width 3))
+	)
+	(port
 		(pt 280 32)
 		(output)
 		(text "offsetX[10..0]" (rect 0 0 53 12)(font "Arial" ))

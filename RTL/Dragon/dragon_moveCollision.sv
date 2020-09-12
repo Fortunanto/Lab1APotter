@@ -35,16 +35,20 @@ module dragon_moveCollision(
 	byte rndIndex=0;	
 	
 	logic dragonUnleashed;
+	
+	int unleashTimer;
 
 	initial begin
 		TLX_FIXED_POINT = START_TLX;
 		TLY_FIXED_POINT = START_TLY;
+		unleashTimer = 100;
 	end
 	
 always_ff@(posedge clk or negedge resetN)
 begin
 	if(!resetN) begin	
 		dragonUnleashed<=0;
+		unleashTimer<=100;
 	end
 	else begin
 //		if (pause) begin
@@ -93,7 +97,12 @@ begin
 				TLX_FIXED_POINT<=START_TLX*FIXED_POINT_MULTIPLIER;
 				TLY_FIXED_POINT<=START_TLY*FIXED_POINT_MULTIPLIER;	
 				
-				if ((RNG + randoms[rndIndex])>550 && (RNG + randoms[rndIndex])<570) dragonUnleashed<=1;
+				//if ((RNG + randoms[rndIndex])>550 && (RNG + randoms[rndIndex])<570) dragonUnleashed<=1;
+				if (unleashTimer == 0) begin
+					dragonUnleashed<=1;
+					unleashTimer<=(RNG + randoms[rndIndex])*2;				
+				end
+				else unleashTimer <= unleashTimer - 1;
 			end
 			
 		end

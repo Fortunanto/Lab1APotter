@@ -10,14 +10,17 @@ module	enemies_moveCollision	(
 					input		logic	resetN,
 					input    logic startOfFrame,
 									
-					input logic changeDirection,
+					input logic changeDirection,					
 					input logic dodgeBullet,
 					input logic[2:0] shotCollision,
 					input logic pause,
 					input logic restart_loc,
 					input logic[10:0] enemySpeed,
+					input logic [10:0] RNG,
+					
 					output logic  [10:0] topLeftX,
-					output logic  [10:0] topLeftY			
+					output logic  [10:0] topLeftY
+						
 										
 );
 logic collide;
@@ -28,6 +31,10 @@ parameter int RIGHT_EDGE=500;
 parameter int LEFT_EDGE =50;
 
 parameter int dodgeBulletWait = 35;
+
+logic [9:0][10:0] randoms = {11'd60,11'd500,11'd80,11'd100,11'd140,11'd438,11'd44,11'd340,11'd210,11'd277};
+byte rndIndex=0;
+
  
 int rightX ; //coordinates of the sides  
 int bottomY ;
@@ -44,6 +51,8 @@ int direction = 1;
 
 
 logic insideBracket ;
+
+int changeDirTimer;
 
 int topLeftX_FixedPoint;
 int topLeftY_FixedPoint;
@@ -70,6 +79,7 @@ begin
 		xSpeed_Cur <= enemySpeed;
 		dodging<=0;
 		dodgingShot<=0;
+		changeDirTimer<=INITIAL_X;
 	end
 	else begin 
 		xSpeed_Cur <= enemySpeed;
@@ -120,6 +130,14 @@ begin
 					dodgingShot <= 0;
 				end
 				dodgingShotAgg<=0;
+				
+				if (changeDirTimer == 0) begin // randomly change direction!!!!!
+					direction <= -1*direction;
+					changeDirTimer <= RNG + randoms[rndIndex];
+					rndIndex<=rndIndex+1;
+					if (rndIndex>10) rndIndex <= 0;
+				end
+				else changeDirTimer<= changeDirTimer-1;
 				
 				//if (dodgeBulletTimer > 0) dodgeBulletTimer<=dodgeBulletTimer-1;
 			end	

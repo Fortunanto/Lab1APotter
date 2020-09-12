@@ -18,6 +18,8 @@ module enemy_StockManager(
 					input logic pause,
 					input logic[10:0] enemySpeed,
 					input logic newLevel,
+					input logic [10:0] RNG,
+					
 					output 	logic	[10:0] offsetX,// offset inside bracket from top left position 
 					output 	logic	[10:0] offsetY,	
 					
@@ -74,7 +76,8 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 			.topLeftX(enemiesTLX[i]),
 			.topLeftY(enemiesTLY[i]),
 			.restart_loc(newLevel),
-			.enemySpeed(enemySpeed)
+			.enemySpeed(enemySpeed),
+			.RNG(RNG)
 		);
 		
 		square_object #(
