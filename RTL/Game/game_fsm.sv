@@ -35,7 +35,7 @@ assign enemyDead = shotEnemyCollision!=0;
 enum logic [4:0] {SgameScreen, SlevelOne_Two_Enemies, 
 						SlevelOne_One_Enemy,SlevelOneToTwoStart
 						,SlevelOneToTwoEnd,SlevelTwo_Two_Enemies, 
-						SlevelTwo_One_Enemy,SvictoryScreen,
+						SlevelTwo_One_Enemy,SvictoryScreenStart,SvictoryScreenMid,SvictoryScreenEnd,
 																SDeath,SDragonPowerUp,STransitionScreen} prState, nxtState;
 
  	
@@ -79,13 +79,20 @@ begin
 			else nxtState=SlevelTwo_Two_Enemies;
 		end
 		SlevelTwo_One_Enemy: begin
-			if(enemyDead) nxtState = SvictoryScreen;
+			if(enemyDead) nxtState = SvictoryScreenStart;
 			else if(playerDead) nxtState=SDeath;
 			else nxtState=SlevelTwo_One_Enemy;
 		end
-		SvictoryScreen: begin
-			if(playerTrigger) nxtState=SlevelOne_Two_Enemies;
-			else nxtState=SvictoryScreen;
+		SvictoryScreenStart: begin
+			nxtState=SvictoryScreenMid;
+		end
+			SvictoryScreenMid: begin
+			if(slowClk) nxtState=SvictoryScreenEnd;
+			else nxtState=SvictoryScreenMid;
+		end
+		SvictoryScreenEnd: begin
+			if(playerTrigger) nxtState=SgameScreen;
+			else nxtState=SvictoryScreenEnd;
 		end
 		SDeath: begin
 			if(playerTrigger) nxtState=SgameScreen;
@@ -106,6 +113,8 @@ begin
 	case (prState)
 		SgameScreen: begin
 			currentGameState=0;
+			newLevel=1;
+
 		end
 		SlevelOne_Two_Enemies: begin
 			currentGameState=1;
@@ -128,7 +137,15 @@ begin
 		SlevelTwo_One_Enemy:begin
 			currentGameState=3;
 		end
-		SvictoryScreen: begin
+		SvictoryScreenStart: begin
+			currentGameState=4;
+			requestTime=1;
+			slowClkRequest=120;
+		end
+		SvictoryScreenMid: begin
+			currentGameState=4;
+		end
+		SvictoryScreenEnd: begin
 			currentGameState=4;
 		end
 		SDeath: begin
@@ -171,6 +188,13 @@ always @ (*)
 					start_screen=0;
 					tree_count=LEVEL_2_TREE_COUNT;
 					curEnemySpeed=240;
+
+				 end 
+		4:begin 
+					pause=1;
+					transition_screen=0;
+					death_screen=0;
+					start_screen=0;
 
 				 end 
 		5:begin 
