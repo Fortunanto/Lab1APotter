@@ -132,7 +132,9 @@ begin
 				dodgingShotAgg<=0;
 				
 				if (changeDirTimer == 0) begin // randomly change direction!!!!!
-					direction <= -1*direction;
+					if (dodging==0 && dodgingShot==0) begin
+						direction <= -1*direction;
+					end
 					changeDirTimer <= RNG + randoms[rndIndex];
 					rndIndex<=rndIndex+1;
 					if (rndIndex>10) rndIndex <= 0;
