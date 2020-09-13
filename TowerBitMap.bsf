@@ -73,13 +73,7 @@ agreement for further details.
 		(text "RGBout[7..0]" (rect 150 43 203 55)(font "Arial" ))
 		(line (pt 224 48)(pt 208 48)(line_width 3))
 	)
-	(parameter
-		"digit_color"
-		"11111111"
-		""
-		(type "PARAMETER_UNSIGNED_BIN")	)
 	(drawing
 		(rectangle (rect 16 16 208 128)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 240 -64 340 16))
 )

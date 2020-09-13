@@ -42,7 +42,7 @@ parameter int RIGHT_EDGE = 580;
 
 parameter  logic [7:0] ENEMY_COLOR = 8'h72 ;
 
-//logic [AMOUNT_OF_ENEMIES-1:0] shotCollisionMap=0;
+const int POSITION_MULTIPLIER = 128;
 
 logic [AMOUNT_OF_ENEMIES-1:0][10:0] enemiesTLX;
 logic [AMOUNT_OF_ENEMIES-1:0][10:0] enemiesTLY;
@@ -61,8 +61,8 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
  generate
 	for (i=0;i<AMOUNT_OF_ENEMIES;i=i+1) begin: gen_loop
 		enemies_moveCollision #(
-		  .INITIAL_X(100*(i+1)),
-		  .INITIAL_Y(100*(i+1)), 
+		  .INITIAL_X(128*(i+1)), //required a specific entry of number, error const-qualified variable is not legal in const expressions
+		  .INITIAL_Y(128*(i+1)), 
 		  .RIGHT_EDGE(RIGHT_EDGE),
 		  .LEFT_EDGE(LEFT_EDGE))
 		  enemy(
@@ -135,6 +135,7 @@ logic [AMOUNT_OF_ENEMIES-1:0][7:0] RGBs;
 	end
 endgenerate
 
+	//output mux decider
 	
 always_comb begin
 

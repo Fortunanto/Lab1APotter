@@ -65,7 +65,6 @@ begin
 		RGBout <=	8'h00;
 	end
 	else begin
-		//HitEdgeCode <= hit_colors[offsetY >> OBJECT_HEIGHT_Y_DIVIDER][offsetX >> OBJECT_WIDTH_X_DIVIDER];	//get hitting edge from the colors table  
 
 		
 		if (startOfFrame) begin

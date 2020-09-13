@@ -12,7 +12,7 @@ localparam logic [7:0] TRANSPARENT_ENCODING = 8'hFF ;// RGB value in the bitmap 
 
 localparam  int OBJECT_HEIGHT_Y = 12;
 localparam  int OBJECT_WIDTH_X = 24;
-
+const int MID_HOOP=23;
 int inverted;
 
 logic [0:OBJECT_HEIGHT_Y-1] [0:OBJECT_WIDTH_X-1] [8-1:0] object_colors = {
@@ -42,7 +42,7 @@ begin
 
 		
 		if (InsideRectangle == 1'b1 ) begin  // inside an external bracket 
-			if(offsetY<=23)
+			if(offsetY<=MID_HOOP)
 				RGBout <= object_colors[offsetY/2][offsetX/2];
 			else
 				RGBout <= object_colors[inverted-1][offsetX/2];
@@ -54,8 +54,8 @@ end
 
 //////////--------------------------------------------------------------------------------------------------------------=
 // decide if to draw the pixel or not 
-assign topDrawingRequest = ((RGBout != TRANSPARENT_ENCODING ) &&  offsetY<=23  && InsideRectangle)? 1'b1 : 1'b0 ; // get optional transparent command from the bitmpap   
-assign bottomDrawingRequest = ((RGBout != TRANSPARENT_ENCODING ) &&  offsetY>23 && InsideRectangle )? 1'b1 : 1'b0 ; // get optional transparent command from the bitmpap   
+assign topDrawingRequest = ((RGBout != TRANSPARENT_ENCODING ) &&  offsetY<=MID_HOOP  && InsideRectangle)? 1'b1 : 1'b0 ; // get optional transparent command from the bitmap  - top of it
+assign bottomDrawingRequest = ((RGBout != TRANSPARENT_ENCODING ) &&  offsetY>MID_HOOP && InsideRectangle )? 1'b1 : 1'b0 ; // get optional transparent command from the bitmap    - bottom of it
 
 
 endmodule

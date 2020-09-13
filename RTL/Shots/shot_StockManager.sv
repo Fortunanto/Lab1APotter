@@ -57,7 +57,7 @@ begin
 		nonAvailable <= 0;
 		delay<=TIMING_DELAY;
 	end
-	else begin
+	else begin //Choose the first available shot to fire out
 		triggerOut[0]		<= 0;
 		triggerOut[1]		<= 0;
 		triggerOut[2]		<= 0;
@@ -66,9 +66,9 @@ begin
 			if(delay==0) begin
 				shot_fired   <=1;
 				case(enable) 
-					3'b001,3'b011,3'b101,3'b111  : triggerOut[0]<= 1;
-					3'b010,3'b110  : 					 triggerOut[1]<= 1;
-					3'b100  : 							 triggerOut[2]<= 1;
+					3'b001,3'b011,3'b101,3'b111  : triggerOut[0]<= 1; // in case the first shot is available
+					3'b010,3'b110  : 					 triggerOut[1]<= 1; // in case the second shot is available
+					3'b100  : 							 triggerOut[2]<= 1; // in case the third shot is available
 					default : begin
 						nonAvailable <= 1;
 						shot_fired   <=0;
@@ -120,6 +120,7 @@ end
 
     end
   endgenerate
+  // send out the required signal to currently draw.
   always @ (*)
   MUX : begin
      case (drawingRequests) 

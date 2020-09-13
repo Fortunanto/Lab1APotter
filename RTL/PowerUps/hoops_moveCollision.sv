@@ -29,12 +29,12 @@ module hoop__moveCollision(
 	
 	assign topLeftXSigned = $signed(hoopTLX_FIXED_POINT)/$signed(FIXED_POINT_MULTIPLIER);
 	assign topLeftYSigned = $signed(hoopTLY_FIXED_POINT)/$signed(FIXED_POINT_MULTIPLIER);
-	assign topLeftX=hoopTLX_FIXED_POINT>>>6;
-	assign topLeftY=hoopTLY_FIXED_POINT>>>6;
+	assign topLeftX=hoopTLX_FIXED_POINT>>>6; // divide by 64, signed
+	assign topLeftY=hoopTLY_FIXED_POINT>>>6; // divide by 64, signed
 
 	initial begin
-		hoopTLX_FIXED_POINT = 0;
-		hoopTLY_FIXED_POINT = $signed((OBJECT_HEIGHT_Y))*$signed(FIXED_POINT_MULTIPLIER)*4*$signed((-1));
+		hoopTLX_FIXED_POINT = 0; 
+		hoopTLY_FIXED_POINT = $signed((OBJECT_HEIGHT_Y))*$signed(FIXED_POINT_MULTIPLIER)*4*$signed((-1)); // place the hoop in its initial position
 
 	end
 	
@@ -49,8 +49,8 @@ begin
 		
 		if(startOfFrame) begin				
 			if(topLeftY>480) begin 				
-				hoopTLY_FIXED_POINT <= $signed((OBJECT_HEIGHT_Y))*$signed(FIXED_POINT_MULTIPLIER)*4*$signed((-1));
-				hoopTLX_FIXED_POINT <= (spawnX+randoms[rndIndex])*FIXED_POINT_MULTIPLIER;
+				hoopTLY_FIXED_POINT <= $signed((OBJECT_HEIGHT_Y))*$signed(FIXED_POINT_MULTIPLIER)*4*$signed((-1)); // move the hoop offscreen
+				hoopTLX_FIXED_POINT <= (spawnX+randoms[rndIndex])*FIXED_POINT_MULTIPLIER; // choose a new random x position
 				rndIndex<=rndIndex+1;
 				if (rndIndex>10) rndIndex <= 0;
 			end
@@ -63,7 +63,7 @@ begin
 			 
 		end
 		if (towerHoopCollision) 
-					hoopTLX_FIXED_POINT<=hoopTLX_FIXED_POINT+(OBJECT_WIDTH_X+30)*FIXED_POINT_MULTIPLIER;
+					hoopTLX_FIXED_POINT<=hoopTLX_FIXED_POINT+(OBJECT_WIDTH_X+30)*FIXED_POINT_MULTIPLIER; //move the hoop from the tower it hit.
 	end
 
 end 

@@ -32,6 +32,8 @@ logic enemyDead;
 
 assign enemyDead = shotEnemyCollision!=0; 
 
+// all the recorded game states.
+
 enum logic [4:0] {SgameScreen, SlevelOne_Two_Enemies, 
 						SlevelOne_One_Enemy,SlevelOneToTwoStart
 						,SlevelOneToTwoEnd,SlevelTwo_Two_Enemies, 
@@ -48,10 +50,12 @@ always @(posedge clk or negedge resetN)
 		prState <= nxtState;
 	end // always
 
+	// state transition always_comb
+	
 always_comb
 begin
 	case (prState)
-		SgameScreen: begin
+		SgameScreen: begin 
 			if(playerTrigger) nxtState = SlevelOne_Two_Enemies;
 			else nxtState=SgameScreen;
 		end
@@ -105,6 +109,8 @@ begin
 		endcase
 end
 
+// signal output always_comb
+
 always_comb
 begin
 	newLevel=0;
@@ -156,6 +162,7 @@ begin
 		end
 		endcase
 end
+// game state decision mux
 always @ (*)
   MUX : begin
      case (currentGameState) 

@@ -28,6 +28,8 @@ always @(posedge clk or negedge resetN)
 	end
 end // always
 
+// output sound based on the following states: Idle, shot, hit, and end game.
+
 always_comb
 begin
 	case (prState)
@@ -86,6 +88,8 @@ begin
 		endcase
 end
 
+// based on state, output the following sound key:
+
 always_comb
 begin
 
@@ -94,10 +98,10 @@ begin
 			sound_key=1;
 		end
 		SHit: begin
-			sound_key=2;
+			sound_key=6;
 		end
 		SEnemyDead: begin
-			sound_key=3;
+			sound_key=9;
 		end
 		default: begin
 			sound_key=15;
